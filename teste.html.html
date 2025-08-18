@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>My life — Diego Silva</title>
+<meta name="description" content="História de vida estruturada por períodos de 5 anos, com fotos e leitor em voz alta para acompanhamento clínico." />
+<style>
+/* ===== Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== TOC container ===== */
+nav.toc {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  text-align: center;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.8rem;
+}
+
+/* Title */
+nav.toc h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e3a8a;
+  margin-bottom: 1rem;
+  grid-column: 1 / -1; /* span full row */
+}
+
+/* Links styled as grey boxes */
+nav.toc a {
+  display: block;
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #222;
+  text-decoration: none;
+  background: #f0f0f0;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+
+/* No hover color change — keep it stable */
+nav.toc a:hover {
+  background: #f0f0f0;
+  color: #222;
+}
+
+/* Print: hide TOC */
+@media print {
+  nav.toc {
+    display: none;
+  }
+}
+
+
+/* ===== Base styles ===== */
+html, body {
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: #eef2f7;
+  color: #111;
+  line-height: 1.7;
+  text-align: fixed;
+  padding: 0.5rem;
+  font-size: 20px;  /* 👈 Bigger base text */
+}
+
+/* ===== Section cards ===== */
+section.glass {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 18px;
+  padding: 2rem;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+
+/* ===== Headings ===== */
+section .head h2 {
+  font-size: 2rem;    /* 👈 Large titles */
+  font-weight: 700;
+  color: #1e3a8a;     /* Dark blue accent */
+  margin-bottom: 0.5rem;
+}
+
+section .head .meta {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+/* ===== Content text ===== */
+section .content p {
+  font-size: 1.15rem;   /* 👈 Comfortable reading size */
+  margin-bottom: 1.2rem;
+  text-align: justify;
+}
+
+/* ===== Photo grids ===== */
+.photo-wrap {
+  margin-top: 1.5rem;
+}
+
+.photo-wrap .small {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 0.8rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.grid img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 2px solid #ccc;
+  background: #f9f9f9;
+  transition: transform 0.25s;
+}
+
+.grid img:hover {
+  transform: scale(1.04);
+}
+
+/* ===== Print styling ===== */
+@media print {
+  body {
+    background: #fff;
+    font-size: 18px;
+  }
+  section.glass {
+    box-shadow: none;
+    margin-bottom: 1.5rem;
+    page-break-inside: avoid;
+  }
+}
+
+</style>
+</head>
+  <button class="btn" onclick="window.print()" title="Print/PDF">Print</button>
+<div class="app">
+  <nav class="toc glass" aria-label="Table of contents">
+    <h3>My life - Diego Silva</h3>
+    <a href="#y0">0–5 years</a>
+    <a href="#y5">5–10 years</a>
+    <a href="#y10">10–15 years</a>
+    <a href="#y15">15–20 years</a>
+    <a href="#y20">20–25 years</a>
+    <a href="#y25">25–30 years</a>
+    <a href="#y30">30–35 years</a>
+    <a href="#communication">Communication</a>
+    <a href="#interests">Interests</a>
+    <a href="#sensory">Sensitivities</a>
+    <a href="#routine">Routine</a>
+    <a href="#vacation">Holidays</a>
+  </nav>
+    <!-- Content Sections -->
+    <section id="birth" class="glass" data-tts-scope>
+      <div class="head">
+        <h2>Birth</h2>
+        <div class="meta">Friday, June 24, 1988 — 11:50 PM</div>
+      </div>
+      <div class="content">
+        <p>I was born at 11:50 PM on Friday, June 24, 1988.</p>
+      </div>
+    </section>
+    <!-- Period blocks with photo grids -->
+<section id="y0" class="glass" data-tts-scope data-year="0-5">
+  <div class="head">
+    <h2>0–5 years (1988–1993)</h2>
+    <div class="meta">Early sensitivities, picky eating, limited social interaction.</div>
+  </div>
+  <div class="content">
+    <p>I walked normally but often on my tiptoes. My mother and Doctor Valeria considered using a corrective boot. My aunt, an evangelical missionary, prayed with her hands on my head. She thought I had demons. My grandfather, from the countryside and poor, called me “gay.”</p>
+    <p>I hated noise; my parents called me “explosive” for complaining. My sister said I was annoying. I spun until I fell and felt lonely as the youngest, staying out of games. I only went out with my sister and waited for the games to end as she was playing with girls usually dancing and I was sitting waiting.</p>
+    <p>I attended a small neighborhood school my mother started, where I learned to read and write. Social interactions were minimal. At one point I hit other children after seeing a popular classmate do it, but my mother corrected me.</p>
+    <p>I vomited from certain foods (soursop, guava, jackfruit, oil smell) and avoided foods by texture (coconut chunks, mango, pineapple, grape, pear, kiwi and many other fruits until nowadays). I don’t like watermelon because of the seeds. I don't know where the seeds are. Same applies for grapes even though it has just 1 seed.
+      until nowadays I don't eat anything I'm not full aware of . I don't eat many things because of seeds. I started eating olives at the age of 30.
+    </p>
+  </div>
+  <div class="photo-wrap">
+    <div class="small">Photos (0–5 years)</div>
+    <div class="grid" data-grid="0-5">
+      <img src="01.jpg.jpg" alt="0–5 photo 1">
+      <img src="02.jpg.jpg" alt="0–5 photo 2">
+      <img src="03.jpg.jpg" alt="0–5 photo 3">
+
+    </div>
+  </div>
+</section>
+
+<section id="y5" class="glass" data-tts-scope data-year="5-10">
+  <div class="head">
+    <h2>5–10 years (1993–1998)</h2>
+    <div class="meta">Keyboard, bedroom, advanced studies, asthma episode.</div>
+  </div>
+  <div class="content">
+    <p>I got a keyboard and taught myself to play, spending countless hours locked in my room practicing—a habit that lasted until I was 18. I made some friends and occasionally played football, but I was rarely picked for teams, so I returned to playing alone.</p> 
+
+    <p>I had a childhood friend, Adriel, who lived next door, but his best friend was Bruno. They watched Dragon Ball Z, which I didn’t. I missed many common experiences like cartoons, TV, and video games, and participated very little. I stood out for my high grades and often studied material before the teacher even covered it in class.</p> 
+
+    <p>Around age 10, I remember hearing voices. I had asthma and was once hospitalized after nearly suffocating at the beach. My father calmed me, and we got to the hospital safely. One memory that stands out is when a kid at a local corner shop told me he wished he had the same Portuguese vocabulary as me while we were eating crisps. I felt amazing that day.</p> 
+
+    <p>At night, the nebuliser was always ready for me. Around 3 a.m., I would wake up and quietly go to the living room to use it. The mist would fill my lungs, easing the tightness in my chest, and only then could I finally drift back to sleep. Those nights felt long and quiet, but the routine gave me a small sense of relief and control.</p> 
+
+    <p>Sometimes, I would get scared of the toys on my way to the nebuliser and needed to wake one of my parents to stay with me for a few minutes at night. Occasionally, my sister or brother would go instead. Even now, I still hear my mother’s voice saying, “He woke up,” when I wake up at night or early in the morning as she was in the next room. I used to hear this every time I woke up at night with asthma. They used to call it “nervous asthma.”</p> 
+
+<p>When I wake up, everything sounds loud—like standing at the front of a concert stage. Over a few minutes, it gradually settles. The same applies to bright white lights. I remember shouting to have the lights turned off and often going to use the nebuliser in the dark because of it.</p>
+</p>
+</div>
+
+  <div class="photo-wrap">
+    <div class="small">Photos (5–10 years)</div>
+    <div class="grid" data-grid="5-10">
+      <img src="51.jpg.jpg" alt="5–10 photo 1">
+      <img src="53.jpg.jpg" alt="5–10 photo 3">
+      <img src="54.jpg.jpg" alt="5–10 photo 4">
+    </div>
+  </div>
+</section>
+
+<section id="y10" class="glass" data-tts-scope data-year="10-15">
+  <div class="head">
+    <h2>10–15 years (1998–2003)</h2>
+    <div class="meta">Anxiety and panic; sensory overload; daydreaming; Discman.</div>
+  </div>
+  <div class="content">
+    <p>Rebellion and anarcho-punk readings shaped much of my early life. At school, I played unusual pranks and spoke my mind, which sometimes caused me to lose friends. At Mazarelo School, I remember throwing a chair at a kid and leaving a note on the teacher's desk saying “Happy Teacher’s Day,” with “motherfucker” written inside. This landed me in the principal’s office when the teacher saw it. I later transferred to Anglo Líder, where I developed anxiety and panic attacks — sweating, dizziness, and fatigue — and often left before classes began.</p>
+    
+    <p>I believe the crises started from going to school alone in a noisy city. I preferred certain buses because of the sounds. In 1998, my parents went to Atlanta and brought me a Discman, which I carried daily, even though it was heavy, to block out street noise. I listened to music until the teacher entered the classroom.</p>
+    
+    <p> The school administration referred me to a psychologist for testing. She showed me pictures of butterflies, lions, and other images. To this day, I don’t really understand what the purpose was, and I haven’t researched it yet. I ended up failing an entire year of school due to anxiety and panic attacks, as I was absent for long periods. Classmates called me “tourist” or “the mute kid.” I often daydreamed; when I returned to reality, someone would laugh. Crises could happen anywhere: on the street, bus, subway, mall, or even while eating with family. I sought calm places, usually the bathroom.</p>
+    
+    <p>Triggers included unwanted long conversations, noise, and sensory overload. During some crises, I heard voices of my parents from my childhood asthma episodes, though they never harmed me. I developed excellent ear training by playing music by ear and never learned to read sheet music.</p>
+</div>
+
+  <div class="photo-wrap">
+    <div class="small">Photos (10–15 years)</div>
+    <div class="grid" data-grid="10-15">
+      <img src="punk.jpg" alt="10–15 photo 1">
+      <img src="" alt="0–5 photo 2">
+      <img src="" alt="0–5 photo 3">
+    </div>
+  </div>
+</section>
+
+<section id="y15" class="glass" data-tts-scope data-year="15-20">
+  <div class="head">
+    <h2>15–20 years (2003–2008)</h2>
+    <div class="meta">United States, intense work, depression, conversion.</div>
+  </div>
+  <div class="content">
+    <p>I went to the U.S. with a bank loan (my father always reminded me I had to repay). My parents worked a lot and were absent; they didn’t know my preferences. They shouted my name; I said it was high, they denied it.</p>
+    <p>Upon arrival, I lived with my older sister, got an SSN, and used someone’s green card to create documents as if I were 18. I worked at Chick-fil-A in Atlanta (bathroom cleaning, then cashier and assistant). The work was simple but required speaking a lot; I faced complaints due to language and pace. I left frustrated once. They sell combos so I memorized it which made my life there easier.</p>
+    <p>I repaid the loan, supported myself studying and working. I used drugs before knowing I needed medication, leading to severe depression and daily suicidal thoughts. I attended a church (Vine Church Atlanta — Pastor Napoleon), played keyboard, and converted; I remain Christian. I finished high school and returned to Brazil due to depression. At 19, a psychiatrist prescribed clonazepam and fluoxetine.</p>
+  </div>
+  <div class="photo-wrap">
+    <div class="small">Photos (15–20 years)</div>
+    <div class="grid" data-grid="15-20">
+      <img src="cfa.jpg.jpg" alt=" photo 1">
+      <img src="" alt="0–5 photo 2">
+      <img src="" alt="0–5 photo 3">
+    </div>
+  </div>
+</section>
+
+<section id="y20" class="glass" data-tts-scope data-year="20-25">
+  <div class="head">
+    <h2>20–25 years (2008–2013)</h2>
+    <div class="meta">Rigid routine, social isolation, jobs, and engagement.</div>
+  </div>
+  <div class="content">
+    <p>Back in Brazil at 19, I had difficulty adapting; I stayed locked in my room, keyboard from the U.S., chats, and alcohol. Continued with psychiatrist (clonazepam and fluoxetine); helped a bit but remained anxious, isolated, and exhausted.</p>
+    <p>I focused on studies, tried jobs; social demands were challenging. Routines had to be well-structured; I developed rigid, repetitive organization to manage anxiety. Worked as administrative assistant at Davilla Hospital (was fired) and Arts do Imaginário (called “weird” — I joked but took literally and handled poorly).</p>
+    <p>I had a girlfriend and engagement for 5 years; at the end, she said she never loved me. She called me “Bob” (from daydream cartoon) and “crazy” weekly. She wanted many outings (malls, shows), where I felt extremely uncomfortable due to noise, crowds, and information overload. After breakup, she commented on my sexual performance and that I overanalyzed. I have a problem dressing up according to the weather.</p>
+  </div>
+  <div class="photo-wrap">
+    <div class="small">Photos (20–25 years)</div>
+    <div class="grid" data-grid="20-25">
+       <img src="mh.jpg.jpg" alt=" photo 1">
+      <img src="deb.jpg.jpg" alt="0–5 photo 2">
+      <img src="mba.jpg" alt="0–5 photo 3">
+          <img src="high.jpg" alt=" photo 1">
+      <img src="grades.jpg" alt="0–5 photo 2">
+      <img src="adm.jpg" alt="0–5 photo 3">
+    </div>
+  </div>
+</section>
+
+<section id="y25" class="glass" data-tts-scope data-year="25-30">
+  <div class="head">
+    <h2>25–30 years (2013–2018)</h2>
+    <div class="meta">Night hotel work, dismissal in 2015, trip to the United Kingdom.</div>
+  </div>
+  <div class="content">
+    <p>I stayed at home a lot. I worked at a hotel as a night auditor (documents, invoices, payments). I became a night supervisor; few arrivals/departures — bureaucratic profile. I was dismissed in 2015 after the hotel was sold and conflicts with the new management.</p>
+    <p>I always wanted to go to London. I decided to go (either that or end my life after so many losses). I came with my Portuguese brother-in-law (I have Portuguese citizenship since childhood; at the time the UK was in the EU). Adaptation was very difficult: alcohol, frustrations, feelings, suicidal thoughts.</p>
+    <p>I didn’t eat much, didn’t know the food, and found the diversity and the noise of the subway strange.</p>
+  </div>
+  <div class="photo-wrap">
+    <div class="small">Photos (25–30 years)</div>
+    <div class="grid" data-grid="25-30">
+       <img src="deep.jpg.jpg" alt="0–5 photo 2">
+      <img src="uk.jpg.jpg" alt="0–5 photo 2">
+         <img src="uk1.jpg" alt="0–5 photo 2">
+      <img src="cu1.jpg" alt="25–30 photo 4">
+      <img src="depp.jpg" alt="25–30 photo 5">
+      <img src="cu4.jpg" alt="25–30 photo 6">
+    </div>
+  </div>
+</section>
+
+<section id="y30" class="glass" data-tts-scope data-year="30-35">
+  <div class="head">
+    <h2>30–35 years (2018–2023+)</h2>
+    <div class="meta">Routine in London, Whole Foods, software course, British citizenship.</div>
+  </div>
+  <div class="content">
+    <p>For years I only used the bus because it was quieter; I took the subway only 3 years after moving (noise, crowds, heat). Always with headphones. I bought a motorcycle for a few months, but sold it due to the chaos.</p>
+    <p>Repetitive diet (usually one meal per day). I kept using headphones. I took a day trip to Brighton following a friend on a motorcycle (major achievement, me on a 125cc with an L plate).</p>
+    <p>I worked nights at Whole Foods Market. Changes due to poor sales led to layoffs; I switched to day shifts, which was difficult. I opted for a £13,000 redundancy package and left.</p>
+    <p>Then, a hotel (Danubius Regents Park) using Opera. Before leaving Whole Foods, the government funded a software development course (Tech Talent Academy, UK). Since then, my main focus has been programming and Rubik's cubes.</p>
+    <p>The hotel provided lodging; I left in less than a year and returned to Whole Foods at the end of 2024. I still struggle to adapt to daytime work, with lots of talking and <em>small talk</em>. Sometimes I ask to leave early. I have reorganized departments (sales increased ~6x), received awards and bonuses; I get emails from leadership, but didn’t take a position due to social demands and my direct communication style.</p>
+    <p>I am creating my own company (coding and logistics) to work online. I own a flat in Lisbon; I made money in stocks. I became a British citizen in August 2025; the public ceremony caused strong anxiety (front row for hours).</p>
+  </div>
+  <div class="photo-wrap">
+    <div class="small">Photos (30–35 years)</div>
+    <div class="grid" data-grid="30-35">
+     <img src="bus.jpg" alt=" photo 1">
+      <img src="meat.png" alt="30–35 photo 2">
+      <img src="prac.jpg" alt="30–35 photo 3">
+        <img src="10670.jpg" alt="30–35 photo 3">
+      <img src="bonus.jpg" alt="30–35 photo 3">
+      <img src="hot.jpg" alt="30–35 photo 3">
+    </div>
+  </div>
+</section>
+
+<!-- Thematic sections -->
+<section id="communication" class="glass" data-tts-scope>
+  <div class="head">
+    <h2>Communication</h2>
+    <div class="meta">Shift-taking, public speaking, avoidance of contact.</div>
+  </div>
+  <div class="content">
+    <p>Difficulty knowing when to speak. On Clubhouse I mostly listen; this hinders making friends. In <em>huddles</em> at work, I prefer to speak later in private with the manager. I avoid speaking with strangers, make little eye contact, and usually avoid going out on days off.</p>
+  </div>
+</section>
+
+<section id="interests" class="glass" data-tts-scope>
+  <div class="head">
+    <h2>Interests</h2>
+    <div class="meta">Hyperfocus on programming and cubes; since 2023.</div>
+  </div>
+  <div class="content">
+    <p>I can program for up to 12 hours, staying up all night if I have the next day off. Focused on JavaScript, Google Cloud, and React.js (I know other languages too). Since the course (April 2023), this has been my main topic; colleagues sometimes find it repetitive.</p>
+    <p>Sometimes I take photos of the backyard (flatmate’s garden) and pretend at work that I am engaged in other topics. I limit interaction with flatmates to a maximum of 5 minutes.</p>
+  </div>
+</section>
+    <section id="sensory" class="glass" data-tts-scope>
+  <div class="head">
+    <h2>Sensory sensitivities</h2>
+    <div class="meta">Sounds, light, touch, startle, linguistic distractions.</div>
+  </div>
+  <div class="content">
+    <p>Sensitive to many sounds/stimuli: morning magpie, white light,underground, sirens, loud Italian neighbors, birds, and distant conversations. Dislike of physical touch (e.g., shoulder taps). Shower and toilet noises can sound like a waterfall; sometimes I just watch/listen. I notice details (e.g., rats) that others don’t.</p>
+    <p>My good hearing both helps and distracts: if I hear a familiar language nearby, I can daydream and need to breathe and refocus. I speak Portuguese, Spanish, and English; I understand a bit of French and Italian. I get startled frequently; on flights (Lisbon roughly every 2 months), I nap and still get startled. Today I was startled by a fly returning from Tesco (headphones in pocket).</p>
+  </div>
+</section>
+
+<section id="routine" class="glass" data-tts-scope>
+  <div class="head">
+    <h2>Routine and changes</h2>
+    <div class="meta">Need for planning; incident in Acton.</div>
+  </div>
+  <div class="content">
+    <p>Unexpected changes generate intense anxiety. At my last appointment, I cried because I had only 30 minutes to reach a clinic in Acton (new location). I held it together in the waiting room but cried with the doctor, affecting the report. Dr. Mornika suggested rescheduling, but I needed to complete it that day; I don’t leave things for later. I was exhausted after listening to a friend at Costa before the appointment.</p>
+  </div>
+</section>
+
+<section id="vacation" class="glass" data-tts-scope>
+  <div class="head">
+    <h2>Holidays and flights</h2>
+    <div class="meta">Travel routines, EasyJet Luton–Lisbon, A319/A320.</div>
+  </div>
+  <div class="content">
+    <p>On holidays, I always fly EasyJet Luton–Lisbon in the morning. I recognize aircraft models (A319/A320) and crews; I use specific seats to sleep. I identify descent by sound (sinusitis). I’ve made ~150 flights on these routes, but have never visited Spain/Italy.</p>
+    <p>I spoke with my parents after guidance from Dr. James and a therapist (after a GP appointment): “be yourself, stop masking, relax, and don’t expect everyone to understand.” It helped a lot.</p>
+  </div>
+</section>
+
+
+<script>
+/* ===== Smooth anchor scroll ===== */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', (e)=>{
+    const id = a.getAttribute('href').slice(1);
+    const el = document.getElementById(id);
+    if(el){
+      e.preventDefault();
+      el.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+  });
+});
+</script>
+</body>
+</html>
