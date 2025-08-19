@@ -168,7 +168,77 @@ section .content p {
   box-shadow: 0 0 20px rgba(0,0,0,0.6);
 }
 
+#popupOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  padding: 1rem; /* ensures spacing on small screens */
+}
 
+#popupBox {
+  background: #fff;
+  border-radius: 14px;
+  padding: 2rem;
+  width: 95%;
+  max-width: 1000px;   /* desktop max width */
+  max-height: 90vh;    /* always fit screen height */
+  overflow-y: auto;    /* enable scroll only if too tall */
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  position: relative;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Headings inside popup */
+#popupBox h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1.2rem;
+  color: #1e3a8a;
+}
+
+#popupBox ul {
+  list-style: disc;
+  padding-left: 1.5rem;
+}
+
+/* Close button */
+#popupClose {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #444;
+  cursor: pointer;
+}
+#popupClose:hover {
+  color: #000;
+}
+
+/* 📱 Phones */
+@media (max-width: 600px) {
+  #popupBox {
+    width: 100%;
+    height: auto;
+    max-height: 95vh;
+    font-size: 1rem;
+    padding: 1.2rem;
+  }
+}
+
+/* 📲 Tablets */
+@media (min-width: 601px) and (max-width: 1024px) {
+  #popupBox {
+    width: 90%;
+    font-size: 1.05rem;
+    padding: 1.5rem;
+  }
+}
+}
 </style>
 </head>
   <button class="btn" onclick="window.print()" title="Print/PDF">Print</button>
@@ -457,6 +527,27 @@ section .content p {
   <div id="lightbox">
   <img src="" alt="Expanded view">
 </div>
+<!-- ===== Popup HTML ===== -->
+<div id="popupOverlay">
+  <div id="popupBox">
+    <span id="popupClose">✕</span>
+   <h2>This pop up is the only update I will ever make to this website. 
+<br>And this website might disappear.</h2>
+<ul>
+  <li>Paracetamol gives me nausea. E  ven popcorn might give me nausea.</li>
+  <li>I sometimes feel pain on the left side of my belly — I think it may be caused by anxiety. I requested a GP ultrasound today.</li>
+  <li>Sometimes I cry as soon as I wake up because I think: “Oh my God, it’s all starting over again.”</li>
+  <li>I pray a lot, and that is what gives me strength.</li>
+  <li>While coding I move forward and backward without noticing. The same happens while solving cubes or even standing — I move my neck back and forth.</li>
+  <li>When you called me, I wasn’t sitting down — I was walking side to side and turning 180° back and forth nonstop. This also happens when I get nervous.</li>
+  <li>I sing really old songs out of nowhere. I sometimes also say my ex-girlfriend’s name and other random words without knowing why. I always end up singing the same song.</li>
+  <li>At every job I take small breaks: I go to the bathroom, close my eyes, sit on the toilet, take a deep breath, put on my headphones, play a techno song I like, and stay there for about 2 minutes to recharge.</li>
+</ul>
+<br>
+<p>You might now close this pop up and go to the website if you want. Thanks.</p>
+
+  </div>
+</div>
 
 <p> end note - My other pendrive was lost somewhere and I don't have more pics. </p>
 
@@ -487,6 +578,19 @@ document.addEventListener('keydown', (e) => {
     lightboxImg.src = '';
   }
 });
+/* ===== Popup Script ===== */
+const popupOverlay = document.getElementById('popupOverlay');
+const popupClose = document.getElementById('popupClose');
+
+popupClose.addEventListener('click', () => {
+  popupOverlay.style.display = 'none';
+});
+
+// Optional: allow closing with ESC
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && popupOverlay.style.display !== 'none') {
+    popupOverlay.style.display = 'none';
+  }
 
 /* ===== Smooth anchor scroll ===== */
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
@@ -499,6 +603,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
     }
   });
 });
+
 </script>
 </body>
 </html>
