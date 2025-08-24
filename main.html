@@ -22,22 +22,19 @@ nav.toc {
   margin-bottom: 2rem;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
   text-align: center;
-
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 0.8rem;
 }
 
-/* Title */
 nav.toc h3 {
   font-size: 1.5rem;
   font-weight: 700;
   color: #1e3a8a;
   margin-bottom: 1rem;
-  grid-column: 1 / -1; /* span full row */
+  grid-column: 1 / -1;
 }
 
-/* Links styled as grey boxes */
 nav.toc a {
   display: block;
   padding: 0.7rem 1rem;
@@ -50,19 +47,16 @@ nav.toc a {
   box-shadow: 0 2px 4px rgba(0,0,0,0.08);
 }
 
-/* No hover color change — keep it stable */
 nav.toc a:hover {
   background: #f0f0f0;
   color: #222;
 }
 
-/* Print: hide TOC */
 @media print {
   nav.toc {
     display: none;
   }
 }
-
 
 /* ===== Base styles ===== */
 html, body {
@@ -72,7 +66,7 @@ html, body {
   line-height: 1.7;
   text-align: fixed;
   padding: 0.5rem;
-  font-size: 20px;  /* 👈 Bigger base text */
+  font-size: 20px;
 }
 
 /* ===== Section cards ===== */
@@ -87,9 +81,9 @@ section.glass {
 
 /* ===== Headings ===== */
 section .head h2 {
-  font-size: 2rem;    /* 👈 Large titles */
+  font-size: 2rem;
   font-weight: 700;
-  color: #1e3a8a;     /* Dark blue accent */
+  color: #1e3a8a;
   margin-bottom: 0.5rem;
 }
 
@@ -102,7 +96,7 @@ section .head .meta {
 
 /* ===== Content text ===== */
 section .content p {
-  font-size: 1.15rem;   /* 👈 Comfortable reading size */
+  font-size: 1.15rem;
   margin-bottom: 1.2rem;
   text-align: justify;
 }
@@ -150,6 +144,7 @@ section .content p {
     page-break-inside: avoid;
   }
 }
+
 /* ===== Overlay for enlarged images ===== */
 #lightbox {
   position: fixed;
@@ -168,6 +163,7 @@ section .content p {
   box-shadow: 0 0 20px rgba(0,0,0,0.6);
 }
 
+/* ===== Pop-up Overlay ===== */
 #popupOverlay {
   position: fixed;
   inset: 0;
@@ -176,7 +172,7 @@ section .content p {
   justify-content: center;
   align-items: center;
   z-index: 10000;
-  padding: 1rem; /* ensures spacing on small screens */
+  padding: 1rem;
 }
 
 #popupBox {
@@ -184,16 +180,15 @@ section .content p {
   border-radius: 14px;
   padding: 2rem;
   width: 95%;
-  max-width: 1000px;   /* desktop max width */
-  max-height: 90vh;    /* always fit screen height */
-  overflow-y: auto;    /* enable scroll only if too tall */
+  max-width: 1000px;
+  max-height: 90vh;
+  overflow-y: auto;
   box-shadow: 0 6px 20px rgba(0,0,0,0.25);
   position: relative;
   font-size: 1.1rem;
   line-height: 1.6;
 }
 
-/* Headings inside popup */
 #popupBox h2 {
   font-size: 1.6rem;
   margin-bottom: 1.2rem;
@@ -205,7 +200,6 @@ section .content p {
   padding-left: 1.5rem;
 }
 
-/* Close button */
 #popupClose {
   position: absolute;
   top: 12px;
@@ -219,23 +213,46 @@ section .content p {
   color: #000;
 }
 
-/* 📱 Phones */
+/* ===== Responsive Adjustments ===== */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+  }
+  section .head h2 {
+    font-size: 1.6rem;
+  }
+  #popupBox {
+    width: 90%;
+    font-size: 1.05rem;
+    padding: 1.5rem;
+  }
+}
+
+/* Phones */
 @media (max-width: 600px) {
+  body {
+    font-size: 0.95rem;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+  .grid img {
+    max-width: 100%;
+    height: auto;
+  }
+  section .head h2 {
+    font-size: 1.4rem;
+  }
   #popupBox {
     width: 100%;
     height: auto;
     max-height: 95vh;
     font-size: 1rem;
     padding: 1.2rem;
-  }
-}
-
-/* 📲 Tablets */
-@media (min-width: 601px) and (max-width: 1024px) {
-  #popupBox {
-    width: 90%;
-    font-size: 1.05rem;
-    padding: 1.5rem;
   }
 }
 
@@ -808,3 +825,4 @@ section .content p {
 
 
  
+
