@@ -712,67 +712,54 @@ section .content p {
 <p> My other USB drive was lost, so I do not have additional photos available. </p>
 
 <script>
-/* ===== Image Lightbox ===== */
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = lightbox.querySelector('img');
-
-  document.querySelectorAll('.grid img').forEach(img => {
-    img.addEventListener('click', () => {
-      lightboxImg.src = img.src;
-      lightbox.style.display = 'flex';
-    });
-  });
-
-  // Close when clicking outside image or pressing ESC
-  lightbox.addEventListener('click', (e) => {
-    if (e.target !== lightboxImg) {
-      lightbox.style.display = 'none';
-      lightboxImg.src = '';
-    }
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      lightbox.style.display = 'none';
-      lightboxImg.src = '';
-    }
-  });
-
-  /* ===== Popup Script ===== */
-  const popupOverlay = document.getElementById('popupOverlay');
-  const popupClose = document.getElementById('popupClose');
-
-  // Close popup when clicking X
-  popupClose.addEventListener('click', () => {
-    popupOverlay.style.display = 'none';
-  });
-
-  // Optional: allow closing popup with ESC
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && popupOverlay.style.display !== 'none') {
-      popupOverlay.style.display = 'none';
-    }
-  });
-
-  // Optional: allow closing popup by clicking outside the box
-  popupOverlay.addEventListener('click', (e) => {
-    const popupBox = document.getElementById('popupBox');
-    if (e.target === popupOverlay) {
-      popupOverlay.style.display = 'none';
-    }
-  });
-
-  /* ===== Smooth anchor scroll ===== */
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', (e) => {
-      const id = a.getAttribute('href').slice(1);
-      const el = document.getElementById(id);
-      if (el) {o         e.preventDefault();
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const lightbox = document.getElementById('lightbox');
+        if (lightbox) {
+          lightbox.style.display = 'none';
+          const lightboxImg = document.getElementById('lightboxImg');
+          if (lightboxImg) lightboxImg.src = '';
+        }
       }
     });
-  });
 
+    // Popup Script
+    const popupOverlay = document.getElementById('popupOverlay');
+    const popupClose = document.getElementById('popupClose');
+
+    if (popupClose) {
+      popupClose.addEventListener('click', () => {
+        popupOverlay.style.display = 'none';
+      });
+   }
+   document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && popupOverlay && popupOverlay.style.display !== 'none') {
+        popupOverlay.style.display = 'none';
+      }
+    });
+
+    if (popupOverlay) {
+      popupOverlay.addEventListener('click', (e) => {
+        const popupBox = document.getElementById('popupBox');
+        if (e.target === popupOverlay) {
+          popupOverlay.style.display = 'none';
+        }
+      });
+    }
+
+    // Smooth Anchor Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el) {
+e.preventDefault();
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+           
 </script>
 </body>
 </html>
@@ -860,6 +847,7 @@ section .content p {
 
 
  
+
 
 
 
