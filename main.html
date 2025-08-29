@@ -100,45 +100,38 @@ section .head {
     section .content p {
       margin-bottom: 0.8rem;
     }
-
-    /* Photo grid */
-    .photo-wrap {
-      margin-top: 1rem;
-    }
-
-    .photo-wrap .small {
-      font-size: 0.9rem;
-      margin-bottom: 0.5rem;
-      font-weight: bold;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.5rem;
 }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 0.5rem;
-    }
+.grid img {
+  width: 100%;
+  height: 180px; /* Set a fixed height for uniform size */
+  border-radius: 8px;
+  object-fit: cover; /* Ensures the images fill the space nicely */
+}
 
-    .grid img {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-      object-fit: cover;
-    }
+/* Responsive tweaks */
+@media (max-width: 1024px) {
+  .grid img {
+    height: 150px; /* Slightly smaller for tablets */
+  }
+}
 
-    /* Responsive tweaks */
-    @media (max-width: 768px) {
-      .app {
-        flex-direction: column;
-      }
+@media (max-width: 768px) {
+  .grid img {
+    height: 120px; /* Smaller height for small tablets/large phones */
+  }
+}
 
-      nav.toc {order: -1;
-      }
-    }
+@media (max-width: 480px) {
+  .grid img {
+    height: 100px; /* Compact size for phones */
+  }
+}
 
-    @media (max-width: 480px) {
-      h2 {
-        font-size: 1.2rem;
-      }
 
       .btn {
         width: 100%;
@@ -704,6 +697,7 @@ e.preventDefault();
 
 
  
+
 
 
 
