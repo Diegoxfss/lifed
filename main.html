@@ -3,69 +3,72 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Website Disabled</title>
+<title>Notice</title>
+
 <style>
-  body {
-    margin: 0;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-    background: #0f1724;
-    color: #f1f5f9;
-    -webkit-font-smoothing: antialiased;
-    padding: 24px;
-  }
+/* ========================
+   Global Reset & Base
+   ======================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  .card {
-    max-width: 680px;
-    padding: 36px;
-    border-radius: 20px;
-    background: #0b1220;
-    box-shadow: 0 20px 50px rgba(2, 6, 23, 0.85);
-    border: 1px solid rgba(148, 163, 184, 0.15);
-  }
+body {
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+  background: #1e1e1e;
+  color: #e0e0e0;
+  font-size: 18px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  h1 {
-    margin: 0 0 16px;
-    font-size: 28px;
-    font-weight: 700;
-    color: #ffffff;
-  }
+/* ========================
+   Content Card
+   ======================== */
+.card {
+  width: 90%;
+  max-width: 700px;
+  background: #2a2a2a;
+  padding: 2rem;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  text-align: center;
+}
 
-  p {
-    margin: 0 0 18px;
-    font-size: 17px;
-    line-height: 1.65;
-    color: #e2e8f0;
-  }
+.card p {
+  margin-bottom: 1.2rem;
+  font-size: 1.1rem;
+}
 
-  .notice {
-    padding: 16px 18px;
-    border-radius: 12px;
-    background: rgba(239, 68, 68, 0.12);
-    border: 1px solid rgba(239, 68, 68, 0.35);
-    color: #fecaca;
-    font-weight: 600;
-  }
+.card a {
+  color: #6caad9;
+  font-weight: bold;
+  text-decoration: underline;
+}
 
-  a {
-    color: #ffffff;
-    font-weight: 700;
-    text-decoration: underline;
-  }
+.card a:hover {
+  color: #8fc1ea;
+}
 </style>
 </head>
+
 <body>
   <div class="card">
-    <h1></h1>
+    <p>
+      This website will remain online until the end of all consultations related to my assessment.
+    </p>
 
-    <div class="notice">
-      Sorry, this website has been disabled.
-    </div>
-
-
+    <p>
+      Visit the website here:<br>
+      <a href="https://diegoxfss.github.io/home/main.html" target="_blank" rel="noopener">
+        https://diegoxfss.github.io/home/main.html
+      </a>
+    </p>
   </div>
 </body>
 </html>
