@@ -1,0 +1,180 @@
+<!-- tree.html : second page for tree photos and bird info -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Fig Tree & Birds</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+
+<style>
+/* ========================
+   Global Reset & Base
+   ======================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+  background: #1e1e1e;
+  color: #e0e0e0;
+  font-size: 18px;
+}
+
+/* ========================
+   Sections
+   ======================== */
+section.glass {
+  width: 90%;
+  max-width: 1000px;
+  margin: 2rem auto;
+  background: #2a2a2a;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+}
+
+section .head {
+  margin-bottom: 1rem;
+  color: #f0f0f0;
+}
+
+section .meta {
+  font-size: 0.9rem;
+  color: #aaaaaa;
+  margin-bottom: 1rem;
+}
+
+/* ========================
+   Image Styling
+   ======================== */
+figure { margin: 1rem 0; }
+
+figure img {
+  width: 100%;
+  max-height: 350px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: zoom-in;
+  transition: transform 0.25s;
+}
+
+figure img:hover {
+  transform: scale(1.03);
+}
+
+figcaption {
+  font-size: 1rem;
+  color: #bbbbbb;
+  text-align: center;
+  margin-top: 0.3rem;
+}
+
+/* ========================
+   Overlay for Zoom
+   ======================== */
+#imageOverlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15,15,15,0.9);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+#imageOverlay img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.6);
+}
+
+#overlayClose {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: #eee;
+  font-size: 36px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+#overlayClose:hover {
+  color: #bbb;
+}
+</style>
+
+<body>
+<section class="glass">
+  <div class="head">
+    <h2>Fig Tree & Birds</h2>
+    <div class="meta">Photos before winter and during winter.</div>
+  </div>
+
+  <!-- Tree before winter -->
+  <figure>
+    <img src="tree.jpg" alt="Tree before winter" />
+    <figcaption>Tree before winter — leaves, bird nests, feeding behaviour.</figcaption>
+  </figure>
+
+  <!-- Tree during winter -->
+  <figure>
+    <img src="tree1.jpg" alt="Tree during winter without leaves" />
+    <figcaption></figcaption>
+  </figure>
+
+  <!-- NEW: Magpie on fig tree -->
+  <figure>
+    <img src="m.jpg" alt="Magpie on fig tree eating figs" />
+    <figcaption>Magpie on the fig tree — feeding on ripe figs.</figcaption>
+  </figure>
+
+  <h3>Birds That Visit</h3>
+    <h3>The point here is that i tend to memorize everything and look for standards.</h3>
+  <ul>
+    <li><strong>Magpie</strong> — comes mostly on rainy days, eats figs.</li>
+    <li><strong>Blue tits</strong> — come for insects on branches.</li>
+    <li><strong>European goldfinch</strong> — small flock bird with yellow patches; eats seeds and small insects.</li>
+  <li><strong>airplanes</strong> —  I can do something similar for the plane tracks. I memorized it(altitude,destination, which aircrafts goes to which airport in london ,etc) by watching it and by the noise as well. </li> 
+
+  </ul>
+</section>
+
+<!-- ========================
+     Overlay Zoom Container
+     ======================== -->
+<div id="imageOverlay">
+  <span id="overlayClose">&times;</span>
+  <img id="overlayImage" src="" alt="Zoomed Image">
+</div>
+
+<script>
+document.querySelectorAll("img").forEach(img => {
+  img.addEventListener("click", () => {
+    document.getElementById("overlayImage").src = img.src;
+    document.getElementById("imageOverlay").style.display = "flex";
+  });
+});
+
+document.getElementById("overlayClose").addEventListener("click", () => {
+  document.getElementById("imageOverlay").style.display = "none";
+});
+
+document.getElementById("imageOverlay").addEventListener("click", (e) => {
+  if (e.target.id === "imageOverlay") {
+    document.getElementById("imageOverlay").style.display = "none";
+  }
+});
+</script>
+
+</body>
+</html>
