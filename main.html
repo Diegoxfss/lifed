@@ -1,9 +1,13 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-br">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Notice</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>My life — Diego Silva</title>
+<meta name="description" content="História de vida estruturada por períodos de 5 anos, com fotos e leitor em voz alta para acompanhamento clínico." />
+
+<!-- Emoji Favicon -->
+
 
 <style>
 /* ========================
@@ -18,57 +22,1637 @@
 body {
   font-family: "Arial", sans-serif;
   line-height: 1.6;
-  background: #1e1e1e;
-  color: #e0e0e0;
+  background: #1e1e1e; /* dark gray, not pure black */
+  color: #e0e0e0; /* soft light gray text */
   font-size: 18px;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 /* ========================
-   Content Card
+   Intro / Above Navbar
    ======================== */
-.card {
+.intro {
   width: 90%;
-  max-width: 700px;
-  background: #2a2a2a;
-  padding: 2rem;
-  border-radius: 14px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  max-width: 1000px;
+  margin: 1rem auto;
+  padding: 1rem 1.5rem;
+  background: #2a2a2a; /* dark background */
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  font-size: 1rem;
   text-align: center;
+  color: #e0e0e0;
 }
 
-.card p {
-  margin-bottom: 1.2rem;
-  font-size: 1.1rem;
+.intro strong {
+  color: #6caad9; /* calm muted blue */
 }
 
-.card a {
+/* ========================
+   Navbar / Table of Contents
+   ======================== */
+nav.toc {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+  background: #2a2a2a;
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  position: relative;
+  z-index: 999;
+  border-radius: 10px;
+}
+
+nav.toc h3 {
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  white-space: nowrap;
+  color: #6caad9;
+}
+
+nav.toc a {
+  margin-right: 1rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+  white-space: nowrap;
+  text-decoration: none;
+  color: #6caad9;
+}
+
+nav.toc a:hover {
+  background: rgba(108,170,217,0.15); /* soft hover */
+}
+
+/* ========================
+   Sections
+   ======================== */
+section.glass {
+  width: 90%;
+  max-width: 1000px;
+  margin: 2rem auto;
+  background: #2a2a2a;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+}
+
+section .head {
+  margin-bottom: 1rem;
+  color: #f0f0f0;
+}
+
+section .meta {
+  font-size: 0.9rem;
+  color: #aaaaaa;
+  margin-bottom: 1rem;
+}
+
+/* ========================
+   Image Grid
+   ======================== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.grid img {
+  width: 100%;
+  height: 180px;
+  border-radius: 8px;
+  object-fit: cover;
+  cursor: zoom-in;
+  transition: transform 0.2s;
+}
+
+.grid img:hover {
+  transform: scale(1.03);
+}
+
+/* Figcaption */
+figure { margin: 0; }
+
+figcaption {
+  font-size: 1rem;
+  color: #bbbbbb;
+  text-align: center;
+  margin-top: 0.3rem;
+}
+
+/* ========================
+   Overlay for Zoomable Images
+   ======================== */
+#imageOverlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15,15,15,0.9);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+#imageOverlay img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.6);
+}
+
+#overlayClose {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: #eee;
+  font-size: 36px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+#overlayClose:hover {
+  color: #bbb;
+}
+
+/* ========================
+   Buttons
+   ======================== */
+.btn {
+  display: inline-block;
+  background: #6caad9;
+  color: #111;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  transition: background 0.2s;
+}
+
+.btn:hover {
+  background: #5a93bd;
+}
+
+/* ========================
+   Daily Journal Styling
+   ======================== */
+#daily .content li {
+  background: #333;
+  border-left: 4px solid #6caad9;
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+  font-size: 1.2rem;
+  line-height: 1.5;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#daily .content li:hover {
+  transform: translateX(2px);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.5);
+}
+
+#daily .content li a {
   color: #6caad9;
   font-weight: bold;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
-.card a:hover {
-  color: #8fc1ea;
+#daily .head h2 {
+  font-size: 1.9rem;
+  color: #6caad9;
+  margin-bottom: 0.3rem;
 }
+
+#daily .meta {
+  font-size: 0.9rem;
+  color: #aaaaaa;
+  margin-bottom: 1.2rem;
+}
+
+/* ========================
+   Scroll to Top Button
+   ======================== */
+#scrollTopBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  font-size: 20px;
+  border: none;
+  outline: none;
+  background: #444;
+  color: #eee;
+  cursor: pointer;
+  padding: 12px 16px;
+  border-radius: 20%;
+  transition: all 0.3s ease-in-out;
+}
+
+#scrollTopBtn:hover {
+  background: #666;
+}
+
+
+
+
+
 </style>
 </head>
-
 <body>
-  <div class="card">
-    <p>
-      This website will remain online until the end of all consultations related to my assessment.
-    </p>
 
-    <p>
-      Visit the website here:<br>
-      <a href="https://diegoxfss.github.io/home/main.html" target="_blank" rel="noopener">
-        https://diegoxfss.github.io/home/main.html
-      </a>
-    </p>
+  <section class="intro glass">
+  <p>
+  Daily life updates at the bottom. 
+  Click <strong>
+   <a href="#daily" style="color:#d5ec53; text-decoration:none; font-weight:bold;">
+      Daily Journal
+    </a>
+  </strong> to scroll down there.
+</p>
+
+</section>
+<div class="app">
+  <nav class="toc glass" aria-label="Table of contents">
+    <a href="#y0">0–5 years</a>
+    <a href="#y5">5–10 years</a>
+    <a href="#y10">10–15 years</a>
+    <a href="#y15">15–20 years</a>
+    <a href="#y20">20–25 years</a>
+    <a href="#y25">25–30 years</a>
+    <a href="#y30">30–35 years</a>
+    <a href="#communication">Communication</a>
+    <a href="#interests">Interests</a>
+    <a href="#sensory">Sensitivities</a>
+    <a href="#routine">Routine</a>
+    <a href="#vacation">Holidays</a>
+     <a href="#daily">Daily Journal </a>
+  </nav>
+
+   <section id="about" class="glass" data-tts-scope>
+  <div class="head">
+    <h2>About Me</h2>
+    <div class="meta">Introduction</div>
   </div>
+  <div class="content">
+    <p>My name is Diego Silva. This website is my way of documenting my experiences, traits, and daily life so that professionals who wishes to understand me better, can see a full picture.</p>
+    <br>
+     <p>I am 37 years old, I have a social/communication problem and high sensitivity. mainly after stressful periods that are usually caused by unexpected situations, noises, smells, etc.. for example. cigarrete smell. it triggers other senses. Things might become louder, brighter. I get really irritated with it. If I'm in the overground, for example, I might move seats or leave at the next station.  It might happen also at any time , even after waking up. Maybe my light and fan are triggering it because things sound louder when I wake up. I think I can feel or experience the world in general with a lot more intensity than most people. Even nature is experienced with highest intensity from my perspective. I think some of it has to do with predictability. For example , right now I live on a flat with aircrafts flying over it, landing and departing from Heathrow or flying above it on a route somewhere else (stansted , for example at 15k feet) then I'm memorizing flying paths and airplane models based on its engines because of the noise. it wakes me up a lot and I get anxious.
+     </p>
+     <br>
+     <p>At work I get exposed on a daily basis because I need time to recover. I can't stay an entire shift of work without small pauses for recovering. I take small breaks in the toilet(covering ears, eyes and taking breaths , sometimes blowing my shirt whenn I am really overwhelmed.  I might cry sometimes because of it , but I hold and I think this will have some impact in the future. During break time I sit by myself wearing earphones. I am a literal person. my manager or team leader have to make sure i understand properly the task , but it gets done properly and usually looks better than they imagined it. I got pictures on my phone. My manager told me that all team is really happy with me and that I might wear earphones during the whole shift in case I bring a letter from the doctor. they all notice i get irritated bwith the music from the supermarket. the lights and talks . I called a few people lazy on their faces. I cant stand injustice. I feel really bad when injustice happens. I never do any wrong. </p>
+     <br>
+     <p>My main focus in life since 2023 has been programming. I spend most of my free time coding, solving Rubik’s cubes, or engaging in puzzles. These focused interests are not just hobbies — they help me regulate emotions, reduce anxiety, and give structure to my days. I am very good at solving problems, and managers often ask for my opinion on important tasks.</p>
+      <br>
+     <p>I experience significant sensory sensitivities (light, sound, touch, smell, and food textures) and often rely on routines and repetitive behaviors to cope. I can also daydream a lot . Unexpected changes, social events, and noisy environments can overwhelm me and lead to exhaustion, anxiety, or emotional outbursts.</p>
+     <br>
+     <p>Social communication has always been difficult for me. I often struggle to know when to speak, I speak over the person having a dialogue with me,  misunderstand jokes, and avoid eye contact. I usually hide my real feelings at work but then feel drained and need long periods of recovery alone. I have very limited friendships, prefer solitude, and often rely on repetitive actions like rocking, spinning objects, or solving cubes to calm myself.</p>
+      <br>
+     <p>Throughout my life I have had unusual sensory experiences. For exemple, I talk to myself a lot, I even listen to voices from my head as if it was real ( I know it's not real ) the voices police my actions. For example, When I'm being loud I can hear someone else's voice saying I'm being loud. When I wake up I can hear sometimes my own mother's voice saying ' he woke up '. I had frequent difficulties with regulating emotions. I never sleep properly. I usually wake up 4 or 5 times per night. I solve rubiks at 3am, take more clonazepam, read books, enter chat rooms in order to try to sleep. Ambient music, cooling fan frequency, socket yellow light, cover my eyes. I sometimes feel hopeless and anxious about the future, but I also continue moving forward — working, coding, and trying to build a stable life.</p>
+      <br>
+     <p>This website collects my interests, traits, memories, photos, and daily journal entries.</p>
+     <br>
+     <p>This account is not exhaustive — including my entire life would be too long. Some moments are omitted, and certain sensations or thoughts may be missing. I experienced depression, anxiety, and panic attacks during my teenage years, and I have a history of suicide attempts. For example, when I was around 6th grade I developed panick attacks. I had to go to school by myself. I used to wait for certain buses because of its noises and in my mind I expected from myself more than I was doing. I thought people were staring at me at all times and I felt as being analysed by strangers and not knowing how to react to it. I used to get to school already exhausted and with more crisis happening there. The class lights were fluorescent and it was really noisy. I used to request to leave to the toilet and then call my parents to call the school so I could leave. I had many episodes in different schools, shopping centres, churches,  trains , family breakfast, etc... irritation mostly,  but lights brighter and sounds get louder. I always during my entire life complained with my family because they shout my name . it happens with others as well. snell also triggers me. These symptoms have fluctuated over time and are associated with my condition.</p>
+  </div>
+</section>
+
+    <!-- Content Sections -->
+    <section id="birth" class="glass" data-tts-scope>
+      <div class="head">
+        <h2>Birth</h2>
+        <div class="meta">Friday, June 24, 1988 — 11:50 PM</div>
+      </div>
+      <div class="content">
+        <p>I was born at 11:50 PM on Friday, June 24, 1988.</p>
+      </div>
+    </section>
+    <!-- Period blocks with photo grids -->
+<section id="y0" class="glass" data-tts-scope data-year="0-5">
+  <div class="head">
+    <h2>0–5 years (1988–1993)</h2>
+    <div class="meta">Early sensitivities, picky eating, limited social interaction.</div>
+  </div>
+  <div class="content">
+  <p>I walked normally but often <strong>on my tiptoes</strong>. My mother and Doctor Valeria considered using a corrective boot. My aunt, an evangelical missionary, prayed with her hands on my head. She thought I had demons. My grandfather, from the countryside and poor, called me “gay.”</p>
+<br>
+
+<p>I <strong>hated noise</strong>; my parents called me “explosive” for complaining. My sister said I was annoying. I <strong>spun until I fell</strong> and <strong>felt lonely</strong> as the youngest, staying out of games. I only went out with my sister and <strong>waited while she played</strong>, sitting apart.</p>
+<br>
+
+<p>I attended a small neighborhood school my mother started, where I learned to read and write. <strong>Social interactions were minimal</strong>. At one point I hit other children after seeing a popular classmate do it, but my mother corrected me.</p>
+<br>
+
+<p>I <strong>vomited from certain foods</strong> (soursop, guava, jackfruit, oil smell) and <strong>avoided foods by texture</strong> (coconut chunks, mango, pineapple, grape, pear, kiwi and many other fruits until nowadays). I don’t like watermelon because of the <strong>seeds</strong>. I don't know where the seeds are. Same applies for grapes even though it has just one seed. <strong>Until nowadays I don't eat anything I'm not fully aware of</strong>. I <strong>don’t eat many things because of seeds</strong>. I started eating olives at the age of 30.</p>
+
+  <div class="photo-wrap">
+  <div class="small">Photos (0–5 years)</div>
+  <div class="grid" data-grid="0-5">
+    <figure>
+      <img src="01.jpg.jpg" alt="0–5 photo 1" class="zoomable">
+      <figcaption>Baby photo – early childhood.</figcaption>
+    </figure>
+    <figure>
+      <img src="02.jpg.jpg" alt="0–5 photo 2" class="zoomable">
+      <figcaption>With family – toddler years.</figcaption>
+    </figure>
+  </div>
+</div>
+</section>
+
+<!-- Overlay Container -->
+<div id="imageOverlay">
+  <span id="overlayClose">&times;</span>
+  <img id="overlayImg" src="" alt="Zoomed Image">
+</div>
+
+
+<section id="y5" class="glass" data-tts-scope data-year="5-10">
+  <div class="head">
+    <h2>5–10 years (1993–1998)</h2>
+    <div class="meta">Keyboard, bedroom, advanced studies, asthma episode.</div>
+  </div>
+  <div class="content">
+<p>Until I was nine years old, I only had birthday parties, but I often found them <strong>overwhelming</strong>. I used to <strong>cry during surprise parties, shout, and get upset</strong>. I remember one birthday when I was taken to someone else's house and saw people waiting for me to clap and sing “Happy Birthday.” I didn’t cry because of the party itself, but because <strong>there were so many people and I hated surprises</strong>. When I turned nine, I <strong>asked my mother to stop having parties</strong> and instead give me a keyboard. From that point on, the birthday parties stopped.</p>
+<br>
+
+<p>I got a keyboard and <strong>taught myself to play, spending countless hours locked in my room practicing</strong>—a habit that lasted until I was 18. I made some friends and occasionally played football, but <strong>I was rarely picked for teams</strong>, so I returned to playing alone.</p> 
+<br>
+<p>I also <strong>often fell off my bicycle</strong>, and I still have a <strong>scar on my foot from one of those accidents</strong>.</p>
+<br>  
+<p>I had a childhood friend, Adriel, who lived next door, but his best friend was Bruno. They watched Dragon Ball Z, which <strong>I didn’t</strong>. <strong>I missed many common experiences like cartoons, TV, and video games, and participated very little.</strong> I stood out for my <strong>high grades</strong> and often <strong>studied material before the teacher even covered it in class.</strong></p> 
+<br>
+
+<p>Around age 10, I remember hearing voices. I had asthma and was once hospitalized after nearly suffocating at the beach. My father calmed me, and we got to the hospital safely. One memory that stands out is when a kid at a local corner shop told me he wished he had the same Portuguese vocabulary as me while we were eating crisps. I felt amazing that day.</p> 
+<br>
+
+<p>At night, the nebuliser was always ready for me. Around 3 a.m., <strong>I would wake up and quietly go to the living room to use it</strong>. The mist would fill my lungs, easing the tightness in my chest, and only then could I finally drift back to sleep. Those nights felt long and quiet, but <strong>the routine gave me a small sense of relief and control.</strong></p> 
+<br>
+
+<p>Sometimes, I would <strong>get scared of the toys</strong> on my way to the nebuliser and needed to <strong>wake one of my parents to stay with me</strong> for a few minutes at night. Occasionally, my sister or brother would go instead. Even now, I still hear my mother’s voice saying, “He woke up,” when I wake up at night or early in the morning as she was in the next room. I used to hear this every time I woke up at night with asthma. They used to call it “nervous asthma.”</p> 
+<br> 
+
+<p>When I wake up, <strong>everything sounds louder than normal.</strong> It's just loud as 2 or 3 times louder. Over a few minutes, it gradually settles. The same applies to <strong>bright white lights</strong>. <strong>I remember shouting to have the lights turned off and often going to use the nebuliser in the dark because of it.</strong></p>
+<br>
+
+<p>I was originally <strong>left-handed but was taught to use my right hand</strong>. <strong>Still use my left leg.</strong> I was told to <strong>look at the camera, smile</strong>, etc. Even during my <strong>British citizenship ceremony and other ceremonies</strong> in the past, I had <strong>issues with photographers who thought I was rude</strong> or something similar.</p>
+
+  </div>
+
+  <div class="photo-wrap">
+    <div class="small">Photos (5–10 years)</div>
+    <div class="grid" data-grid="5-10">
+      <figure>
+        <img src="51.jpg.jpg" alt="5–10 photo 1" class="zoomable">
+        <figcaption>Hiding left hand. I was asked during this pic to put the right hand to the front.</figcaption>
+      </figure>
+      <figure>
+        <img src="53.jpg.jpg" alt="5–10 photo 3" class="zoomable">
+        <figcaption>Studying with sister</figcaption>
+      </figure>
+      <figure>
+        <img src="54.jpg.jpg" alt="5–10 photo 4" class="zoomable">
+        <figcaption>A neighbour, me, brother, sister.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- Overlay Container (reuse the same one for all sections) -->
+<div id="imageOverlay">
+  <span id="overlayClose">&times;</span>
+  <img id="overlayImg" src="" alt="Zoomed Image">
+</div>
+
+
+<section id="y10" class="glass" data-tts-scope data-year="10-15">
+  <div class="head">
+    <h2>10–15 years (1998–2003)</h2>
+    <div class="meta">Anxiety and panic; sensory overload; daydreaming; Discman.</div>
+  </div>
+  <div class="content">
+   <p>Rebellion and anarcho-punk readings shaped much of my early life. A book led me to several other books. At school, I <strong>played unusual pranks and spoke my mind, which sometimes caused me to lose friends.</strong> At Mazarelo School, I remember throwing a chair at a kid and leaving a note on the teacher's desk saying “Happy Teacher’s Day,” with “motherfucker” written inside. This landed me in the principal’s office when the teacher saw it. I later transferred to Anglo Líder, where I developed <strong>anxiety and panic attacks — sweating, dizziness, and fatigue — and often left before classes began.</strong></p>
+<br>    
+
+<p>I believe the crises started from <strong>going to school alone in a noisy city.</strong> I <strong>preferred certain buses because of the sounds.</strong> In 1998, my parents went to Atlanta and brought me a Discman, which I <strong>carried daily, even though it was heavy, to block out street noise.</strong> I <strong>listened to music until the teacher entered the classroom.</strong></p>
+<br>    
+
+<p>The school administration referred me to a psychologist for testing. She showed me pictures of butterflies, lions, and other images. To this day, I don’t really understand what the purpose was, and I haven’t researched it yet. I ended up <strong>failing an entire year of school due to anxiety and panic attacks</strong>, as I was absent for long periods. Classmates called me <strong>“tourist” or “the mute kid.”</strong> I often <strong>daydreamed</strong>; when I returned to reality, someone would laugh. <strong>Crises could happen anywhere: on the street, bus, underground, mall, or even while eating with family.</strong> I <strong>sought calm places, usually the bathroom.</strong><br><br> I was asked by the school administration to transfer to another school. My mother refused, arguing that she had three children enrolled there and would have to remove all three. It was an inexpensive, yet still private, school. I had an episode where I told a history teacher (Rose) to f.off in front of the class. But the class was really loud, I think I was really stressed that day. The situation was: at the end of break time, my classmates were being loud, and the teacher entered the room shouting even louder at the class to be quiet. Then I shouted back at her.</p>
+<br>    
+
+<p><strong>Triggers included unwanted long conversations, noise, and sensory overload.</strong> During some crises, I <strong>heard voices of my parents from my childhood asthma episodes</strong>, though they never harmed me. I developed <strong>excellent ear training by playing music by ear and never learned to read sheet music.</strong></p>
+<br>
+
+<p>When I was a kid, I used to cut my parakeets’ wings because I didn’t know it hurt them. One bled a lot, and I felt terrible. I took care of it until it healed, and then I released them all. I never did it again. I always <strong>preferred fishes</strong>. I had some fishes as well. I used to <strong>observe them inside the aquarium. I kind of related myself to them during childhood.</strong></p>
+ </div>
+
+<div class="photo-wrap">
+  <div class="small">
+    Photos (10–15 years) book – I don't have pics from that time as my ex-gf burned my album. I lost many pics.
+  </div>
+  <div class="grid" data-grid="10-15">
+    <figure>
+      <img src="punk.jpg" alt="10–15 photo 1" class="zoomable">
+      <figcaption>"An Efficient Punk in a Defective Society" – book title.</figcaption>
+    </figure>
+  </div>
+</div>
+</section>
+
+
+
+<!-- Overlay Container (reuse the same for all sections) -->
+<div id="imageOverlay">
+  <span id="overlayClose">&times;</span>
+  <img id="overlayImg" src="" alt="Zoomed Image">
+</div>
+
+<section id="y15" class="glass" data-tts-scope data-year="15-20">
+  <div class="head">
+    <h2>15–20 (2003-2008)</h2>
+<p>been to the US. Upon arrival, I lived with my older sister, got an SSN, and used someone’s green card to create documents as if I were 18. worked at Chick-fil-A in Atlanta (bathroom cleaning, then cashier and assistant). The work was simple but required speaking a lot; <strong>I faced complaints due to language and pace</strong>. I left frustrated once. <strong>I memorized the combos which made my life there easier</strong>.</p>
+<br>
+<p><strong>I repaid the loan and supported myself studying and working.</strong> I <strong>used drugs</strong> before knowing I needed medication, which led to <strong>severe depression and daily suicidal thoughts</strong>. I attended a church (Vine Church Atlanta — Pastor Napoleon), <strong>played keyboard</strong>, and <strong>converted; I remain Christian</strong>. I finished high school and returned to Brazil due to depression. At 19, a psychiatrist prescribed <strong>clonazepam and fluoxetine</strong>.</p>
+
+  </div>
+
+  <div class="photo-wrap">
+    <div class="small">15–20 years</div>
+    <div class="grid" data-grid="15-20">
+      <figure>
+        <img src="cfa.jpg.jpg" alt="15–20 photo 1" class="zoomable">
+        <figcaption>Wearing Chick-fil-A's uniform</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- Overlay Container (reuse the same for all sections) -->
+<div id="imageOverlay">
+  <span id="overlayClose">&times;</span>
+  <img id="overlayImg" src="" alt="Zoomed Image">
+</div>
+
+
+<section id="y20" class="glass" data-tts-scope data-year="20-25">
+  <div class="head">
+    <h2>20–25 years (2008–2013)</h2>
+    <div class="meta">Rigid routine, social isolation, jobs, and engagement.</div>
+  </div>
+  <div class="content">
+  <p>Back in Brazil at 19, I had <strong>difficulty adapting</strong>; I <strong>stayed locked in my room</strong>, with my keyboard from the U.S., chats, and alcohol. Continued with psychiatrist (clonazepam and fluoxetine); helped a bit but I remained <strong>anxious, isolated, and exhausted</strong>.</p>
+<br>
+<p>I had 25 capsules of clonazepan and a bottle of vodka when a friend of mine died. By the time I thought that would be enough to kill me. Slept for 18/19h and woke up with nausea.</p>
+<br>  
+  <p> I used to go to a bar called ' metal bar ' where they played metal. Spent a few years going there. Never made a single friend. I was always the one aside everywhere. </p>
+  <br>     
+<p>I focused on <strong>studies (university, courses, MBA)</strong>, tried jobs; <strong>social demands were challenging</strong>. <strong>Routines had to be well-structured</strong>; I developed <strong>rigid, repetitive organization</strong> to manage anxiety. Worked as administrative assistant at Davilla Hospital (was fired) and Arts do Imaginário (was called <strong>“weird”</strong> — I <strong>took it literally</strong> and handled poorly).</p>
+<br>
+<p>I had a girlfriend and engagement for 5 years; at the end, she said she never loved me. She called me “Bob” (from daydream cartoon) and “crazy” weekly. She wanted many <strong>outings (malls, shows), where I felt extremely uncomfortable due to noise, crowds, and information overload</strong>. After the breakup, she commented on my <strong>tendency to overanalyze</strong>. I have a <strong>problem dressing up according to the weather</strong>.</p>
+
+  </div>
+
+<div class="photo-wrap">
+  <div class="small">
+  </div>
+  <div class="grid" data-grid="20-25">
+    <figure>
+      <img src="mh.jpg.jpg" alt="MBA and diplomas" class="zoomable">
+      <figcaption>working as a hotel nightshift supervisor.</figcaption>
+    </figure>
+    <figure>
+      <img src="deb.jpg.jpg" alt="Assistant admin diploma" class="zoomable">
+      <figcaption>It was 10c degrees. with an ex ex-girlfriend.</figcaption>
+    </figure>
+    <figure>
+      <img src="high.jpg" alt="High school grades" class="zoomable">
+      <figcaption>High school diploma.</figcaption>
+    </figure>
+  </div>
+</div>
+</section> 
+
+<!-- Reuse overlay container for all sections -->
+<div id="imageOverlay">
+  <span id="overlayClose">&times;</span>
+  <img id="overlayImg" src="" alt="Zoomed Image">
+</div>
+
+
+<section id="y25" class="glass" data-tts-scope data-year="25-30">
+  <div class="head">
+    <h2>25–30 years (2013–2018)</h2>
+    <div class="meta">Night hotel work, dismissal in 2015, trip to the United Kingdom.</div>
+  </div>
+  <div class="content">
+<p><strong>I stayed at home a lot.</strong> I worked at a hotel as a night auditor (documents, invoices, payments). I became a <strong>night supervisor; few arrivals/departures — bureaucratic profile</strong>. I was <strong>dismissed in 2015 after the hotel was sold and conflicts with the new management</strong>.</p>
+<br>
+
+<p>A car accident was caused by me <strong>trying to end my life</strong>. I was gonna run against a wall when another car invaded my line trying to park. I was so fast he haven't noticed me. so I crashed on him and the wall after.</p>
+<br>
+
+<p><strong>I always wanted to go to London. I decided to go (either that or end my life after so many losses).</strong> I came with my Portuguese brother-in-law (I have Portuguese citizenship since childhood; at the time the UK was in the EU). <strong>Adaptation was very difficult: alcohol, frustrations, feelings, suicidal thoughts.</strong></p>
+<br>
+
+<p><strong>I didn’t eat much, didn’t know the food, and found the diversity and the noise of the underground strange.</strong></p>
+<br>
+
+<p>In 2018, friends organized the 'Contradiction Party', a gathering where I was the theme of the celebration. I was no longer living in Brazil, as I had moved to the UK in 2016, and I only found out about it through a photo someone sent to me. I consider many variables at the same time and may change my opinion as new information emerges. <strong>This shows again how people view me as different everywhere I go.</strong> I know there is something wrong, just don't know what.</p>
+
+  </div>
+
+<div class="photo-wrap">
+  <div class="small">
+    Photos (25–30 years) – feeling depressed, solving cubes to cope with underground noise, solving cubes while coding.
+  </div>
+  <div class="grid" data-grid="25-30">
+    <figure>
+      <img src="deep.jpg.jpg" alt="Depressed period" class="zoomable">
+      <figcaption>Feeling depressed during this time.</figcaption>
+    </figure>
+    <figure>
+      <img src="uk.jpg.jpg" alt="Solving cubes" class="zoomable">
+      <figcaption>Struggling with depression.</figcaption>
+    </figure>
+    <figure>
+      <img src="uk1.jpg" alt="Focused cube solving" class="zoomable">
+      <figcaption>Struggling with depression.</figcaption>
+    </figure>
+    <figure>
+      <img src="cu1.jpg" alt="Coding with cubes" class="zoomable">
+      <figcaption>Solving cubes while coding.</figcaption>
+    </figure>
+    <figure>
+      <img src="copo.jpg" alt="Coping strategies" class="zoomable">
+      <figcaption>a cup with my picture for a party called 'contradiction confraternization 2018' I received a picture months after the party.</figcaption>
+    </figure>
+    <figure>
+      <img src="depp.jpg" alt="Depression" class="zoomable">
+      <figcaption>Struggling with depression.</figcaption>
+    </figure>
+    <figure>
+      <img src="cu4.jpg" alt="Cube solving habit" class="zoomable">
+      <figcaption>Coping with underground noise through activities.I didn’t know I had ti save energy for work at that time and I always wear earphones.</figcaption>
+    </figure>
+  </div>
+</div>
+</section>
+
+<!-- Reuse overlay container for all sections -->
+<div id="imageOverlay">
+  <span id="overlayClose">&times;</span>
+  <img id="overlayImg" src="" alt="Zoomed Image">
+</div>
+
+
+<section id="y30" class="glass" data-tts-scope data-year="30-35">
+  <div class="head">
+    <h2>30–35 years (2018–2023+)</h2>
+    <div class="meta">Routine in London, work, software course, British citizenship.</div>
+  </div>
+  <div class="content">
+  <p>For years I <strong>only used the bus because it was quieter</strong>; I took the underground only 3 years after moving (<strong>noise, crowds, heat</strong>). <strong>Always with headphones.</strong> I bought a motorcycle for a few months, but sold it due to the chaos.</p>
+<br>
+
+<p><strong>Repetitive diet (usually one meal per day).</strong> <strong>I kept using headphones.</strong> I took a day trip to Brighton following a friend on a motorcycle (major achievement, me on a 125cc with an L plate).</p>
+<br>
+
+<p>I worked nights at a supermarket. <strong>Switching to day shifts was difficult.</strong> I opted for a £13,000 redundancy package and left.</p>
+<br>
+
+<p>Then, a hotel - using Opera. Before leaving the supermarket, the government funded a software development course (Tech Talent Academy, UK). Since then, my <strong>main focus has been programming and Rubik's cubes.</strong></p>
+<br>
+
+<p>The hotel provided lodging; I left in less than a year and returned to the supermarket at the end of 2024. I <strong>still struggle to adapt to daytime work, with lots of talking and small talk.</strong> I usually <strong>help guests with excellence and then pretend to do something else in order to make them go away.</strong> Some guests have good topics and the opposite happens. I get interested. <strong>Sometimes I ask to leave early.</strong> I have reorganized departments (sales increased ~6x), received awards and bonuses; I get emails from leadership, but <strong>didn’t take a position due to social demands and my direct communication style.</strong></p>
+<br>
+
+<p>I am creating my own company (coding and logistics) to work online. I own a flat in Lisbon; I made money in stocks. I became a British citizen in August 2025; the <strong>public ceremony caused strong anxiety (front row for hours).</strong></p>
+ </div>
+
+  <div class="photo-wrap">
+    <div class="small">Photos (30–35 years)</div>
+    <div class="grid" data-grid="30-35">
+      <figure><img src="bus.jpg" alt="Using the bus" class="zoomable"><figcaption>bus</figcaption></figure>
+      <figure><img src="meat.png" alt="Organizing stock" class="zoomable"><figcaption>planning next stock</figcaption></figure>
+    
+      <figure><img src="guest.jpg" alt="Interacting with guests" class="zoomable"><figcaption>Interacting with guests</figcaption></figure>
+      <figure><img src="bonus.jpg" alt="Receiving bonuses" class="zoomable"><figcaption>Receiving bonuses</figcaption></figure>
+      <figure><img src="Hotels.jpg" alt="Hotel environment" class="zoomable"><figcaption>reception homepage with links,docs,intranet,maps, hotel info - created by me. you could even check in guests and make key from it even from your phone as I did once as a test in case the hotel runs out of wifi. all computeres had that as homepage.</figcaption></figure>
+      <figure><img src="prac.jpg" alt="Practicing communication" class="zoomable"><figcaption>Practicing communication and recording myself</figcaption></figure>
+      <figure><img src="social.jpg" alt="Social interactions at work" class="zoomable"><figcaption>Showing colleagues how to code a social media. on the 2nd picture I'm showing a colleague the game I created for my nephews.</figcaption></figure>
+      <figure><img src="game.jpg" alt="Game created for nephews" class="zoomable"><figcaption>Game created for nephews to encourage chores. there was a realtime podium and they had to upload pics doing home activities in exchange for money.</figcaption></figure>
+      <figure><img src="hot.jpg" alt="Hotel site suggestion" class="zoomable"><figcaption>hotel break time. Sitting always by myself.</figcaption></figure>
+      <figure><img src="apre.jpg" alt="Hotel site suggestion" class="zoomable"><figcaption>supermarket appreciation.</figcaption></figure>
+        <figure><img src="det.jpg" alt="Planning next stock" class="zoomable"><figcaption>TM of the quarter</figcaption></figure>
+      <figure><img src="10670.jpg" alt="Good conversation example" class="zoomable"><figcaption>organizing shelves and products</figcaption></figure>
+      <figure><img src="sale.jpg" alt="Good conversation example" class="zoomable"><figcaption>organizing shelves and products</figcaption></figure> 
+       <figure><img src="orga.jpg" alt="Hotel site suggestion" class="zoomable"><figcaption>organizing shelves and products.</figcaption></figure>
+       <figure><img src="saless.jpg" alt="sales" class="zoomable"><figcaption>sales comparison </figcaption></figure>
+       <figure><img src="daily.jpg" alt="Hotel site suggestion" class="zoomable"><figcaption>daily sales increase. I stopped buying meeat because the salary wasn't worthy. I told the manager that. Got all possible bonuses and stopped after.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- Overlay container (reuse for all sections) -->
+<div id="imageOverlay">
+  <span id="overlayClose">&times;</span>
+  <img id="overlayImg" src="" alt="Zoomed Image">
+</div>
+
+
+<section id="communication" class="glass" data-tts-scope>
+  <div class="head">
+    <h2>Communication</h2>
+    <div class="meta">Poor communication, I usually listen to people more and pretend that I understand even the joke.</div>
+  </div>
+  <div class="content">
+  <p><strong>My communication skills are poor.</strong> I believe it's due to the time kept by myself. <strong>I don't communicate well personally.</strong> In case of another consultation I'll try my best to go over all points shared on all topics.</p>
+<br>
+     <p>
+  <strong>I don't know how to socialize.</strong> 
+  <strong>I don't know how to keep a girlfriend for longer than 3 months</strong> (that's the average relationship I have). 
+  One day a lady fell from the stairs in front of me at work, and <strong>I had no reaction.</strong> 
+  I simply walked away when I realized she would be fine within minutes, without even asking if she was ok.  
+  <strong>I don't get jokes, I'm too literal.</strong> 
+  Even during phone calls, <strong>I can't understand and interact properly.</strong>  
+  <strong>If I ask a question and the other person explains without following the steps from my question, I get confused, anxious, and upset.</strong>  
+  So, I take a deep breath and try to relax in order to keep the conversation. <strong>This happens every day, many times during the day.</strong>  
+  At work <strong>I need to mask by entering the shop laughing and greeting, even if I don’t feel like it.</strong>  
+  <strong>Sometimes I think people are talking about me when they are actually saying something good about me.</strong>  
+  <strong>I had discussions with many colleagues in several jobs and with managers.</strong>  
+  Even with flatmates, <strong>I had 3 discussions only this year of 2025.</strong>  
+  I got a video from 2 days ago that I plan to show during the appointment if possible.
+</p>
+<br>
+     <p> This is a very important part of my life. I used to live on a residential area. After small talks I used to tell my colleagues that I had left my computer on in order to run away from the conversation. There is a whatsapp group with everyone still nowadays because we kind of grew up in the same area. They still joke about me having to turn of the computer. That situation of running away from talks lasted for about 10 years in total from 10y to 20y. </p>
+<br>
+     <p>I get in trouble a lot because of my traits. for example, the security guy from my workplace tapped my on my shoulder the other day and I told him I don't like touching. I heard him complaining to someone else that I was racist. it takes a huge amount of energy amd a huge effort to fix problems caused by my traits because , for example,  in this case I had to go person by person explaining that when someone touches me when I'm not expecting its really rude to me and I'm extremely sensitive, etc.. but still I don't think most people get it </p>
+<br>
+     <p><strong>Difficulty knowing when to speak.</strong> On clubhouse app, for example, <strong>I mostly listen; this hinders making friends.</strong> In <em>huddles</em> at work, <strong>I prefer to speak later in private with the manager.</strong> <strong>I avoid speaking with strangers, make little eye contact, and usually avoid going out on days off.</strong></p>
+<br>  
+  <p>
+  There was a bingo at work and I missed it because I did not say “bingo” — I didn’t understand that the word <em>“free”</em> in the middle could be marked at any time. I was waiting for the word to be called. After many names were called, someone else from the group asked about the word “free” and won the bingo.  
+  I actually won as well because I recorded the whole thing on my phone and could prove it.  
+  If people don’t explain things properly, I can’t do several things — even a simple bingo. I don’t ask questions in groups and I usually mess up. picture below</p>
+     <br>
+    <div class="photo-wrap">
+      Photos – been to these websites,  
+     <a href="https://embrace-autism.com/autism-tests/" target="_blank" style="font-weight: bold; color: #FFD700; text-decoration: underline;">embrace-autism.com</a> and  
+<a href="https://iq-institute.org/" target="_blank" style="font-weight: bold; color: #FFD700; text-decoration: underline;">iq-institute.org</a>
+
+      Score from an online test at iq-institute.org 
+      <span style="color:red; font-weight:bold;">(not a formal assessment)</span>.  
+      Should I request a test face to face for IQ?  
+      Regarding the autism tests, I completed online autism self-assessments (Embrace-Autism, Aspie Quiz, etc.), which suggested traits consistent with Asperger’s. 
+      <span style="color:red; font-weight:bold;">I understand these are not formal diagnostic tools.</span>
+    </div>
+    
+    <br>
+  <div class="grid" data-grid="30-35">
+  <figure>
+    <img src="au1.jpg" alt="photo 1" class="zoomable">
+    <figcaption>CAT-Q is the Camouflaging Autistic Traits Questionnaire.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="au2.jpg" alt="photo 2" class="zoomable">
+    <figcaption>Test Results</figcaption>
+  </figure>
+
+  <figure>
+    <img src="raad.jpg" alt="photo 3" class="zoomable">
+    <figcaption>RAAD-R Ritvo Autism Asperger Diagnostic Scale – Revised</figcaption>
+  </figure>
+
+  <figure>
+    <img src="aspie.jpg" alt="photo 4" class="zoomable">
+    <figcaption>Aspie Quiz</figcaption>
+  </figure>
+
+  <figure>
+    <img src="aspie1.jpg" alt="photo 5" class="zoomable">
+    <figcaption>Aspie Quiz</figcaption>
+  </figure>
+
+  <figure>
+    <img src="aq.jpg" alt="photo 6" class="zoomable">
+    <figcaption>Autism-Spectrum Quotient (AQ)</figcaption>
+  </figure>
+
+  <figure>
+    <img src="eq.jpg" alt="photo 7" class="zoomable">
+    <figcaption>The Empathy Quotient (EQ)</figcaption>
+  </figure>
+
+  <figure>
+    <img src="cbi.jpg" alt="photo 8" class="zoomable">
+    <figcaption>Cambridge Behaviour Scale (CBI)</figcaption>
+  </figure>
+
+  <figure>
+    <img src="rbq.jpg" alt="photo 9" class="zoomable">
+    <figcaption>Repetitive Behavior Questionnaire – 2 for Adults.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="gif.jpg" alt="photo 10" class="zoomable">
+    <figcaption>'IQ test'</figcaption>
+  </figure>
+
+  <figure>
+    <img src="gif1.jpg" alt="photo 11" class="zoomable">
+    <figcaption>'IQ test'</figcaption>
+  </figure>
+
+  <figure>
+    <img src="gif3.png" alt="photo 12" class="zoomable">
+    <figcaption>'IQ test'</figcaption>
+  </figure>
+       <figure>
+    <img src="bbi.jpg" alt="photo 8" class="zoomable">
+    <figcaption>bingo at work</figcaption>
+       </figure>
+</div>    
+</section>
+
+
+<!-- Shared Overlay (keep once in the body) -->
+<div id="imageOverlay">
+  <span id="overlayClose">&times;</span>
+  <img id="overlayImg" src="" alt="Zoomed Image">
+</div>
+
+<section id="interests" class="glass" data-tts-scope>
+  <div class="head">
+    <h2>Interests</h2>
+    <div class="meta">Programming, rubiks, splving puzzles, piano/keyboard. My main focus since 2023 is programming.</div>
+  </div>
+  <div class="content">
+   <p><strong>Difficulty knowing when to speak.</strong> On Clubhouse app , for example, I <strong>mostly listen; this hinders making friends.</strong> In <em>huddles</em> at work, <strong>I prefer to speak later in private with the manager.</strong> <strong>I avoid speaking with strangers, make little eye contact, and usually avoid going out on days off.</strong></p>
+<br>
+
+<p><strong>Coding for up to 12 hours or more, staying up all night</strong> if I have the next day off. <strong>Focused on JavaScript, Google Cloud, and React.js</strong> (I know other programming languages, including Python, Java, PHP, SQL, and C#, and I am familiar with their environments such as Node.js, Unity, and .NET. I also have knowledge of Linux and ethical hacking.). Since the course (April 2023), <strong>this has been my main topic; colleagues sometimes find it repetitive.</strong></p>
+<br>
+
+<p>Sometimes <strong>take photos of the backyard</strong> (flatmate’s garden) and <strong>pretend at work that I am engaged in other topics.</strong> <strong>I limit interaction with flatmates to a maximum of 5 minutes.</strong></p>
+<br>
+
+<p>I was asked a question during the appointment, and I answered that I <strong>used to tattoo myself</strong> and then pour some vodka over the tattoo while it was still fresh and bleeding, even though it was a practice from years ago. I'll post pictures of me tattooing myself here.</p>
+<br> 
+
+<p> I am very good at solving problems, and managers often ask for my opinion on important tasks. My interests are always related to logic and problem solving. I'll give an example from today which is also on daily journal. 26/09/25 - My manager was unsure how to organize four shelves of wines by price and country. I suggested using inexpensive colored sticky notes: each color representing a country (e.g., red = Italy, blue = France, yellow = Spain), and marking the expensive items with a black dot. I described it as applying simple logic (“categorization and systematization”) and compared the final arrangement to “playing Tetris” until it fit properly. She found the idea excellent and shared it with other stores in the brand.</p>     
+<br> 
+<p>Lived rent free - breakfast, lunch, dinner included at the hotel for 1 year where I worked and also developed an <strong>integrated ecosystem for the reception</strong> where they had all hotel, cricket, airlines, maps, reception documents integrated.</p>
+
+    <br>
+   <div class="grid" data-grid="30-35">
+  <figure>
+    <img src="hotelo.jpg" alt="photo 1" class="zoomable">
+    <figcaption>Living at the hotel I've worked at.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="coding.jpg" alt="photo 2" class="zoomable">
+    <figcaption>Coding is my focus since mid 2023. Can't stop talking and overthing of it.</figcaption>
+  </figure>
+   
+      <figure>
+    <img src="puz1.jpg" alt="photo 1" class="zoomable">
+    <figcaption>solving puzzles.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="cit.jpg" alt="photo 3" class="zoomable">
+    <figcaption>Receiving my british naturalization certificate from the Mayor of Camden, Eddie Hanson.</figcaption>
+  </figure>
+
+      <figure>
+    <img src="8.jpg" alt="photo 4" class="zoomable">
+    <figcaption>Passports</figcaption>
+  </figure>
+
+  <figure>
+    <img src="garden.jpg" alt="photo 4" class="zoomable">
+    <figcaption>My flatmate's sunflowers used by me at work as if I was doing something else other than coding.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="bun.jpg" alt="photo 5" class="zoomable">
+    <figcaption>Bunhill fields - Puritan's cemetery - Near Liverpool St - London.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="time.jpg" alt="photo 6" class="zoomable">
+    <figcaption>picture of me and some of my rubiks.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="piano.jpg" alt="photo 7" class="zoomable">
+    <figcaption>Picture of me in front of John Lennon's last piano.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="tat.jpg" alt="photo 8" class="zoomable">
+    <figcaption>Pictures of me tattooing myself. I used to and still enjoy the pain caused my the needle and the sensation of the maching shaking it through my skin.</figcaption>
+  </figure>
+</div>
+</section>
+
+<!-- Shared Overlay (keep once in the body if not already present) -->
+<div id="imageOverlay">
+  <span id="overlayClose">&times;</span>
+  <img id="overlayImg" src="" alt="Zoomed Image">
+</div>
+
+   <section id="sensory" class="glass" data-tts-scope>
+  <div class="head">
+    <h2>Sensory sensitivities</h2>
+    <div class="meta">Sounds, light, touch, startle, linguistic distractions.</div>
+  </div>
+  <div class="content">
+  <p><strong>Sensitive to many sounds/stimuli:</strong> morning magpie, white light, underground, sirens, loud Italian neighbors, birds, and distant conversations. <strong>Dislike of physical touch (e.g., shoulder taps).</strong> Shower and toilet noises can feel hypnotic; sometimes I just sit and watch/listen. I notice details (e.g., rats) that others don’t.</p>
+<br> 
+<p> cigarette smell triggers me a lot. I hate cigarrete smell . it irritates me. If I'm quiet and suddenly there is a cigarrete smell I might start feeling some traits and get irritated. lights get brigther and noises.  I think it might deregulate my brain somehow.</p>
+     <br>
+     <p><strong>I have noticed that when I move back and forth while sitting down, I feel a pulsing sensation that starts in my back and travels up to my head.</strong> I find that this motion helps me regulate my emotions and provides a sense of balance and calm. It’s a personal sensory experience that seems to help me cope with stress or overwhelming situations.</p>
+<br>   
+<p>When I was around 8 years old, I was playing hide and seek with my cousin. During the game, her tooth somehow hit and got stuck in my head. When I stood up quickly, it cut me, and a lot of blood came out. <strong>I did not feel any pain at all</strong>; I was only scared because everyone else was frightened by the sight of my face and hands covered in blood. There is still a scar in my head. picture below in this section</p>
+<br> 
+<p><strong>My good hearing both helps and distracts:</strong> if I hear a familiar language nearby, I can daydream and need to breathe and refocus. I speak Portuguese, Spanish, and English; I understand a bit of French and Italian. <strong>I get startled frequently</strong>; on flights (Lisbon roughly every 2 months), I nap and still get startled. Today I was startled by a fly returning from Tesco (headphones in pocket). My room faces the backyard and noises coming from there wake me up during the night. In order to avoid waking up I leave the cooling fan on, ambient music and the socket yellow light on at all times. It stays like that even during the daytime. I don't have a keyboard at the moment. That one was a small gift from my mother and I kept it of course.</p>
+<br> 
+    <p> Colleagues often  make fun of me sometimes for wearing anything instead of going up for shopping. The problem is to have to go far and buy the clothes. I usually wear clothes I buy online or near my place on a cheap place. I don't mind as long as it's confortable. Nothing is branded.</p> 
+<br> 
+     <p> I have a problem with relationships. I  don't think much of having a romantic relationship and I don't know how to socialize. I have zero patience for it </p>
+     <br>
+     <p>When I was about 10 years old, I <strong>punched the wall very hard several times just to feel the pain</strong>. I also <strong>put a wire into both sides of an electrical socket to feel an electric shock</strong>. My father worked as an electrician. The socket exploded, the apartment lost power, and the wire melted in my fingers. I started laughing at it and didn’t really understand how dangerous it was.</p>
+<br>  
+     <p> I'm frequently tapping my toes inside my shoes. This happens everyday. I also tap my legs with both hands when I get nervous often. I move my left hand but I'm using an anxiety ring on it trying to stop </p>
+     <br>
+<br>   
+     <p> I can have headaches for days. I've been to a hospital when I was a kid because of headache. On the 5th day I was taken to a hospital for exams. Right now I'm with headache and it's been 2  days.</p>
+     <br>
+     <p><strong>Sometimes I see small flashes, like tiny particles in the air.</strong> I was told they might be “dead cells.” I have always noticed them and thought it was interesting. I mention this because it may be related to how I perceive sensory details. I also feel chest pain; sometimes the small pain goes a bit to the left arm — it happened many times during my life. I first thought it was caused by asthma, then gases, but it keeps showing up. I think it's due to anxiety and that it may cause a real heart attack at some point in the future. <strong>Sometimes I feel I would rather die.</strong></p>
+ <br>
+     <p>
+  Around 8 am, I can hear loudly the airplanes over NW10 because Heathrow is busy with morning arrivals. 
+  Some planes come from the Chesham stack, flying southeast over Harrow and Edgware before turning toward the airport, 
+  and others come from the Lambourne stack in Essex, crossing northwest London. 
+  Large planes like the A380 and Boeing 777 are especially loud. 
+  The cool morning air allows noise to travel farther, so the planes are easier to hear at this time.I usually wake up by this time in case I had a good sleep and I'm off work. 
+</p>
+<br>
+     <p> for example there is a chicago flight united airlines landing at heathrow now at 13:10h Boeing 767-300. It's not as loud as A380 which comes in the morning from africa, middle east and asia. and these go to stack Chesham , rotate , and then  go round the city and around my area NW10 and wake me up in the morning. </p>
+     <br>
+     <p>27/09/25 This morning I woke up to the sound of planes and ended up recording videos comparing the noise of an A319, A320, and A321. Because of the easterly winds, departures were heading towards London, passing over NW10 at about 4,000 feet. I even managed to capture a Boeing 777 bound for Dallas, so I could compare the sound of smaller Airbus aircraft with the heavier 777. Usually, the long-haul flights to the US depart in a group, and today there were two 777s and a JetBlue A321, all initially heading east towards London before turning 180 degrees to cross the Atlantic. I'm working at 1pm . I woke up several times during the night because of noises at the backyard , front door, cars. I'll try to sleep fora while before going to work 
+
+At the same time, the morning birddsong was clear and loud. Around 8 am in NW10, I could hear the robin, blackbird, great tit, and woodpigeon — all singing as the aircraft roared overhead.
+
+Usually, the long-haul flights to the US depart in a group, and today there were two 777s and a JetBlue A321, all initially heading east towards London before turning 180 degrees to cross the Atlantic.</p>
+<br>
+     <p><strong>I spoke with my parents after getting guidance from Dr. James, a psychiatrist who called me after I visited my GP and told her that I hear voices.</strong> He said he wanted to understand what type of voices they were and whether I had psychosis. <strong>The voices I hear are actually memories—so vivid that I can literally hear them—as well as some of my own thoughts.</p>
+ <br>
+<p>A therapist (after a GP appointment) told me something similar: “Be yourself, stop masking, relax, and don’t expect everyone to understand.” That advice helped me a lot.</p>
+
+<p><strong>Additional sensory/behavioural notes I want recorded:</strong> I like cold floors. As a child I sometimes ate leaves and rocks. I used to put a coin in my mouth to taste it. A teacher called vivian(portuguese teacher) complained with me when I was at 1st grade because I had a coin in my mouth. I often <strong>sit in unusual positions</strong> (I "sit weird"). I also sometimes <strong>enjoy staying with my head upside down a bit</strong> — these are calming or regulating behaviours for me.</p>
+ <br>
+<p><strong>I have a collection of Rubik’s cubes here in the UK and another collection in Portugal.</strong> I keep solving them a lot. <strong>Solving Rubik’s cubes regulates my emotions, like a form of therapy.</strong> <strong>Sometimes, when I wake up during the night, I solve the cube a few times.</strong></p>
+
+ <br>
+<p><strong>I also have a ring for anxious people that I keep rotating.</strong> Others at work noticed me spinning supermarket baskets sometimes. <strong>I basically spin most objects I come in contact with.</strong> This repetitive motion helps me manage anxiety and self-regulate during stressful situations.</p>
+
+</div>
+ <br>
+  <div class="photo-wrap">
+    I take pictures of the sky and the sun every time. I can’t sit with others in the break room due to the smell of food. My rooms are dark, lit only by small socket lights. I use different gloves and don’t eat the free fruit (I can’t eat mango, pear, kiwi, grapes, etc.). I captured swallows arriving in the UK from the Sahara in Africa (you might need to zoom in if you’re on a phone, or download and view on a laptop). I am food intolerant (lactose, oats, gluten, etc.). This cheap temu keyboard was a gift, which I kept more as a memory; feeling the weather. I keep telling my colleagues to enjoy the weather.
+  </div>
+<div class="grid" data-grid="30-35">
+   <figure>
+    <img src="fly.jpg" alt="approachfly paths" class="zoomable">
+    <figcaption>approach fly paths. I memorizedthe brazilian ones in my city a while ago.</figcaption>
+  </figure>
+  <figure>
+    <img src="room.png" alt="Break Room" class="zoomable">
+    <figcaption>Break room at work.</figcaption>
+  </figure>
+  <figure>
+    <img src="y.jpg" alt="Everyday food" class="zoomable">
+    <figcaption>Everyday food I eat.</figcaption>
+  </figure>
+  <figure>
+    <img src="qua.jpg" alt="Socket light" class="zoomable">
+    <figcaption>Socket light – still looks bright when I'm tired after work.</figcaption>
+  </figure>
+  <figure>
+    <img src="room2.jpg" alt="Sitting alone" class="zoomable">
+    <figcaption>Sitting by myself outside the break room to cope.</figcaption>
+  </figure>
+  <figure>
+    <img src="fruit.jpg" alt="Free fruits" class="zoomable">
+    <figcaption>Free fruits I can't eat due to texture sensitivity.</figcaption>
+  </figure>
+  <figure>
+    <img src="gloves.jpg" alt="Wearing gloves" class="zoomable">
+    <figcaption>Wearing different gloves because of texture sensitivity.</figcaption>
+  </figure>
+  <figure>
+    <img src="down.jpg" alt="Best moments" class="zoomable">
+    <figcaption>Best moments of the day.</figcaption>
+  </figure>
+  <figure>
+    <img src="su2.jpg.jpg" alt="Best moments" class="zoomable">
+    <figcaption>Best moments of the day.</figcaption>
+  </figure>
+  <figure>
+    <img src="su3.jpg.jpg" alt="Best moments" class="zoomable">
+    <figcaption>Best moments of the day.</figcaption>
+  </figure>
+  <figure>
+    <img src="key.jpg" alt="Keyboard and Rubiks" class="zoomable">
+    <figcaption>Cheap keyboard, Rubiks, and books.</figcaption>
+  </figure>
+  <figure>
+    <img src="snow.jpg" alt="Feeling the weather" class="zoomable">
+    <figcaption>Feeling the weather outside.</figcaption>
+  </figure>
+  <figure>
+    <img src="Funf.jpg" alt="Funfair with niece" class="zoomable">
+    <figcaption>With my niece at a funfair in Lisbon, 2 weeks ago.</figcaption>
+  </figure>
+  <figure>
+    <img src="mig.jpg" alt="Swallows arriving" class="zoomable">
+    <figcaption>Swallows arriving in the UK from Africa.</figcaption>
+  </figure>
+  <figure>
+    <img src="Shoe.jpg" alt="Same shoes" class="zoomable">
+    <figcaption>Always buying 3–4 of the same items: shirts, shorts, shoes, trousers. Colleagues make fun of me sometimes for wearing anything instead of going up for shopping.</figcaption>
+  </figure>
+  <figure>
+    <img src="scar.jpg" alt="Childhood scar" class="zoomable">
+    <figcaption>Scar from childhood incident with my cousin.</figcaption>
+  </figure>
+     <figure>
+    <img src="scar2.jpg" alt="Childhood scar" class="zoomable">
+    <figcaption>Scar from childhood incident with my cousin.</figcaption>
+  </figure>
+</div>
+</section>
+
+<!-- Shared Overlay (keep once in the body if not already present) -->
+<div id="imageOverlay">
+  <span id="overlayClose">&times;</span>
+  <img id="overlayImg" src="" alt="Zoomed Image">
+</div>
+
+
+<section id="routine" class="glass" data-tts-scope>
+  <div class="head">
+    <h2>Routine and changes</h2>
+    <div class="meta">Need for planning; incident in Acton.</div>
+  </div>
+  <div class="content">
+    <p>Unexpected changes generate intense anxiety. At my last appointment, I cried because I had only 30 minutes to reach a clinic in Acton (new location). I held it together in the waiting room but cried with the doctor, affecting the report. Dr. Mornica suggested rescheduling, but I needed to complete it that day; I don’t leave things for later. I was exhausted after listening to a friend at Costa before the appointment. Dr. Mornica gave me a paper with the help line in case I need it while waiting for the next steps. I haven't called yet. I don't like papers. I took it as I was grateful for the appointment. She kindly received me there on that day as I told her I was off and could go.</p>
+ <br>    
+    <p>My everyday routine is simple – work, eating the same meal as always, code and sleep. When I'm not coding I tend to study or plan something. I don't really have friends. Rarely receive messages from working colleagues asking if I am ok and I answer yes. I never ask anyone about their lives ( apart from my parents - they live in my apartment in lisbon and we are always in contact ). </p>
+ <br>    
+    <p>While coding I listen to people talking on social media apps. I never speak to anyone. I usually enter rooms talking about physics, nature, startups, coding.</p>
+  </div>
+
+  <div class="photo-wrap">
+    Photos (Routine) work, eat, code and sleep everyday. building an e-commerce platform focused on rare items—for example, football jerseys from South American clubs. I’ll be integrating Stripe as the payment gateway and including features such as promotions, user registration, tax calculation, and a toggle button to switch languages (Spanish, English, Portuguese, etc.). This is a simple short version without the 6 APIS for credit card payment and google cloud firebase as database . The updated version is on my computer only and it will be updated with promos, real credit card form, vouchers, language integrations, etc... after the company is opened and registered. It will be something like www.shopname.com in the future. <a href="https://vendaseuropa.netlify.app" target="_blank" style="font-weight: bold; color: #FFD700; text-decoration: underline;">vendaseuropa.netlify.app</a>
+
+<div class="grid" data-grid="routine">
+  <figure>
+    <img src="rnet.jpg" alt="Routine photo 1" class="zoomable">
+    <figcaption>Website under construction.</figcaption>
+  </figure>
+  <figure>
+    <img src="gnet.jpg" alt="Routine photo 2" class="zoomable">
+    <figcaption>Website under construction.</figcaption>
+  </figure>
+  <figure>
+    <img src="roty.jpg" alt="Routine photo 3" class="zoomable">
+    <figcaption>Website under construction.</figcaption>
+  </figure>
+  <figure>
+    <img src="Rott.jpg" alt="Routine photo 4" class="zoomable">
+    <figcaption>Website under construction.</figcaption>
+  </figure>
+</div>
+</section>
+
+<!-- Shared Overlay (keep once in the body if not already present) -->
+<div id="imageOverlay">
+  <span id="overlayClose">&times;</span>
+  <img id="overlayImg" src="" alt="Zoomed Image">
+</div>
+
+
+<section id="vacation" class="glass" data-tts-scope>
+  <div class="head">
+    <h2>Holidays and flights</h2>
+    <div class="meta">Travel routines, EasyJet Luton–Lisbon, A319/A320.</div>
+  </div>
+  <div class="content">
+
+     <p>In 2024, during my holidays in Lisbon, my sister organized a BBQ for my birthday and invited everyone from the church as well as her personal friends. I wasn’t expecting this, as I had told them I just wanted my family there. I spent about 30 minutes at the party before leaving, using the excuse of taking an elderly neighbor, my Portuguese neighbor who was also there, home. Everyone got upset, but it wasn’t my fault—I hadn’t invited anyone. The situation was overwhelming for me, and I simply needed to step away. I never liked surprises as stated here    <a href="#y5" style="font-weight: bold; color: #FFD700; text-decoration: underline;">5–10 years</a>
+.</p>
+ <br>
+      <p>When I travel, I usually fly EasyJet from Luton to Lisbon. I know the aircraft types (A319/A320), recognize crews, and even choose specific seats to sleep in. I have taken around 150 flights on this route.
+
+I notice patterns that others don’t. For example, I can tell when different pilots approach Lisbon differently: some make the correct turn over Costa da Caparica and land smoothly, while others turn too far left and only correct just before landing, which feels rough. I also notice differences on other routes, such as whether the approach goes over the Seine River delta in Normandy. I actually memorized the whole flight back and forth and the details.
+
+I am very sensitive to descent. Because of sinus issues, I can usually tell the plane is descending before the pilot announces it, both from the sound and from the direction of turns (e.g. crossing the Channel).
+
+I also notice crew routines. On the last flight of the day, they usually sit and eat at the back seats, which are free; I often choose those seats because it helps me sleep.
+
+I tend to repeat the same pattern of flying (same airline, same route, same time) rather than exploring other places, even though I have flown so many times. </p>
+    
+    
+  <div class="photo-wrap">
+  <div class="small">
+    Flight – spooky person. Sometimes waking up scared several times during a flight and people notice. I run a lot in my Portuguese room during the holidays to get exhausted and avoid bothering anyone. Bought it with profit from stock market.
+  </div>
+  <div class="grid" data-grid="30-35">
+    <figure>
+      <img src="flight.jpg" alt="Flight photo 1" class="zoomable">
+      <figcaption>A320 flight – I know by the tray height; it's high enough to sleep on without having to cover the gap with a bag. The tray on A319 is too low. Wider cabin with more seats and rows than an A319.</figcaption>
+    </figure>
+    <figure>
+      <img src="run.jpg" alt="Running photo 2" class="zoomable">
+      <figcaption>Running in my Portuguese room to relax and get exhausted during the holidays.</figcaption>
+    </figure>
+  </div>
+</div>
+</section>
+
+<!-- Shared Overlay (only include once in the body) -->
+<div id="imageOverlay">
+  <span id="overlayClose">&times;</span>
+  <img id="overlayImg" src="" alt="Zoomed Image">
+</div>
+
+
+<section id="daily" class="glass" data-tts-scope data-year="20-25">
+  <div class="head">
+    <h2>Daily Journal</h2>
+    <div class="meta">I'll post daily events here.</div>
+  </div>
+  <div class="content">
+<ul>
+  This website will become private on 26/01 . IQ, RAADS-R, CAT-Q, AQ, EQ, RBQ-2A and the Aspie Quiz – click <a href="#communication" style="font-weight: bold; color: #FFD700; text-decoration: underline;">Communication</a>, and the results are there.
+
+<li>I experienced dissociation on 13/12/25. I looked down in front of a customer and my manager saw it. while doing that , it felt like not being there. It took seconds. new holiday week coming. same fligh,airport,time, place,etc..</li>
+   
+   <li>15/12/25 – I experienced a shutdown at work on 13/12/25. Both a customer and my manager witnessed it. After work, I went to a pub with colleagues. Later, I paid a locksmith to open my bedroom door, which was already open and unlocked. Due to multiple distractions, I was no longer thinking clearly and believed I had lost my key on the way home. I took the Overground back, checked the pub and the station, but found no sign of the key. The key had been inside my room the entire time, and the room was already open. When the locksmith arrived, I saw the key and my belongings and realised I had left it there. I paid £200 for the service.
+
+I do not like beer or pubs. I spent approximately three hours in a crowded pub, listening to conversations and forcing myself to participate socially, including drinking beer. The environment was overwhelming, and afterward I felt distressed and ashamed about how I handled the situation. </li>
+   
+   <li>13/12/25 – I feel nausea at the end of my shifts. Not every day, but every 2 or 3 days. Today I felt like vomiting, and I do not think this is normal. I have tried everything and already cut everything out, even when I have only had water. My emotional regulation appears to be working better. I had a situation at work where I looked down instead of making eye contact with a customer. It was more than just looking down; I felt disconnected from the situation, as if I was put aside from it and observing my own life as a spectator. The customer did not like it, and my manager noticed it as well. I felt briefly dissociated, as if I was not fully present for a moment.</li>
+
+   
+   <li>12/12/25 – I woke up about 20 minutes ago, and I’ve cried a lot since then. I’m going to take a cold shower before going to work.</li>
+   
+   <li>12/12/25 - The idea here is to expose the reality. Maybe it doesn’t look great at this point in my life for several reasons. For example, the traumas described below are related to failures in school, work, and relationships. I was always expected to do more and to do things the way my parents wanted. My sister calls them narcissists, but I'm not sure if she’s right. I’ve been financially exploited by people, and the only person I truly loved called me a lost cause. These things are still on my mind, of course. My sexuality is fluid, and I’m not sure what I like. This is a struggle for me as a Christian, but at the same time nothing really makes sense. I know the roots of religions—I studied a lot (I graduated with honors in history in high school in the US). I know it doesn’t feel true to me, and sometimes it feels like there’s nothing out there, no ground.</li>
+
+
+   <li> 11/12/25 – I feel nauseous by the end of my shifts. Sometimes I ask my parents to call the next day because I can't handle hearing my own voice anymore. As for the nausea, I just ignore it. The situation feels miserable. I don't know if it's just me, but it's not easy. I never get used to it. When I was younger it felt much stronger, because I used to sweat during panic attacks. I think that's how masking works, but I'm not sure.</li>
+   
+   <li>11/12/25 - I noticed that mirtazapine makes me gain weight, and I've been calling in sick from work more often since I started gaining weight. I don't feel comfortable. My clothes feel itchy and tight. I decided to stop taking mirtazapine (there is less than half a sheet left anyway). I'll start eating healthy food again (grilled halloumi, vegetables, orange juice, vegan protein shakes) — that's what I used to eat every day — and drink plenty of water. I will start over. If I notice I'm losing too much weight, I'll adjust it. I told Doctor Agnish that I have two eating days (my days off); I'll balance things on those eating days.</li>
+
+   
+   <li>10/12/25 - The things I'm sharing here are things I've never told anyone. I don't consider myself sentimental; it's just that a lot comes at once, and I cry without even knowing why. Sometimes its just sadness. I think most times my body tries to release somehow. I tried to run away in the past—bought flight tickets and lived in different countries, went to church—but nothing worked. I still have the same issues, of course. I think this time I'm at least getting somewhere with the doctors. In my mind, I always think I would be better living in the forest, isolated, with the minimum (food, Wi-Fi, etc.). Many thoughts come to my mind, and the idea of autism is actually new to me. I hadn’t heard of it until about six months ago, but it matched perfectly. Everything in the assessments matches what I feel. It calms me a lot to know other people understand what's going on.</li>
+   
+   <li> 10/12/25 – I wake up frequently, and I also experience flashes of past events when I try to sleep. I think these may be related to trauma. I often say certain words without thinking; they just come out randomly. For at least the past 20 years, something I frequently say without noticing is, “I want to die.” It’s sad, but saying this seems to help regulate my mind. The idea that I could end any pain at any time feels comforting to me. Even in my dreams, I sometimes dream that I die, and it feels peaceful. I don’t wake up from those dreams.     Yesterday, I woke up around 2 a.m. and cried again. Its 6am, I'm on my way to work. </li>
+   
+   <li>07/12/25 – This is how I wake up every night, many times throughout the night. A sudden small noise makes my eyes open wide, my heart beats fast, I feel pain in my chest, take deep breaths, my hearing becomes sharper than normal, and adrenaline kicks in. I try to check what caused it, and it takes several minutes before I can try to sleep again. Without medication, it takes forever.</li>
+   
+   <li>
+  06/12/25 – I called in sick at work. Off, sick, sick, off (4 days off – cold and flu). I spent 2 days in bed and didn’t say a word. 
+  4 days in total at home. I don’t go out unless it’s for a coffee, and even then only for a few minutes — it drains me a lot. 
+  That might also be why I felt worse. I had a coffee with a friend, and this friend is depressed.  
+  I’ll give 100% at work in the coming weeks, but I don’t think it will be enough. 
+  It’s probably time to move to another job. I don’t think I fit well in a supermarket. 
+  It was okay overnight, but not during the daytime with all the music and people around — it’s twice as exhausting as it should be.
+  I paid off my mortgage in Lisbon. I might, in the future, just get a part-time job and stay there for a few years. 
+  Since I don’t pay rent, I can still work comfortably. I’m also still thinking about opening my own business soon.
+</li>
+
+   
+<li>06/12/25 - about birds — <a href="tree.html">see more</a></li>
+   
+<li>04/12/25 – I was woken by a magpie between 7:30 and 8:00 a.m. The fig tree has no leaves due to the weather, and both the magpie and blue tit nests are gone. The magpie sings (territorial corvid behaviour), lands on the tree, grabs a piece of fig, flies to a warm chimney, drops the fig, sings again, looks around, and eats. Later, the blue tits arrive to catch insects on the same tree. The blue tits check the tree, go to the chimney, sing, and then check another tree.</li>
+   
+   <li>04/12/25 - Today I'm off. It's 7:30 a.m., and I'm already fully awake. I haven't had a TV since 2010, I've never had a Twitter/X account, and I only have 20 friends and 0 posts on Instagram. I use Instagram to watch rocket launches and similar topics. Social media doesn't work for socializing in my case. I spend most of my time on real things — real studies, news, or documentaries. Nothing fake. I don't really like movies or series. I've never watched the most famous series, and the last movie I watched was more than a year ago. I've had episodes where I had to leave the cinema with different girlfriends on different occasions because I disliked the movie so much — unpredictability, when the good guy is always losing, or when the movie feels too fake. I also managed to have a fully normal work week before my day off. No one at my workplace knows about the struggle; for them, everything seems good at all times. I just wanted to state here(below) what happens in my mind.</li>
+
+   
+   <li> 03/12/25 - I think I know what's happening. It's Christmas time and I don't really feel well with all the music,lights , etc.. also I started already overthinking about the new years fireworks. I always put some loud music at midnight , in a dark room. I like the fireworks lights , not the sound. some people do it after midnight so it becomes unpredictable and I get startled a lot </li>
+   
+   <li>03/12/25 – I finished my shift yesterday, and I’m on my way to work today. I will stay silent for as long as I can today. I just stay silent when overwhelmed.  I haven’t called in sick. What I try to do is go to work normally, even though I know I’m not feeling alright, and if I can’t manage it, I ask to leave. This has happened several times at different jobs. I’ve even cried at work — for example, on February 5th of this year at my current job. But I don’t just stay at home. I actually feel a sense of internal accomplishment at the end of most shifts, and even after weeks of work. I know that I’ll spend my day off tomorrow recovering. I won’t really enjoy my day off.</li>
+
+   
+   <li>02/12/25 – I'm struggling to write a daily journal. Every day is basically the same: I get exhausted from work, eat, and sleep. Apart from holidays, that’s pretty much it. Today, for example, I feel like I'm being dragged to work. I don’t feel like I belong anywhere at the moment. I'm on my way to work, and everything feels unreal. I'll call in sick tomorrow. I've reached my limit, and I'm going to work today with zero energy. If I stay at home, I might cry the whole day. I know it seems weak, but it's what happens.</li>
+   
+   <li>
+28/11/25 – Today is Friday. I’m off tomorrow. I have no friends, no girlfriend, and my family lives in another country. I feel like the loneliest person I know, but this isn’t new to me—I’m used to it. I’ve spent my whole life in libraries on my days off. I took a quarter of a clonazepam tablet and I’m going to sleep. Sometimes I feel the need to fall asleep as fast as possible, because if I stay awake too long my mind starts questioning everything and I get overwhelmed. In those moments I start wondering what the point of the next day even is, and it becomes very hard to stay positive.
+</li>
+
+   
+<li> 27/11/25 - I don't drink much caffeine because it gives me nausea. Instead,  I eat lots of chocolate and drink protein shakes , eat protein bars. I feel completely exhausted at work and I can't call in sick,  Then I keep eating whatever gives me energy the whole day . It won't help much, but it's better than nothing. It's thanksgiving week and the shop has American customers. its a busy week and today is the busiest day. I started drinking alcohol again a week ago. its not possible to live with this without drinking. Customers are all smiling and I am expected to smile back. Its disturbing. I'll feel drained today after work and I'll drink alcohol ,etc.. If I just have mirtazapine, the bad thoughts will come after and my mind can quickly become like hell. I think its better just to have alcohol today and forget about today and go to bed after.</li>
+   
+   <li> 26/11/25 - I'm wearing a shirt and a black jumper—the same one I wore last year. Colleagues have commented on how I can wear only a jumper on such cold days. I don't feel comfortable wearing anything else. I'm also wearing the same shoes I've worn since January, since I bought several identical pairs. I only wear jeans of the same colour, so I sometimes feel like a cartoon character. I cancelled another meeting for tomorrow. It was a coffee time with friends before going to work. I cannot do both on the same day.  I will feel tired after meeting them.</li>
+
+   
+   <li> 23/11/25 — I noticed that my rocking movement consistently goes from east to west. When I think back on the places I’ve lived over the past 10 years, the direction was always the same. </li>
+   
+<li> 20/11/25 - It’s important to note that this daily journal will end on 26/01/25. It is intended as a sample for reflections during my assessment.  I didn’t meet my flatmates yesterday as I told them I was tired after work.</li>
+   
+<li> 20/11/25 - My most vivid memories took place during cold weather. I’m meeting some flatmates tonight after work. I spent the day trying to find ways to avoid meeting them. This is usual for me. I often change my mind because the anticipation itself feels exhausting. At least I’m off tomorrow, so I won’t end up calling in sick at work because of it. After spending time with people, I usually feel drained and exhausted. </li>
+   
+   <li>19/11/25 — At work, I need to look at people’s eyes, and I notice that people can tell I don’t always feel comfortable doing that. It’s a struggle for me to greet so many people and help them with things. I feel vulnerable when someone looks directly into my eyes.</li>
+   
+   <li>17/11/25  I’m feeling as if things around me aren’t entirely real. It’s a sense of being disconnected from my surroundings, almost like I’m observing everything from a distance rather than participating in it. However, this feeling isn’t harmful, as I’ve experienced it many times before.</li>
+   
+<li>17/11/25 – I went to work in London today, one day after returning from my holidays in Lisbon. My colleagues kept saying things like “Wake up, Diego,” because my mind seemed far away. This isn’t new to me. I’m extremely exhausted, and I wanted to write this down because I’m going straight to bed as soon as I get home.
+
+Music helps me a lot—I don’t think I would have made it through the shift without it. I had several breaks in the toilet. The level of fatigue feels similar to having a really bad cold or flu. I’m not feeling any cold or flu symptoms at all, just exhaustion. It seems impossible for me to have a child and family at this point. It's frustrating. I don't think I'm able to take care of someone other than myself. </li>
+   
+   <li>15/11/25 – Travelling back to the UK tomorrow. I’m feeling really tired, with headache and my eyes hurt. I went to a meeting at the church but couldn’t stay for long. I’m taking clonazepam today. Emotionally, I feel compromised. I’ll just try my best to stay calm. I’m not arguing or responding to any stimuli today or tomorrow. I’ll follow the plan and stay quiet. I’ll still meet some relatives after taking the clonazepam. I’ll travel in the morning and spend the rest of the day sleeping. It is what it is.</li>
+   
+   <li>14/11/25 – One of the difficulties I experience in my daily life, especially when I’m on holidays and meeting new people, is engaging in group conversations. People often change topics very quickly and don’t finish what they started. For example, someone might begin talking about an event and then get interrupted by someone else, which leaves me hearing only half of the story. When I ask a question, some people respond in a roundabout way instead of giving a simple answer. I deal with this every day. It irritates me, but I usually don’t show it. My parents are the exception, since I’m more open with them, so I often end up saying things like “Can you please just finish before starting a new topic?” or “Please answer my question.”</li>
+
+   
+<li>
+12/11/25 - I tend to focus intensely on specific details. For example, today while watching the news, there was a brief mention of nuclear power. I immediately felt the need to research everything related to nuclear fission — including the entire process from uranium enrichment and centrifuges to how uranium-235 fuel pellets are placed inside metal tubes made of zirconium alloy within reactors, how fission releases kinetic energy and heat, and how the resulting pressure and steam drive turbines to produce mechanical and then electrical energy. This level of deep focus was triggered by a single mention on the news. Similar patterns occur with many topics; I often feel compelled to explore subjects in depth until I fully understand them. This happens several times a day with different triggers such as news, conversations, books, or environmental details. I also notice heightened sensitivity to external factors like patterns in nature, work demands, noise, lights, and temperature. Last night, I fell asleep only after about two hours of trying and woke up several times during the night. Restless and fragmented sleep like this is common for me.
+</li>
+
+   
+<li>
+  11/11/25 – I tend to overanalyze everything, which makes me mentally and physically tired. Multiple people — including my bosses, family, ex-girlfriends, and friends — have mentioned this to me. I often notice and interpret every expression, tone, and small detail. Today I went on a day trip, and my sister was driving. She has crashed a few times before, and because I didn’t fully trust her driving, I stayed alert for about two hours each way. I couldn’t relax and felt exhausted afterward. My eyes hurt. I also had to leave one of the stores because the loud music was overwhelming, so I waited outside. Earlier, I asked my father to buy a heat pad for my back pain. He phoned me and unexpectedly handed the phone to the pharmacist, which irritated me because I wasn’t prepared to speak to them. I told him not to buy it. When he came back, I explained my reaction calmly and without shouting — which I consider a significant improvement for me.
+</li>
+
+
+   
+   <li> 09/11/25 - I'm concerned about my future. I know this won't go away, and I'm not sure if I want to continue with it. But I can't make it disappear—it's a part of me, and I can't stop it. I cried again today, though of course not in front of others. I feel exhausted.  I was supposed to be enjoying holidays. My mind tortures me. It's not a good place to be. I'm greatful for my doctors. </li>
+
+   
+<li>
+09/11/25 - Today I've been to the church with my parents. During the service, I was concerned about having to greet people after the service. I planned ahead, looking at who was there and what I could say to them during the service. Been to a shopping centre after, became overwhelmed there, but this time I took time to sit with my parents and explain to them what I was feeling and why. Noises become louder; I get stressed and tired. Sometimes, depending on the lights, it hurts my eyes. I woke up with pain in my eyes before because of it, for example. I usually have headaches, and I use photochromic lenses on my glasses. My parents use photochromic lenses too, and I suspect they might have the same condition. My mother is an artist, extremely sensitive, and my father is a perfectionist and avoids people a lot. They laughed about it because I used to shout and have terrible moments when this happened in the past, and now I'm learning to deal with it. So I felt overwhelmed twice inside the shopping centre. The first time, we had to leave the food court. After eating, we spent 30 minutes there talking, and it was loud. I asked to please leave the area as I was getting stressed with the noise. After walking around, I had the same feeling after stopping for a while in a café inside the shopping centre. I showed them my anxiety ring, and I solved Rubik’s on my way to the church and on my way to the shopping centre and back home. I explained to them what support is and that they are my support as well. I did not have my medication yesterday. I woke up several times last night, even though I was exhausted. Every little noise wakes me up. But this is something I’ve had since I was a little kid; I always wake up a lot. The medication helps me to sleep, definitely. I've also put back 10 kg since I started with mirtazapine, and people are commenting that I look healthier.
+</li>
+
+
+   
+   <li>06/11/25 – I feel drained from my projects. I called in sick at work, saying I had back pain. I actually do have a back pain. I have a lot going on at the same time: my company (travel planning, suppliers, laws, imports from South America) and my holiday coming up in two days. I’m spending time studying cybersecurity and adjusting the layout of my company’s website. It will be similar to Amazon, but only with selected South American suppliers.
+
+I also have local sellers offering cakes, so I might add a local food option to the website so users can choose a cake for same-day or next-day delivery. I’m also planning to sell Brazilian hammocks from the Northeast region of Brazil, with an optional installation service if requested.
+
+I need to study the programming languages or tools used to convert webpages into mobile apps, such as Flutter or React Native, so my store can also be downloaded from Google Play. I want to create something useful and high quality. I spent the morning watching birds and planes, and then I plan to complete my entire cybersecurity assignment today — about 8 hours of work — and afterward work on my company’s website by studying React Native and Flutter and adding more features to the app.
+
+I remember calling in sick in 2013 for the same reasons while I was a night supervisor in a hotel. It feels like some patterns repeat in my life — intense workload, stress, and the need to pause and take care of myself before continuing.</li>
+   
+   <li>04/11/25 – I am dragging myself into a new holiday week. I will be traveling the exact same way, to the same place, with the same plane and crew. I know every step of what is going to happen, and I know the Lisbon underground as well as London’s. I know where I will be every minute of the day, and I even play a game with myself trying to guess the exact hour and minute when I will cross the border or when I will get a bus or train. All the days of my trip are already planned, and I know exactly what I will be doing for the following days — everything is decided well ahead of time, and I think it’s good to know things before other people do. Anyway, I will be overthinking about it, even though I already know what’s coming. Sometimes, when I get stressed quickly, I don’t treat people the way I want to, and I react too fast, then later I feel bad about it. Stress also makes me eat whatever is easiest, even if it’s not good for me, and I know I do these things because I’m overwhelmed, not because I don’t care. I’m trying to notice it more and do better when I can. I already know what I’m going to eat and drink too, and I have water bottles from the brand I like placed and ready for each day . My things aren’t packed yet, but I left clothes ready there from before. It works like that everyday.</li>
+   
+   <li> 03/11/25 – I experienced a violent crisis a few months ago. There have been many changes at the company where I work, and I also had to move flats. I carefully considered various possible outcomes and decided to contact a doctor for help. I am now realizing how serious the situation was.  </li>
+   
+   <li>01/11/2025 — I spent the morning analyzing my backyard. There is a magpie, a blue tit, a blackbird, and a robin living in the apple tree next door. I observed their habits. The magpie seems to protect the smaller birds from squirrels and crows — for them it is like living near a police station. The magpie looks familiar with the branch where its nest is and appears to be around three years old (they usually live around five years). The blue tit sings a lot, though not as much as the magpie. I can occasionally hear the robin, and the blackbird only very rarely, as it doesn’t seem to be around much. I am nicknaming them individually.</li>
+   
+   <li>31/10/25 – I notice that I often hear internal body noises (such as breathing, heartbeat, or other internal sounds). These sounds tend to bother me more than external noises. They can feel louder, more intrusive, and cause more stress than things happening around me. Sometimes my cooling fan helps by masking these internal sounds, making it easier to focus and feel calm. </li>
+   
+<li>28/10/25 - Today was a "promo change" day at the supermarket. It’s the day when tags with old promo prices are removed and new tags with new items with promotional prices are displayed. I organized the new items by bays/shelves and displayed all of it by myself. The leadership there is supposed to do it, but they don’t know all items and they are slow. It took me 1 hour and a half to display most of the supermarket’s tags. For me, it’s an easy task. I have memorized all items and details of it, and it’s a time spent without talking, just by myself. Sometimes they give a voucher as a thank you. During the promo change I don't bother to work the backstock or to do other activities.  I take my time since I'm by myself. </li>
+   
+<li>
+27/10/25 – Rain, cold, and snow calm me down. I like walking in the cold rain, especially on my way back from work. It gives me the same grounding feeling as sitting on the floor. I enjoy the sensations of cold weather, rain, and snow. I can focus more easily when the weather is cold — the cold breeze helps me see the world in a clearer and more realistic way. In contrast, I often feel anxious or overstimulated in warm environments, and I have experienced several panic attacks during hot weather. The heat makes it harder for me to think clearly or regulate my emotions.
+</li>
+
+
+   
+<li>
+   
+27/10/25  - Sometimes when I sense this state of heightened perception, I experience a strong sense of detachment from myself, as if I can observe my body and mind from the outside. It feels like seeing myself as a structure covered in layers or masks, each representing a different social version of me. 
+
+In this state, my senses become much sharper: I can distinguish sounds coming from different rooms, notice faint smells (for example, I once detected the presence of mice by smell), and estimate the height or model of planes by their sound. Sometimes I hear certain sounds more loudly than my brain seems able to process, and my mind tries to understand what changed — this can trigger anxiety. When that happens, everything can start to feel louder at once, and it becomes difficult to understand or focus on individual sounds because other noises overlap. For example, a knock upstairs can sound extremely loud and make my brain pause for a moment.
+
+When I drink alcohol, my thoughts sometimes settle, and I can focus on one thing at a time. However, when I experience unexpected loud noises in that state, my mind can freeze, and overlapping sounds make me drift into daydreaming. I might begin to think of myself in the third person — observing all the layers or masks that make up who I am — and wonder which version of myself is “real”: the one hearing things loudly, or the one interacting socially.
+
+I have a very good memory that stores all this information. For example, I can memorize an entire department of wines and restock several baskets with the correct numbers, knowing each wine’s country and price, and organizing them accordingly. However, sometimes the noise becomes so intense that my cognitive processing temporarily stops.
+
+It feels as though I step outside any social framework, perceiving everything in a more separated and detailed way. During these moments, I can also observe how I behave and how my masking process works — seeing how I adjust myself to meet social expectations, and realizing the difference between my natural self and my social self. I clearly understand my duties and responsibilities, but I often find social cues — such as tone, expressions, or unspoken rules — more difficult to read or respond to naturally. I'll present the letter received today to my manager. It is a relief to know the next steps.
+</li>
+
+   
+<li>26/10/25 – Been anxious about my assessment with Doctor Agnish Das. I called Mint Mental Health a while ago and called again today. I understand the doctor has many different patients, and the receptionist told me it's normal to wait, so I will just wait for now. I'm actually worried about the next steps, not really the outcome. I don't know how therapy works yet, and I'm sure I need help. The medication is working, though, because I can socialize for longer periods, and I'm not getting irritated as easily as before. But the symptoms are still here; they come as before, and I need to keep taking the medication.</li>
+   
+   <li> 24/10/25 - There’s a species of bird here that returns to its nest every week to leave food and clean it. It only breeds in spring. In autumn, you can observe its movements more easily and see which tree each one lives in. It’s even possible to tell individual birds of the same species apart. It’s the magpie — there’s one in my neighbour’s garden tree.
+
+Today is my day off, and I noticed the same magpie returning exactly nine days after its previous visit. So, it came back a little over a week later to clear the nest. There are no other magpies living within at least a hundred metres of its nest. This bird is really territorial. It might be guarding its area or keeping an eye on its nesting spot for next year. I'm going to start nicknaming the individual birds that live in my area, since I’m getting to know them. I already know some of the species in general, but now I’m starting to recognise the individual birds that live here. Magpies tolerate small birds, and I often notice robins, sparrows, and tits sharing the same tree in the morning. I haven’t yet observed much about the habits and behaviours of the other birds.  I’m studying cybersecurity, including types of viruses and their code, as well as the deep and dark web. I’ve downloaded Tor and I2P. I’m preparing an isolated lab so I can perform ethical penetration testing as part of my course. There are forums on the dark web about what I’m learning, but I’m visiting them only for course-related research..</li>
+
+<li> 23/10/25 - Another busy day. I hurt my back, but I’m off for the next two days. Mirtazapine is making me gain weight — I need to find balance. I spent the afternoon at the park, watching the different colours of the leaves and the wind blowing through the trees, dropping more leaves. It moved like waves of air, tree by tree, swaying back and forth. The cold air felt denser and carried more force. Its sharpness cut my lips as I watched the whole scene unfold. I listened to the same song for three hours. </li>
+
+   
+<li> 22/10/25 - Today I organized the entire wine section in one go. I arranged the bottles by country and by price, from highest to lowest.  My colleagues often comment that I’m “too motivated” — beyond what seems natural. I find it very difficult to leave anything unfinished for the next day. Whether it’s the wine shelves, a 40-page cybersecurity book (with several topics) and its exam, or even a random book — whatever comes to me, I feel the need to exhaust it and finish it all at once. </li>
+
+<li> I just need to state here that these are real experiences. This is really happening. It doesn’t matter what people think of it, or what I think of it myself. </li>   
+   
+<li>22/10/25 - When I’m not overwhelmed like yesterday, I see my life as if from a third-person view. It’s like watching myself from the outside — as if I were observing someone else’s life, but in fact, it’s mine. It’s happening, yet it feels like a dream. The whole life doesn’t feel real.
+Yesterday, the fire alarm kept ringing nonstop at work, and it really triggered me. It went on and off for around 10 min during a very busy shift. I was basically the only one carrying boxes since we were understaffed and some people were on holiday.
+After about half my shift, my brain just stopped. It took a massive amount of energy to finish certain tasks. By the time I got home, I had nothing left for simple things. I took my medication and went straight to sleep without even showering.
+When I’m not overwhelmed, though, I still see things passing by as if in a dream — that happens on a daily basis. </li>
+   
+<li>21/10/25 – It was a really stressful day at work. I feel like there is no ground, as if I don’t belong in the place where I work or wasn’t invited to be here. This isn’t new to me; it has happened several times before. It’s just too much of everything at the moment. I put my feet (literally) on the floor and press them against it, then solve the Rubik’s Cube a few times. I might sit on the floor as well. It has happened many times before.</li>
+
+   
+   <li>21/10/25 – Today I contemplated death again. I just feel weak and wish I could sleep and never wake up. If it were legal, I would pay for it without a doubt. I take my medicine and go straight to bed when this happens. I cry and sleep. I'm getting used to the idea of dying. This constant thing in my head is really disturbing and never ends. I never fit anywhere. It is miserable. Maybe it's just me — I don't know anyone else with this condition — but in my case, it's just nonstop pain, and I have to pretend everything is fine in front of people. It's not easy to call doctors or ask for help. Nobody understands; there isn’t a single person I can talk to who truly gets it. I find some relief in nature, music, and medication, but even that has its limits. I'm pretty sure that will be my end.</li>
+
+   
+<li>20/10/25 - I felt the same sensation of a wall in my brain stopping my anxiety from reaching my forehead, as if it were coming from the center back of my brain. I think I’m already feeling the positive effects. I haven’t shouted at anyone in the past few days, I’m feeling calmer, and I’ve gained some weight back.</li>
+
+   
+   <li>19/10/25 - I applied at NATS as a flight controller. I have already memorized all the flight paths, airplanes, and airports in London by listening and sometimes watching. There is currently a waiting queue, and it seems that many autistic people are already there. For me, it will be an easy job—almost as fun as playing a video game, but of course with much more respect for the people flying.</li>
+
+   
+   <li>
+17/10/25 - I called in sick today. I couldn’t sleep last night, even though I took both of my medications. I’m currently taking half a capsule of mirtazapine because it slows me down a lot, and I’m not used to feeling that sluggish — it’s really strange.  
+I spent the day studying cybersecurity (10 hours non-stop) and finished my exam, which was originally scheduled for 28/10. I’m really enjoying the course because it’s self-taught — there’s no teacher, just support through WhatsApp — and it’s fully funded, which is great.  
+I also forgot to mention during my assessment that I remember everything from my childhood. I recall several moments in my mother’s arms, walking on my tiptoes (even the clothes I was wearing and people commenting about it), my aunt praying with her hands on my head to expel demons, and even taking showers with my parents when I was still a baby.
+</li>
+
+   
+<li>15/10/25 – Today I worked as usual and came home exhausted. My Italian flatmate knows about my autism process and decided to challenge me to a chess match in the backyard. He plays online and is quite good. I only play about once a year, but my memory is excellent — it’s like having a built-in chess database in my brain that I can instantly access when needed.  
+
+The game lasted around an hour. It was cold and cloudy. While we played, I was also identifying airplane models, altitudes, and destinations just by listening to their sounds — something he found fascinating. For example, some planes were at over 13,000 feet heading to Luton or Stansted, while others were departing from Heathrow toward their stacks before continuing to Eastern Europe, North America, or Scotland. I know several flight schedules and aircraft types that operate at those airports, which made it easier to guess. If I focus, I can even recognize the turbine sounds and identify the aircraft model.  
+
+During the game, I told him the history of chess while taking his pieces, all while guessing planes overhead. I ended up promoting a pawn to a queen and checkmating him with that same pawn — exactly as I had predicted. He found the whole experience amazing. I took a picture of it.Keeping it on my phone for a while. It was a remarkable night for me because of the time spent socializing.</li>
+
+   
+   <li> 14/10/25 - this headache keeps coming and going. It starts usually after half shift of work. I told my manager every section should have a planogram to make it more organised. Everyone is making planograms now at work. not a coincidence for sure.  I bet they hate me now. </li>
+   
+   <li>13/10/25 - I had a had headache again at work. It's the same headache over and over. Had a sinustab and mirtazapine,  some food and slept straight after. </li>
+   
+   <li> 12/10/25 - Spent my full day off at home(it's a sunday). I was planning to go to the national gallery  and see some impressionism and post-impressionism but then I decided not to bebcause it's crowded. speacially on sundays. I ended up inside a closed and dark room again for the entire day. I had my medication, cutting on clonazepan and taking the new medication. Still have social barriers. I'm concerned about my future at the moment. I might not end up in a good way. I cried again. It's a nightmare. I've learned some coding skills today as I'm studying  cibersecurity now for free with Yuzy trainning funded by the uk gov. I only study for free. But still working at the supermarket, investing in stocks, planning my own company . I still suffer bullying from old friends and even at work as I can hear conversations sometimes. I might change jobs again. taking clonazepan now after the new medication otherwise I won't be able to sleep and work tomorrow.</li>
+   
+   <li>11/10/25 - Rests are really important to recover from social contacts at work and life in general. I'm feeling better with the medications. Sleeping for more hours and  waking up rested and motivated. It's a life changing experience. I stopped drinking a while ago and I'm following strictly the measures directed by my doctors. It's been a life changing experience so for because I never really had any help. But I need the medications and I need a follow up soon with a doctor. I'm sure they will contact me somehow. I plan to contact the mental health clinc after 14days of the appointment which is in 5 days from now in case I don't receive any contact from doctors. I know there are several types of autism and we did not talk about which type mine is yet. </li>
+   
+<li>11/10/25 – I’ve been feeling more motivated since starting mirtazapine. I’m taking half a pill every other day and slowly cutting down on clonazepam. My body seems to feel the effects of mirtazapine more strongly, which is why I’m being cautious with it. But it’s working — my mood has completely changed already, and it’s only been four or five days since I started.
+
+I also had nine hours of sleep yesterday — a record for me — and I woke up feeling genuinely rested.
+
+I’m working and coding for my online e-commerce project while studying cybersecurity through Yuzu Training, funded by the UK government. I plan to apply the cybersecurity knowledge I’m gaining directly to my business soon. </li>
+   
+   <li>10/10/25 Since I started taking mirtazapine, I’ve noticed I can hear high-pitched sounds more clearly. It’s like my ears are more sensitive. I think the medication calms my anxiety but also makes my brain a bit more alert to sounds, so I pick up on small noises I didn’t notice before.</li>
+   
+   <li> 10/10/25 Mirtazapine blocks my anxiety. For example, I heard the laundry machine at night and started to feel anxious, but then I suddenly calmed down. I can feel it like a wall in my brain, blocking neurotransmitters from passing — like a well or barrier stretching from my ears to my forehead.</li> 
+   
+   <li>08/10/25  Mirtazapine 15mg seems too strong. I'm taking half a capsule a day. I don't think antidepressants will help, although it seems to regulate and sedate me. I feel more sedated than balanced. It helps me stay alive, but I feel like a zombie. I've tried fluoxetine in the past and will continue with Mezopine for now to see how it goes. Living with autism feels extremely difficult and lonely at times — like every day is a fight just to survive. Today I had a disagreement at work for telling the truth. It's sad to see and hear people lying to each other and being lazy and talking behind at all times. When you see all the backstage part it's a mess. People lie to each other at all times. It isn't helpfull.  </li> 
+   
+   <li> 05/10/25 - I have two conditions: giftedness and autism. Dr. Agnish is convinced—and so am I—that I’m autistic. However, I haven’t mentioned to him that I understand a bit of neurophysics and other topics. I also haven’t shown him my website (I’m not sure if he’s seen it). Most people think I’m really smart, even though I don’t see myself that way. I just feel that the traits of each condition can support and balance the other, and that’s what keeps me going. It’s plain and simple. </li>
+   
+<li> 04/10/25 - I don't know when I'm getting the letter or when the GP will change my medication. Nothing really changed in my life after the appointment on the 2nd appart from the fact I haven't thought about taking my life since then. Its actually a huge improvement. </li>
+   
+   <li> 02/10/25 - I had a consultation with Dr. Agnish Das (psychiatrist ). He noticed that I'm authistic which is good. I always thought I was. I did not say everything I had planned, but he got the main points. It was a bit draining ( I spent the whole afternoon sleeping after the consultation. Felt like a heavy weight being taken from my back ). I think I can now position myself better in the world and focus with more clarity. I think I have a second condition(pretty sure as much as I was about autism ) which is giftedness. I might ask the GP for a referral. But I'll do it just after my ecommerce website looks good and profitable. I might create other things meanwhile. I followed dr. agnish's advices and I think I'm in a better condition with my  girlfriend. He gave me really good advices for life. </li>
+   
+<li>01/10/25 - today is the day before the appointment.  I'm anxious. I had a fair amount of clonazepam in the last 5 days. I've been sleeping an average of 5 hours a day (waking up a few times during the 5 hours ). my work week is being busy. inventory on monday, promo change yesterday ( I removed the promo tags and displayed the new ones in the whole market. I organized it previously by bays during 1 hour and alphabetical order which made it a lot easier. I printed a script of what to say tomorrow to the doctor, did some rehearsals. I don't really know what to expect from the appointment.  It's annoying for not knowing what's going to happen, but at least I know the place already.  it gives anxiety. I only get depressed when the traits show up and when I remember I dont have anyone because of my own fault. I cant keep friends, girlfriends,etc... but I feel more comfortable being by  myself at the same time. It's confusing not to know where my life stands. its like going with the flow. I feel like being pushed through life and not belonging anywhere. I try to stay away from most people , yet I work and try my best. Sometimes(everyday) is hard. I might spend the whole day crying as it happened many times before. I'm afraid I cannot communicate well in front of the doctor. that's my main concern. it happened before with doctor Mornica. I cried while writting this message. I have no conditions of working today,but I'm going. have no choice. I requested holidays for tomorrow and the day after.</li>
+   
+   <li> cigarrete smell triggers me a lot. Need to deal with it on a daily basis unfortunately. I completely hate cigarrete it irritates me. </li>
+   
+   <li>  I was called crazy again at work. I memorize everything easier than others and can finish any task faster basically. I never fit anywhere. People see me as a manager even though I'm not. I believe it happens because I try to do everything as perfect as possible and it is annoying for most people. They avoid me and I tell the manager if anything goes wrong. I need to learn to let things go. </li> 
+   
+<li> 29/09/25 - inventory day. for me it's amazing because I don't have to talk much. I just focus on counting and organizing items. I'm anxious about the appointment on Thursday with the Dr. I've trained a lot and change my mind a lot about what to say. trying not nmto think about it but overthing about it.</li>
+   
+   <li> Feeling really depressed. I wish I couldn't wake up tomorrow. there's a long week to go. Changing all market's tags on tuesday till 23h, inventory on monday untill 22h and consultation on thursday. I wish I had nothing and was normal. had Clonazepam, it helps me a lot, but I need to find another solution. I don't think I'll reach my 60s and retire even. it's not fair, it's not fair to just suffer. </li>
+   
+   <li>28/09/25 - Today I slept well because of a good amount of clonazepam. Winds changed and planes started landing towards windsonr and also departing towards windsor. No planes are passing here today although there were a few helicoptres which fly at 1000 feet but not loud. My room is so dark and I spend so much time online coding with earphones that I forget it's cold outside. I might completely forget about the outside world. It's been always like this. I feel that I don't fit anywhere and sometimes I feel like I'm a failure. I'm off today, it's sunday. Spent another day locked inside the room. My life is like a lockdown (from covid), but without people to talk. I spent most of my time learning things on google or with AI. Mostly 90% about coding. I cry sometimes , not for not having people around but for not being able to socialize properly and build a connection. </li>
+
+   <li> 27/09/25 – Before clocking out from work, I had to listen to a comment from a colleague who noticed me rotating my anxiety ring while waiting in a queue of three team members to clock out: “This ring is really good. At least you’re not rotating the baskets.” I think she noticed how delicate the trait became and how easy to regulate or something like that. I don't know what happens in other people's minds, can't tell. I just presume everyone is kind.  </li>
+   
+   <li> I will keep writing my daily journal until my consultation with Dr. Agnish Das on 02/10/25. The plan is to help him with the diagnosis. </li>
+   
+   <li> 27/09/25 – I got through my entire shift feeling irritated because of what happened in the morning (I hadn’t slept, and all the noise made it worse). My manager gave me a list of beers to mark which ones were discontinued and which were new. I went through the stock with the list, and that actually calmed me down a bit.
+
+Unfortunately, I had to work with two lazy team members, and I ended up complaining about them. I don’t usually complain about anyone unless the situation feels really unfair.
+
+After this busy day, I’m planning to eat and then sleep. I won't code today. It's saturday night,I've got no friends, no girlfriend and I am exhausted.</li>
+   
+   <li> Irritation example- 
+   27/09/25 This morning I woke up to the sound of planes and ended up recording videos comparing the noise of an A319, A320, and A321. Because of the easterly winds, departures were heading towards London, passing over NW10 at about 4,000 feet. I even managed to capture a Boeing 777 bound for Dallas, so I could compare the sound of smaller Airbus aircraft with the heavier 777. Usually, the long-haul flights to the US depart in a group, and today there were two 777s and a JetBlue A321, all initially heading east towards London before turning 180 degrees to cross the Atlantic. I'm working at 1pm . I woke up several times during the night because of noises at the backyard , front door, cars. I'll try to sleep fora while before going to work At the same time, the morning birddsong was clear and loud. Around 8 am in NW10, I could hear the robin, blackbird, great tit, and woodpigeon — all singing as the aircraft roared overhead. Usually, the long-haul flights to the US depart in a group, and today there were two 777s and a JetBlue A321, all initially heading east towards London before turning 180 degrees to cross the Atlantic. As I am irritated already, I feel a slight" heart pain" it literally hurts a bit around my heart area, noises become louder and lights brighter. for example right now my eyes hurt and I can't have another clonazepam because I'm working in 3 hours. </li>
+
+   
+   <li>26/09/25 - My manager asked how I was doing and told me the team is very happy with my work. They are giving me a 5% raise plus bonuses. She also asked about my traits, as I am often quiet and wear earphones. I explained my sensory sensitivities (lights, conversations, background noises). I gave examples: difficulty with the sound of a magpie outside, the fridge humming, and my ability to memorize aircraft models by identifying the engine noise as planes fly over my flat. My manager said that if I provide a doctor’s letter, I would be allowed to use earphones for the entire shift, and all reasonable adjustments would be supported.</li>
+
+<li>26/09/25 - My manager was unsure how to organize four shelves of wines by price and country. I suggested using inexpensive colored sticky notes: each color representing a country (e.g., red = Italy, blue = France, yellow = Spain), and marking the expensive items with a black dot. I described it as applying simple logic (“categorization and systematization”) and compared the final arrangement to “playing Tetris” until it fit properly. She found the idea excellent and shared it with other stores in the brand.</li>
+
+   
+<li> I met a lady in Portugal during my holidays. We kind of liked each other, but I started talking about coding on whatsapp everytime and she's not answering anymore. I need to learn how to talk about something else. I don't know how to have girlfriends. it's miserable my situation. </li>
+   
+   <li>25/09/25 Spent 10 hours learning how to use stripe (it's a payment gateway developed in 2010 - it's used by amazon, walmart, google, shopify ), and I'm planning to use it on my ecommerce being developed. I'm integrating APIs from stripe as payment gateway and google cloud as database. It might take a few months since I'm building it all by myself and afterwards I'll have to adjust all the layout to look more professional, etc... that's some of what I do after work. I eat, code, take clonazepam and sleep. My room is already extremely organized. I pass the vacuum every 2 days, everything is in place at all times and clean. My problem is just socializing , noises, lights. I noticed my right hand moving by itself intentionaly while I was shopping at sainsbury's yesterday. 2 ladies where passing by and noticed as well which looked awkward. Clonazepam calms me down, I wake up more relax, but after work I'm already back to normal and get irritated with sunlight and these traits show up more. </li>
+
+    <li>25/09/25 been called crazy at work because I don't sit with others in the break room. I can hear what people say even if I'm far from them. For me the break room is pure madness. People are really loud, they talk on the phone on their languages (different countries ) , listen to pop music, heat up all sorts of food on microwave, laugh loud , joke with each other. I can't stand it. It drains me entirely. So, I sit outside and get exposed because everyone sees it. I just put my earphones and music, trying to relax so I can end my shift properly.</li>
+   <li>
+24/09/25  There was a bingo at work and I missed it because I did not say “bingo” — I didn’t understand that the word <em>“free”</em> in the middle could be marked at any time. I was waiting for the word to be called. After many names were called, someone else from the group asked about the word “free” and won the bingo.  
+  I actually won as well because I recorded the whole thing on my phone and could prove it.  
+  If people don’t explain things properly, I can’t do several things — even a simple bingo. I don’t ask questions in groups and I usually mess up. click <a href="#communication" style="font-weight: bold; color: #FFD700; text-decoration: underline;">Communication</a> to scroll up amd see the bingo sheet.</li>
+   
+   <li>23/09/25  for example there is a chicago flight united airlines landing at heathrow now at 13:10h Boeing 767-300. It's not as loud as A380 which comes in the morning from africa, middle east and asia. and these go to stack Chesham , rotate , and then  go round the city and around my area NW10 and wake me up in the morning. I hope I don’t get addicted to tracking flights just because of the noise. But I do like engines — I like rocket engines too. I’m also tracking the development of Raptor 3, the new generation of engines from SpaceX., etc..</li>
+
+   <li>Around 8 am, I can hear loudly the airplanes over NW10 because Heathrow is busy with morning arrivals. 
+  Some planes come from the Chesham stack, flying southeast over Harrow and Edgware before turning toward the airport, 
+  and others come from the Lambourne stack in Essex, crossing northwest London. 
+  Large planes like the A380 and Boeing 777 are especially loud. 
+  The cool morning air allows noise to travel farther, so the planes are easier to hear at this time.I usually wake up by this time in case I had a good sleep and I'm off work. 
+</li>
+   
+   <li> 22/09/25 refused a free python course ar cit college in covent garden because I had to get the overground once a month to get there. I can barely go out for a decaf coffee with my own neighbour. I usually give excuses. </li>
+   
+   <li> 21/09/25 Spent the day off entirely at home again, just learning about coding and payment methods for the website I'm developing slowly. It has database. People can actually register and leave messages on contact page/ it needs loads of improvements still. I had a disagreement with a flatmate today because of the laundry after 22h. It was too noisy.</li>
+   
+   <li>20/09/25 I just feel exhausted after this team member's appreciation week. for the past 2 days I came home, had some food and slept. Not doing anything other than that. I don't know how people have energy to have a family. It's impossible from my perspective. </li>
+   
+<li> I was invited for a birthday party again. they said it was going to be near my place. I showed up for 30min, had a decaf coffee and a bottle of water. everyone else was having several paints. I left within less than an hour. I bet they think I'm a freak I don't mind </li>
+   
+<li>
+  18/09/25 I won the bowling. Afterwards I went through Finsbury Park where I watched the swallows eating to get fat and prepare to return to africa in October. they were flying around the park at 18h to eat bugs. it looked beautiful as they were singing,etc...
+  They are <strong>habit animals</strong> and I <strong>relate to them</strong>. 
+  As planned I got back at home ,took a clonazepan and went to sleep — it <strong>worked as planned</strong>. I spent most of the time rotating my anxiety ring,  moving my left hand ( I put the ring on the left hand because it's the hand that moves often ) , so I'm trying not to move it. And of course I feel exhausted. the medication will help me to sleep. I'm just concerned that I'm taking clonazepam often. I need to find another solution.
+</li>
+
+   
+   <li> 18/09/25 It's so weird. I'm going for bowling with people from my workplace. yesterday I denied an invitation for a birthday party at Royal Park bowling on Friday. I tried not to go today as well but I've called in sick many times already. I'm going to get exhausted. My plan is to eat, have clonazepam and sleep straight away when I get at home. not doing anything else. I'm on break time at the moment and it's 14:06h. we are going to play at 15h. I'll put my earphones the whole time. I don't care. Its annoying for me to write "I" many times. but this thing is about me , theres nothing "I" can do. I never go out at all, with anyone. its really rare like today where it's work related and I can't say no. feeeling already stressed and anxious. I know it's in highbury and Islington,  the overground takes me there, etc.. planning to leave the bowling place at 18 30h maximum. I don't drink alcohol anymore. I'll have a simple soda , crips,  laugh for no reason when someone says something , play my part of the game and leave as soon as possible.</li>
+   
+   <li>17/09/25 I won the memory game and the balance game today at work. we basically had to memorize items displayed and write down on a paper. the balance game was about balancing some sticks which is pure physics and logic. won 40 pounds 20 for each. tomorrow playing bowling. its team members appreciation week.</li>
+   
+<li>
+I often feel guilty about how my behavior affects my mother. In the past, I made her cry many times because I became irritated easily and had frequent emotional outbursts. During my school years, there were times when we hugged each other and cried together. I lost a year of school due to severe anxiety and panic attacks. Currently, I call her often, but these conversations usually involve me being angry or upset about something. Because of this, I try to limit how much I call her and I also avoid sharing what is really happening in my mind.
+</li>
+
+   <li> 17/09/25 woke up with the pain on the belly left side. it goes away when solving rubiks. I think it's caused by anxiety . when I wake up there's a lot going on : change of temperature- heater is on -my fan sounds louder,  there are sounds outside my bedroom,  my thoughts come at full speed. I think checking social media reels makes it worse. I have just Instagram with 20 friends and it was created by someone else . I never got into this social media world, never had twitter/x account . thinking about deleting my Instagram account. solved the rubiks twice and went back to sleep. it's early and I'm working in the afternoon. </li>
+   
+<li> 16/09/25 today at work 2 different people made 2 different jokes and they both had to explain me the jokes. I was just standing seriously at both moments and told both I don't get jokes. this happens often,  I don't really feel bad about it anymore.</li>
+   
+   <li> 16/09/25 noticed that people are leaving me alone more often at current job. usually at some point in every job people realize and give ke more time by myself. same happened on previous jobs. </li>
+   
+   <li> I feel that my whole life was disconected from other people's world. I was there, but my mind was always elsewhere. My routines, the way I think, the way I view the world is completely different. But phisicaly I'm here, I can work and talk( although it's exhausting). </li>
+   
+   <li>16/09/25 - I told my family members that I won't call them or answer much the phone ( I don't really do, but this week I won't even more answer calls ) because it's team members appreciation week. the routine at work will change, I have no Idea of what can happen, surprises, games, lot's of interaction. I'm already upset about it. I wish I could go on holiday again this week. I'm planning to call in sick on wednesday (bowling day) . For me this is chaos. </li>
+   
+   <li>16/09/25 - I mention often my parents because I don't have friends. I don't look for friendships actually. This morning I got triggered by my own room's fluorescent light ( I had to organise the room, so it had to be on). It doesn't happens always to get upset like that amd I do have 3 different loghts in my room. need to replace the fluorescent light. I think I'm getting anxious about this working week. It's team members appreciation week and there will be loads of socialization. I ended up shouting at the phone and saying some bad things to my mother. I feel really bad about it. That's how my day will start today, feeling shit. </li>
+   
+   <li><strong>Sometimes I get tired of my own voice and need to keep myself quiet.</strong> This usually happens after work. My parents try to call me and they already know that <strong>I'll either shout at them for no reason or I won't answer the phone.</strong> — I kind of try to find something to complain and shout about — and they know that I know it's my fault. I usually say sorry in advance. My sister doesn't call me anymore and the same happens to my brother. I'm the youngest. <strong>I've noticed I've become as lonely as possible as the years pass.</strong> People just gave up because <strong>I'm rude</strong>. <strong>It cannot get any worse — no girlfriend, no friends, no family around.</strong></li>
+
+  <li> I listen to the same song 100 times. The song itself feels like a safe place. I lay on my bed and keep listening to it over and over while reading or waiting for the medication to work so I can sleep. </li> 
+
+   <li> My situation is really not good. I'm full aware of it. It's disturbing. Sometimes, when I feel the urge to scream but I cannot, I put a shirt over my mouth and blow into it instead. It helps me release the tension in a quieter way. I think this is a form of self-regulation. It feels like a substitute for shouting. The doctor will soon give me a diagnosis, but my life will keep like it is now. Feeling hopeless. I don't know if I can make it. Hopefully I'm just being too sensitive and it's all part of the process and it will get better somehow. I'm being optimistic, but I know I can just end everything.</li>
+   <li>
+  <strong>I don't know how to socialize.</strong> 
+  <strong>I don't know how to keep a girlfriend for longer than 3 months</strong> (that's the average relationship I have). 
+  One day a lady fell from the stairs in front of me at work, and <strong>I had no reaction.</strong> 
+  I simply walked away when I realized she would be fine within minutes, without even asking if she was ok.  
+  <strong>I don't get jokes, I'm too literal.</strong> 
+  Even during phone calls, <strong>I can't understand and interact properly.</strong>  
+  <strong>If I ask a question and the other person explains without following the steps from my question, I get confused, anxious, and upset.</strong>  
+  So, I take a deep breath and try to relax in order to keep the conversation. <strong>This happens every day, many times during the day.</strong>  
+  At work <strong>I need to mask by entering the shop laughing and greeting, even if I don’t feel like it.</strong>  
+  <strong>Sometimes I think people are talking about me when they are actually saying something good about me.</strong>  
+  <strong>I had discussions with many colleagues in several jobs and with managers.</strong>  
+  Even with flatmates, <strong>I had 3 discussions only this year of 2025.</strong>  
+  I got a video from 2 days ago that I plan to show during the appointment if possible.
+</li>
+
+   
+ <li>15/09/25 — <strong>I wake several times at night</strong>; this is common for me. I often <strong>solve Rubik’s Cube at 2–3 a.m.</strong> to make a <strong>chronic intestinal pain</strong> stop. I take medication for this pain. This has been ongoing for a long time — I saw my GP about it in the UK five years ago, and I had it even before that.</li>
+
+
+ 
+  <li>15/09/25 — Day off - Been to Tesco early in the morning as always, <strong>one of the first customers</strong>. I am buying “trash food” now because everyone says I am too slim. A colleague compared me to people on TV shows. <strong>I noticed many people looking at me all the time (more than before).</strong> I am putting on weight and it seems to be working. I realised I was not eating enough because I was <strong>too focused on coding and forgetting meals.</strong>  
+
+I think I am reaching a phase where I understand my situation better and do not want to stop working (this idea never occurred to me before), but <strong>I struggle a lot.</strong> On my days off I <strong>stay locked at home</strong> because I cannot stand <strong>cigarette smell, street noise, sunlight, people shouting, car sirens and horns.</strong> I feel better <strong>isolated at home coding</strong>, where I can regulate myself.</li>
+
+
+  <li><strong>My smile is usually fake.</strong> Whenever I'm serious people ask why I am sad; I fake a smile to stop the attention, which upsets me.</li>
+
+  <li><strong>14/09/25 — Severe exhaustion and low tolerance to work shifts.</strong> I can barely think .  2½-hour left to end  my shift and I feel the impact much more than others. I sometimes avoid basic tasks after work (once I avoided going to the supermarket and only had water. Went to bed without dinner because I was exhausted). When I feel like this I usually ask to go home early. This has affected me since school; I have asked to leave early many times at my current job in the past month.</li>
+
+  <li>05/02/25 — I had a confrontation at work: I called a colleague “lazy” to his face. He complained to the manager and later left the company by his own decision.</li>
+
+  <li><strong>14/09/25 — Sensory overload at work.</strong> At the start of my shift I was asked to help with decorations for team appreciation week. Colleagues were loud and excited; I felt exhausted and asked them to stop shouting because it was overwhelming. I often need to “recharge” in the toilet multiple times during a shift.</li>
+
+  <li><strong>Self-regulation by movement:</strong> When I move back and forth while sitting, I feel a pulsing sensation from my back to my head. This motion helps me regulate emotions and provides balance and calm; it helps me cope with stress and overwhelming situations.</li>
+
+  <li><strong>13/09/25 — Very rigid routine.</strong> I do the same things every day; changes make me anxious and angry. When flatmates knock without notice I get upset and ask for a 30-minute heads-up. When tired or overwhelmed I can be blunt (I have called people, including my boss, “lazy” and this has cost me friendships).</li>
+
+  <li><strong>Literal thinking:</strong> I follow instructions exactly. At work I was asked to check “alcoholic items” and missed some tonic waters because they were non-alcoholic; I told my manager to be clearer next time because I take things literally.</li>
+
+  <li><strong>Symptoms worsen with fatigue and sustained eye contact.</strong> Staring at someone for hours, bright lights, and background talk make symptoms much stronger and are exhausting.</li>
+
+  <li>10/09/25 — I stayed awake for ~2 days with only 45 minutes of sleep. I went to Costa to meet a friend; it became crowded and noisy and I could not tolerate the conversation. I felt exhausted, called my parents to complain, and later took clonazepam (~10pm) to sleep.</li>
+
+  <li><strong>Strong pattern detection and hyper-focus on household/flatmate routines.</strong> I can hear and detect patterns (devices online, TV/phone behaviour) and memorise the last two digits of device addresses. I have not accessed anyone’s device without permission.</li>
+
+  <li><strong>Chronic left-sided abdominal and chest pain since childhood.</strong> It sometimes feels like a heart attack; I do not think it is a heart attack but I worry one day it might happen.</li>
+
+  <li>10/09/25 — My thinking style: I memorise standards and room layouts (e.g., stairs), which helps me move quickly and confidently. Today I bumped a trolley into a tray and dropped items, then reorganised and continued. The tray was located at the weong olace, over a bench in the middle of the way. As I knew the layout of the place I came across it too fast to notice.</li>
+
+  <li>09/09/25 — I dropped a glass bottle while daydreaming. The fridge noise triggered me. Colleagues told the manager; I consider myself a reliable team member and understand margins and operations from past supervisory roles.</li>
+
+  <li><strong>Perceived exploitation and social vulnerability.</strong> In the last five days four different people asked me for money. Since school others copied my exams in exchange for protection from bullies. I often feel that people try to take advantage of me, so I hide from others.</li>
+
+  <li><strong>Avoidance of social noise and use of earphones to cope.</strong> People call my name loudly at work; I perceive it as shouting and often do not answer. On breaks I put earphones in and ignore everyone.</li>
+
+  <li><strong>Discomfort with social expectations and leadership roles.</strong> I know operational steps very well and have been offered leadership positions, but I dislike firing people and prefer not to take those roles.</li>
+
+  <li>08/09/25 — During a shift I had suicidal thoughts and felt like my life was a prison with torture. I was exhausted, in pain, and could not cry at work. The supermarket environment (noise, lights, talk) overwhelms me; I use short “recharge” strategies (toilet, deep breaths, earphones).</li>
+
+  <li>07/09/25 — Woke at 03:30 after coding all night. I napped 30 minutes; flatmates wanted to go out and I felt exhausted. I took clonazepam that night.</li>
+
+  <li><strong>Waking before alarms is typical for me.</strong></li>
+
+  <li>06/09/25 — Travel disrupts me: I often lose one day of holiday due to fatigue and need extra time to recompose routine. Travel exhaustion makes me feel hopeless; I sometimes think I should end my life rather than “bother” doctors.</li>
+
+  <li><strong>Strict sameness in clothing and routines.</strong> I bought multiples of the same shirts, shorts and shoes; I wear the same meals and follow the same routines.</li>
+
+  <li>05/09/25 — Big changes (flying back to London, new culture/routine) are critical moments. Changes make me more likely to react angrily or speak bluntly; I try to use earphones and relax to cope.</li>
+
+  <li>04/09/25 — I disabled encryption and freed up space on a ROG Ally to install Linux for my 14-year-old nephew. I teach him JavaScript, CSS, HTML and how to solve Rubik’s Cube. I enjoy teaching technology and problem-solving.</li>
+
+  <li>Attended church with clonazepam. I was very quiet during the service and could not handle the small-talk afterwards; a lady told my mother I was too quiet.</li>
+
+  <li><strong>Unmasking is distressing.</strong> I am worried about losing my job because at work people think I “just don’t want to work.” Sensory things (TV louder, lights brighter) are getting worse; therapy feels urgently needed.</li>
+
+  <li>03/09/25 — Solved Rubik’s Cube >300 times during holiday period; solving helps me cope during travel and overload. I run ~15 minutes most days which helps me recover after sensory overload.</li>
+
+  <li>03/09/25 — Recurrent sensory overload: shopping centres (noise, lights, talking) trigger reactions. I used Gaviscon for reflux and think my throat symptoms may be acid-related from anxiety.</li>
+
+  <li><strong>02/09/25 — I believe I will not cope without therapy and need to request it ASAP when back in London.</strong></li>
+
+  <li>Selected for a funded Python, robotics and sensors course by the UK government — programming is a focused interest that may support me during therapy.</li>
+
+  <li>01/09/25 — Went to a funfair with earphones; triggers include lights and sounds. I still get startled frequently and cry most nights.</li>
+
+  <li><strong>Constant use of earphones to reduce stress in family settings.</strong> I was called “angry little man” as a child and this pattern continues.</li>
+
+  <li>30/08/25 — Woke early; bedside lamp was covered. I worry about bright light exposure and long-term eye effects.</li>
+
+  <li>29/08/25 — At a funfair I lost my voice from noise, lights and crowds, felt dizzy and very tired; I had to take clonazepam and sleep afterwards.</li>
+
+  <li><strong>Speech differences:</strong> I sometimes speak too softly so people cannot hear me; other times I speak too loudly to be understood. I would benefit from a speech therapist.</li>
+
+  <li>I trip on potholes and bump my elbows/knees frequently and get bruises and scratches.</li>
+
+  <li>I notice small flying insects everywhere and sometimes get scared by them.</li>
+
+  <li>29/08/25 — Felt hopeless and had strong suicidal ideation. I have thought therapy might not help, but I also feel it is worth trying.</li>
+
+  <li><strong>Heightened olfactory and auditory sensitivity:</strong> I can suddenly notice smells (trash, mice) and sounds (people farting) that others seem not to detect.</li>
+
+  <li>28/08/25 — Took 2 mg clonazepam yesterday. I have limited sick leave left and am frequently calling in sick or leaving early.</li>
+
+  <li>27/08/25 — Noticed weight loss, visible veins, increased tiredness and heightened sensory perception since a recent intervention. I dropped a case of cider after being startled by someone passing and a phone ringing.</li>
+
+  <li>I often bump into things and get bruises; I know why I sit away from the breakroom (hat covers light, corner with less light and cooler temperature).</li>
+
+  <li><strong>Eating difficulties and hyperfocus:</strong> I often forget to eat because I get so focused; I am slim. I set two “eating days” per week to manage this.</li>
+
+  <li>26/08/25 — Upon waking I was on my phone and the cooling fan sounded 3–4× louder; I cried and felt left-sided abdominal pain and pressure over my heart. I compared left vs right ear sensitivity and found my left ear more sensitive; I avoid lying on my right side when possible.</li>
+
+  <li><strong>Detailed observational style:</strong> I notice patterns in animals and colleagues (who shares more, who goes to the toilet more often, punctuality, helpfulness) and sometimes run small experiments by watching behaviour.</li>
+
+  <li>Paracetamol sometimes causes nausea for me.</li>
+
+  <li>I daydream and overthink a lot.</li>
+
+  <li>I cry frequently and hate prolonged eye contact. Overground/underground travel is difficult; buses are tolerable but slow. I do not drive in the UK.</li>
+
+  <li>I often repeat the same story to different colleagues; they laugh but understand.</li>
+
+  <li>Although many things feel meaningless, I keep moving forward with my life.</li>
+
+  <li>I do not drink alcohol and stopped smoking after my GP advised me to; I do not plan to start again.</li>
+
+  <li>My GP noted left-sided belly pain in my records from four years ago. I was prescribed 20 mg omeprazole and 500 mg naproxen; blood tests are scheduled for next week.</li>
+
+  <li>Sometimes I cry as soon as I wake up.</li>
+
+  <li>I find comfort in nature — feeling the wind and watching leaves move.</li>
+
+  <li>When tired and in noisy environments (AC, people talking, traffic) everything feels blurred, like a radio without a frequency.</li>
+
+  <li>Lots of prayer gives me strength.</li>
+
+  <li>I get upset easily; my sister blocked me on WhatsApp because of my responses.</li>
+
+  <li><strong>Literal interpretation of language and jokes:</strong> I do not get most jokes but will laugh to defuse social situations.</li>
+
+  <li><strong>High task speed due to hyperfocus:</strong> I finish tasks faster than colleagues because focusing makes time pass quickly.</li>
+
+  <li>I used to self-tattoo in painful places and pour vodka on the wounds; I stopped a few years ago.</li>
+
+  <li><strong>Highly organised and routinised personal environment.</strong> I know exactly where everything is at all times.</li>
+
+  <li>I sometimes feel like I will die earlier; I look older than my age (37, but look older).</li>
+
+  <li>While coding or solving cubes I move forward/backwards or side to side without noticing; this also happens when I am standing or nervous.</li>
+
+  <li>I sometimes sing old songs or say random names/words without knowing why; I often end up singing the same song.</li>
+
+  <li>I enjoy watching birds at sunset and learning UK bird songs (magpies, blackbirds, robins, seagulls). I also photographed swallows in March.</li>
+
+  <li><strong>Short, frequent workplace breaks as regulation strategy:</strong> I go to the bathroom, close my eyes, hold a shirt to filter stimuli, put on headphones, play techno, and spend ~2 minutes recharging.</li>
+
+  <li>I dislike queues and shop early as the first customer; sometimes people suspect me of shoplifting, which increases my anxiety.</li>
+</ul>
+
+<br>
+  </div>  </div>
+  
+    
+</section>
+
+
+<center><p> My other USB drive was lost, so I do not have additional photos available. </p></center>
+<br><br>
+<!-- Scroll to Top Button -->
+<center><button id="scrollTopBtn" title="Go to top">↑</button></center>
+<script>
+  
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const lightbox = document.getElementById('lightbox');
+        if (lightbox) {
+          lightbox.style.display = 'none';
+          const lightboxImg = document.getElementById('lightboxImg');
+          if (lightboxImg) lightboxImg.src = '';
+        }
+      }
+    });
+// Select overlay elements
+const overlay = document.getElementById('imageOverlay');
+const overlayImg = document.getElementById('overlayImg');
+const overlayClose = document.getElementById('overlayClose');
+
+// Click on any zoomable image
+document.querySelectorAll('.zoomable').forEach(img => {
+  img.addEventListener('click', () => {
+    overlayImg.src = img.src;
+    overlay.style.display = 'flex';
+  });
+});
+
+// Close overlay when clicking the X
+overlayClose.addEventListener('click', () => {
+  overlay.style.display = 'none';
+  overlayImg.src = '';
+});
+
+// Close overlay when clicking outside the image
+overlay.addEventListener('click', e => {
+  if (e.target === overlay) {
+    overlay.style.display = 'none';
+    overlayImg.src = '';
+  }
+});
+
+// Close overlay on Escape key
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && overlay.style.display === 'flex') {
+    overlay.style.display = 'none';
+    overlayImg.src = '';
+  }
+});
+
+
+    // Smooth Anchor Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el) {
+e.preventDefault();
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    window.onscroll = function() {
+  let btn = document.getElementById("scrollTopBtn");
+  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+    btn.style.display = "block";
+  } else {
+    btn.style.display = "none";
+  }
+};
+
+// Scroll to top when clicked
+document.getElementById("scrollTopBtn").onclick = function() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+           
+</script>
 </body>
 </html>
