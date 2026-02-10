@@ -1,115 +1,1197 @@
-<!DOCTYPE html>
-<html lang="en">
+!doctype html>
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Personal Reflection</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-      background-color: #1c1f26; /* softer dark grey */
-      color: #f5f5f5;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 24px;
-      box-sizing: border-box;
-    }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>My life — Diego Silva</title>
+<meta name="description" content="História de vida estruturada por períodos de 5 anos, com fotos e leitor em voz alta para acompanhamento clínico." />
 
-    .container {
-      max-width: 850px;
-      width: 100%;
-      background-color: #2a2f38; /* softer contrast */
-      padding: 40px;
-      border-radius: 18px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-    }
+<!-- Emoji Favicon -->
 
-    h1 {
-      margin-top: 0;
-      font-size: 34px;
-      font-weight: 600;
-      margin-bottom: 28px;
-      color: #ffffff;
-    }
 
-    p {
-      line-height: 1.9;
-      font-size: 19px; /* larger text */
-      margin-bottom: 22px;
-      color: #e6e6e6;
-    }
+<style>
+/* ========================
+   Global Reset & Base
+   ======================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    @media (max-width: 768px) {
-      .container {
-        padding: 28px;
-      }
+body {
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+  background: #1e1e1e; /* dark gray, not pure black */
+  color: #e0e0e0; /* soft light gray text */
+  font-size: 18px;
+}
 
-      h1 {
-        font-size: 28px;
-      }
+/* ========================
+   Intro / Above Navbar
+   ======================== */
+.intro {
+  width: 90%;
+  max-width: 1000px;
+  margin: 1rem auto;
+  padding: 1rem 1.5rem;
+  background: #2a2a2a; /* dark background */
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  font-size: 1rem;
+  text-align: center;
+  color: #e0e0e0;
+}
 
-      p {
-        font-size: 18px;
-      }
-    }
+.intro strong {
+  color: #6caad9; /* calm muted blue */
+}
 
-    @media (max-width: 480px) {
-      p {
-        font-size: 17px;
-      }
-    }
-  </style>
+/* ========================
+   Navbar / Table of Contents
+   ======================== */
+nav.toc {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+  background: #2a2a2a;
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  position: relative;
+  z-index: 999;
+  border-radius: 10px;
+}
+
+nav.toc h3 {
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  white-space: nowrap;
+  color: #6caad9;
+}
+
+nav.toc a {
+  margin-right: 1rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+  white-space: nowrap;
+  text-decoration: none;
+  color: #6caad9;
+}
+
+nav.toc a:hover {
+  background: rgba(108,170,217,0.15); /* soft hover */
+}
+
+/* ========================
+   Sections
+   ======================== */
+section.glass {
+  width: 90%;
+  max-width: 1000px;
+  margin: 2rem auto;
+  background: #2a2a2a;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+}
+
+section .head {
+  margin-bottom: 1rem;
+  color: #f0f0f0;
+}
+
+section .meta {
+  font-size: 0.9rem;
+  color: #aaaaaa;
+  margin-bottom: 1rem;
+}
+
+/* ========================
+   Image Grid
+   ======================== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.grid img {
+  width: 100%;
+  height: 180px;
+  border-radius: 8px;
+  object-fit: cover;
+  cursor: zoom-in;
+  transition: transform 0.2s;
+}
+
+.grid img:hover {
+  transform: scale(1.03);
+}
+
+/* Figcaption */
+figure { margin: 0; }
+
+figcaption {
+  font-size: 1rem;
+  color: #bbbbbb;
+  text-align: center;
+  margin-top: 0.3rem;
+}
+
+/* ========================
+   Overlay for Zoomable Images
+   ======================== */
+#imageOverlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15,15,15,0.9);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+#imageOverlay img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.6);
+}
+
+#overlayClose {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: #eee;
+  font-size: 36px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+#overlayClose:hover {
+  color: #bbb;
+}
+
+/* ========================
+   Buttons
+   ======================== */
+.btn {
+  display: inline-block;
+  background: #6caad9;
+  color: #111;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  transition: background 0.2s;
+}
+
+.btn:hover {
+  background: #5a93bd;
+}
+
+/* ========================
+   Daily Journal Styling
+   ======================== */
+#daily .content li {
+  background: #333;
+  border-left: 4px solid #6caad9;
+  padding: 0.8rem 1rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+  font-size: 1.2rem;
+  line-height: 1.5;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#daily .content li:hover {
+  transform: translateX(2px);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.5);
+}
+
+#daily .content li a {
+  color: #6caad9;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+#daily .head h2 {
+  font-size: 1.9rem;
+  color: #6caad9;
+  margin-bottom: 0.3rem;
+}
+
+#daily .meta {
+  font-size: 0.9rem;
+  color: #aaaaaa;
+  margin-bottom: 1.2rem;
+}
+
+/* ========================
+   Scroll to Top Button
+   ======================== */
+#scrollTopBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  font-size: 20px;
+  border: none;
+  outline: none;
+  background: #444;
+  color: #eee;
+  cursor: pointer;
+  padding: 12px 16px;
+  border-radius: 20%;
+  transition: all 0.3s ease-in-out;
+}
+
+#scrollTopBtn:hover {
+  background: #666;
+}
+
+
+
+
+
+</style>
 </head>
 <body>
-  <div class="container">
-    <h1>Personal Reflection</h1>
 
-    <p>
-      I reflected on what I spoke about with Doctor Agnish. I am reconsidering my life.
-      After running away to different countries and facing many crises, I realised that
-      I need to accept myself and move forward. I want to stop running away.
-    </p>
+  <section class="intro glass">
+  <p>
+  Daily life updates at the bottom.
+  Click <strong>
+   <a href="#daily" style="color:#d5ec53; text-decoration:none; font-weight:bold;">
+      Daily Journal
+    </a>
+  </strong> to scroll down there.
+</p>
 
-    <p>
-      I have decided to change the way I dress, the way I speak, and the way I treat
-      others. I believe I can achieve better working positions and continue to grow
-      professionally and personally.
-    </p>
+</section>
+<div class="app">
+  <nav class="toc glass" aria-label="Table of contents">
+    <a href="#y0">0–5 years</a>
+    <a href="#y5">5–10 years</a>
+    <a href="#y10">10–15 years</a>
+    <a href="#y15">15–20 years</a>
+    <a href="#y20">20–25 years</a>
+    <a href="#y25">25–30 years</a>
+    <a href="#y30">30–35 years</a>
+    <a href="#communication">Communication</a>
+    <a href="#interests">Interests</a>
+    <a href="#sensory">Sensitivities</a>
+    <a href="#routine">Routine</a>
+    <a href="#vacation">Holidays</a>
+     <a href="#daily">Daily Journal </a>
+  </nav>
 
-    <p>
-      I am committed to building a better quality of life. I learned coping strategies
-      that may seem simple, but I had never fully understood or applied them before.
-    </p>
+   <section id="about" class="glass" data-tts-scope>
+  <div class="head">
+    <h2>About Me</h2>
+    <div class="meta">Introduction</div>
+  </div>
+  <div class="content">
+    <p>My name is Diego Silva. This website is my way of documenting my experiences, traits, and daily life so that professionals who wishes to understand me better, can see a full picture.</p>
+    <br>
+     <p>I am 37 years old, I have a social/communication problem and high sensitivity. mainly after stressful periods that are usually caused by unexpected situations, noises, smells, etc.. for example. cigarrete smell. it triggers other senses. Things might become louder, brighter. I get really irritated with it. If I'm in the overground, for example, I might move seats or leave at the next station.  It might happen also at any time , even after waking up. Maybe my light and fan are triggering it because things sound louder when I wake up. I think I can feel or experience the world in general with a lot more intensity than most people. Even nature is experienced with highest intensity from my perspective. I think some of it has to do with predictability. For example , right now I live on a flat with aircrafts flying over it, landing and departing from Heathrow or flying above it on a route somewhere else (stansted , for example at 15k feet) then I'm memorizing flying paths and airplane models based on its engines because of the noise. it wakes me up a lot and I get anxious.
+     </p>
+     <br>
+     <p>At work I get exposed on a daily basis because I need time to recover. I can't stay an entire shift of work without small pauses for recovering. I take small breaks in the toilet(covering ears, eyes and taking breaths , sometimes blowing my shirt whenn I am really overwhelmed.  I might cry sometimes because of it , but I hold and I think this will have some impact in the future. During break time I sit by myself wearing earphones. I am a literal person. my manager or team leader have to make sure i understand properly the task , but it gets done properly and usually looks better than they imagined it. I got pictures on my phone. My manager told me that all team is really happy with me and that I might wear earphones during the whole shift in case I bring a letter from the doctor. they all notice i get irritated bwith the music from the supermarket. the lights and talks . I called a few people lazy on their faces. I cant stand injustice. I feel really bad when injustice happens. I never do any wrong. </p>
+     <br>
+     <p>My main focus in life since 2023 has been programming. I spend most of my free time coding, solving Rubik’s cubes, or engaging in puzzles. These focused interests are not just hobbies — they help me regulate emotions, reduce anxiety, and give structure to my days. I am very good at solving problems, and managers often ask for my opinion on important tasks.</p>
+      <br>
+     <p>I experience significant sensory sensitivities (light, sound, touch, smell, and food textures) and often rely on routines and repetitive behaviors to cope. I can also daydream a lot . Unexpected changes, social events, and noisy environments can overwhelm me and lead to exhaustion, anxiety, or emotional outbursts.</p>
+     <br>
+     <p>Social communication has always been difficult for me. I often struggle to know when to speak, I speak over the person having a dialogue with me,  misunderstand jokes, and avoid eye contact. I usually hide my real feelings at work but then feel drained and need long periods of recovery alone. I have very limited friendships, prefer solitude, and often rely on repetitive actions like rocking, spinning objects, or solving cubes to calm myself.</p>
+      <br>
+     <p>Throughout my life I have had unusual sensory experiences. For exemple, I talk to myself a lot, I even listen to voices from my head as if it was real ( I know it's not real ) the voices police my actions. For example, When I'm being loud I can hear someone else's voice saying I'm being loud. When I wake up I can hear sometimes my own mother's voice saying ' he woke up '. I had frequent difficulties with regulating emotions. I never sleep properly. I usually wake up 4 or 5 times per night. I solve rubiks at 3am, take more clonazepam, read books, enter chat rooms in order to try to sleep. Ambient music, cooling fan frequency, socket yellow light, cover my eyes. I sometimes feel hopeless and anxious about the future, but I also continue moving forward — working, coding, and trying to build a stable life.</p>
+      <br>
+     <p>This website collects my interests, traits, memories, photos, and daily journal entries.</p>
+     <br>
+     <p>This account is not exhaustive — including my entire life would be too long. Some moments are omitted, and certain sensations or thoughts may be missing. I experienced depression, anxiety, and panic attacks during my teenage years, and I have a history of suicide attempts. For example, when I was around 6th grade I developed panick attacks. I had to go to school by myself. I used to wait for certain buses because of its noises and in my mind I expected from myself more than I was doing. I thought people were staring at me at all times and I felt as being analysed by strangers and not knowing how to react to it. I used to get to school already exhausted and with more crisis happening there. The class lights were fluorescent and it was really noisy. I used to request to leave to the toilet and then call my parents to call the school so I could leave. I had many episodes in different schools, shopping centres, churches,  trains , family breakfast, etc... irritation mostly,  but lights brighter and sounds get louder. I always during my entire life complained with my family because they shout my name . it happens with others as well. snell also triggers me. These symptoms have fluctuated over time and are associated with my condition.</p>
+  </div>
+</section>
 
-    <p>
-      Speaking with someone experienced in supporting people with autism has helped
-      me significantly. I now better understand my strengths and my limitations.
-    </p>
+    <!-- Content Sections -->
+    <section id="birth" class="glass" data-tts-scope>
+      <div class="head">
+        <h2>Birth</h2>
+        <div class="meta">Friday, June 24, 1988 — 11:50 PM</div>
+      </div>
+      <div class="content">
+        <p>I was born at 11:50 PM on Friday, June 24, 1988.</p>
+      </div>
+    </section>
+    <!-- Period blocks with photo grids -->
+<section id="y0" class="glass" data-tts-scope data-year="0-5">
+  <div class="head">
+    <h2>0–5 years (1988–1993)</h2>
+    <div class="meta">Early sensitivities, picky eating, limited social interaction.</div>
+  </div>
+  <div class="content">
+  <p>I walked normally but often <strong>on my tiptoes</strong>. My mother and Doctor Valeria considered using a corrective boot. My aunt, an evangelical missionary, prayed with her hands on my head. She thought I had demons. My grandfather, from the countryside and poor, called me “gay.”</p>
+<br>
 
-    <p>
-      My focus moving forward is to build my life around my strengths while protecting
-      my limitations. I want to make thoughtful, consistent progress instead of
-      reacting to crisis.
-    </p>
+<p>I <strong>hated noise</strong>; my parents called me “explosive” for complaining. My sister said I was annoying. I <strong>spun until I fell</strong> and <strong>felt lonely</strong> as the youngest, staying out of games. I only went out with my sister and <strong>waited while she played</strong>, sitting apart.</p>
+<br>
 
-    <p>
-      I plan to open my own business and work toward financial independence. I also
-      intend to get my driver’s licence to increase my independence and stability.
-    </p>
+<p>I attended a small neighborhood school my mother started, where I learned to read and write. <strong>Social interactions were minimal</strong>. At one point I hit other children after seeing a popular classmate do it, but my mother corrected me.</p>
+<br>
 
-    <p>
-      I am choosing responsibility, growth, and long-term stability. This is a
-      conscious decision to improve my quality of life and move forward with clarity
-      and commitment.
-    </p>
+<p>I <strong>vomited from certain foods</strong> (soursop, guava, jackfruit, oil smell) and <strong>avoided foods by texture</strong> (coconut chunks, mango, pineapple, grape, pear, kiwi and many other fruits until nowadays). I don’t like watermelon because of the <strong>seeds</strong>. I don't know where the seeds are. Same applies for grapes even though it has just one seed. <strong>Until nowadays I don't eat anything I'm not fully aware of</strong>. I <strong>don’t eat many things because of seeds</strong>. I started eating olives at the age of 30.</p>
+
+  <div class="photo-wrap">
+  <div class="small">Photos (0–5 years)</div>
+  <div class="grid" data-grid="0-5">
+    <figure>
+      <img src="" alt="0–5 photo 1" class="zoomable">
+      <figcaption>Baby photo – early childhood.</figcaption>
+    </figure>
+    <figure>
+      <img src="" alt="0–5 photo 2" class="zoomable">
+      <figcaption>With family – toddler years.</figcaption>
+    </figure>
+  </div>
+</div>
+</section>
+
+<!-- Overlay Container -->
+<div id="imageOverlay">
+  <span id="overlayClose">&times;</span>
+  <img id="overlayImg" src="" alt="Zoomed Image">
+</div>
+
+
+<section id="y5" class="glass" data-tts-scope data-year="5-10">
+  <div class="head">
+    <h2>5–10 years (1993–1998)</h2>
+    <div class="meta">Keyboard, bedroom, advanced studies, asthma episode.</div>
+  </div>
+  <div class="content">
+<p>Until I was nine years old, I only had birthday parties, but I often found them <strong>overwhelming</strong>. I used to <strong>cry during surprise parties, shout, and get upset</strong>. I remember one birthday when I was taken to someone else's house and saw people waiting for me to clap and sing “Happy Birthday.” I didn’t cry because of the party itself, but because <strong>there were so many people and I hated surprises</strong>. When I turned nine, I <strong>asked my mother to stop having parties</strong> and instead give me a keyboard. From that point on, the birthday parties stopped.</p>
+<br>
+
+<p>I got a keyboard and <strong>taught myself to play, spending countless hours locked in my room practicing</strong>—a habit that lasted until I was 18. I made some friends and occasionally played football, but <strong>I was rarely picked for teams</strong>, so I returned to playing alone.</p>
+<br>
+<p>I also <strong>often fell off my bicycle</strong>, and I still have a <strong>scar on my foot from one of those accidents</strong>.</p>
+<br>  
+<p>I had a childhood friend, Adriel, who lived next door, but his best friend was Bruno. They watched Dragon Ball Z, which <strong>I didn’t</strong>. <strong>I missed many common experiences like cartoons, TV, and video games, and participated very little.</strong> I stood out for my <strong>high grades</strong> and often <strong>studied material before the teacher even covered it in class.</strong></p>
+<br>
+
+<p>Around age 10, I remember hearing voices. I had asthma and was once hospitalized after nearly suffocating at the beach. My father calmed me, and we got to the hospital safely. One memory that stands out is when a kid at a local corner shop told me he wished he had the same Portuguese vocabulary as me while we were eating crisps. I felt amazing that day.</p>
+<br>
+
+<p>At night, the nebuliser was always ready for me. Around 3 a.m., <strong>I would wake up and quietly go to the living room to use it</strong>. The mist would fill my lungs, easing the tightness in my chest, and only then could I finally drift back to sleep. Those nights felt long and quiet, but <strong>the routine gave me a small sense of relief and control.</strong></p>
+<br>
+
+<p>Sometimes, I would <strong>get scared of the toys</strong> on my way to the nebuliser and needed to <strong>wake one of my parents to stay with me</strong> for a few minutes at night. Occasionally, my sister or brother would go instead. Even now, I still hear my mother’s voice saying, “He woke up,” when I wake up at night or early in the morning as she was in the next room. I used to hear this every time I woke up at night with asthma. They used to call it “nervous asthma.”</p>
+<br>
+
+<p>When I wake up, <strong>everything sounds louder than normal.</strong> It's just loud as 2 or 3 times louder. Over a few minutes, it gradually settles. The same applies to <strong>bright white lights</strong>. <strong>I remember shouting to have the lights turned off and often going to use the nebuliser in the dark because of it.</strong></p>
+<br>
+
+<p>I was originally <strong>left-handed but was taught to use my right hand</strong>. <strong>Still use my left leg.</strong> I was told to <strong>look at the camera, smile</strong>, etc. Even during my <strong>British citizenship ceremony and other ceremonies</strong> in the past, I had <strong>issues with photographers who thought I was rude</strong> or something similar.</p>
+
   </div>
 
-  <script>
-    console.log("Reflection page loaded successfully.");
-  </script>
+  <div class="photo-wrap">
+    <div class="small">Photos (5–10 years)</div>
+    <div class="grid" data-grid="5-10">
+      <figure>
+        <img src="" alt="5–10 photo 1" class="zoomable">
+        <figcaption>Hiding left hand. I was asked during this pic to put the right hand to the front.</figcaption>
+      </figure>
+      <figure>
+        <img src="" alt="5–10 photo 3" class="zoomable">
+        <figcaption>Studying with sister</figcaption>
+      </figure>
+      <figure>
+        <img src="" alt="5–10 photo 4" class="zoomable">
+        <figcaption>A neighbour, me, brother, sister.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- Overlay Container (reuse the same one for all sections) -->
+<div id="imageOverlay">
+  <span id="overlayClose">&times;</span>
+  <img id="overlayImg" src="" alt="Zoomed Image">
+</div>
+
+
+<section id="y10" class="glass" data-tts-scope data-year="10-15">
+  <div class="head">
+    <h2>10–15 years (1998–2003)</h2>
+    <div class="meta">Anxiety and panic; sensory overload; daydreaming; Discman.</div>
+  </div>
+  <div class="content">
+   <p>Rebellion and anarcho-punk readings shaped much of my early life. A book led me to several other books. At school, I <strong>played unusual pranks and spoke my mind, which sometimes caused me to lose friends.</strong> At Mazarelo School, I remember throwing a chair at a kid and leaving a note on the teacher's desk saying “Happy Teacher’s Day,” with “motherfucker” written inside. This landed me in the principal’s office when the teacher saw it. I later transferred to Anglo Líder, where I developed <strong>anxiety and panic attacks — sweating, dizziness, and fatigue — and often left before classes began.</strong></p>
+<br>    
+
+<p>I believe the crises started from <strong>going to school alone in a noisy city.</strong> I <strong>preferred certain buses because of the sounds.</strong> In 1998, my parents went to Atlanta and brought me a Discman, which I <strong>carried daily, even though it was heavy, to block out street noise.</strong> I <strong>listened to music until the teacher entered the classroom.</strong></p>
+<br>    
+
+<p>The school administration referred me to a psychologist for testing. She showed me pictures of butterflies, lions, and other images. To this day, I don’t really understand what the purpose was, and I haven’t researched it yet. I ended up <strong>failing an entire year of school due to anxiety and panic attacks</strong>, as I was absent for long periods. Classmates called me <strong>“tourist” or “the mute kid.”</strong> I often <strong>daydreamed</strong>; when I returned to reality, someone would laugh. <strong>Crises could happen anywhere: on the street, bus, underground, mall, or even while eating with family.</strong> I <strong>sought calm places, usually the bathroom.</strong><br><br> I was asked by the school administration to transfer to another school. My mother refused, arguing that she had three children enrolled there and would have to remove all three. It was an inexpensive, yet still private, school. I had an episode where I told a history teacher (Rose) to f.off in front of the class. But the class was really loud, I think I was really stressed that day. The situation was: at the end of break time, my classmates were being loud, and the teacher entered the room shouting even louder at the class to be quiet. Then I shouted back at her.</p>
+<br>    
+
+<p><strong>Triggers included unwanted long conversations, noise, and sensory overload.</strong> During some crises, I <strong>heard voices of my parents from my childhood asthma episodes</strong>, though they never harmed me. I developed <strong>excellent ear training by playing music by ear and never learned to read sheet music.</strong></p>
+<br>
+
+<p>When I was a kid, I used to cut my parakeets’ wings because I didn’t know it hurt them. One bled a lot, and I felt terrible. I took care of it until it healed, and then I released them all. I never did it again. I always <strong>preferred fishes</strong>. I had some fishes as well. I used to <strong>observe them inside the aquarium. I kind of related myself to them during childhood.</strong></p>
+ </div>
+
+<div class="photo-wrap">
+  <div class="small">
+    Photos (10–15 years) book – I don't have pics from that time as my ex-gf burned my album. I lost many pics.
+  </div>
+  <div class="grid" data-grid="10-15">
+    <figure>
+      <img src="punk.jpg" alt="10–15 photo 1" class="zoomable">
+      <figcaption>"An Efficient Punk in a Defective Society" – book title.</figcaption>
+    </figure>
+  </div>
+</div>
+</section>
+
+
+
+<!-- Overlay Container (reuse the same for all sections) -->
+<div id="imageOverlay">
+  <span id="overlayClose">&times;</span>
+  <img id="overlayImg" src="" alt="Zoomed Image">
+</div>
+
+<section id="y15" class="glass" data-tts-scope data-year="15-20">
+  <div class="head">
+    <h2>15–20 (2003-2008)</h2>
+<p>been to the US. Upon arrival, I lived with my older sister, got an SSN, and used someone’s green card to create documents as if I were 18. worked at Chick-fil-A in Atlanta (bathroom cleaning, then cashier and assistant). The work was simple but required speaking a lot; <strong>I faced complaints due to language and pace</strong>. I left frustrated once. <strong>I memorized the combos which made my life there easier</strong>.</p>
+<br>
+<p><strong>I repaid the loan and supported myself studying and working.</strong> I <strong>used drugs</strong> before knowing I needed medication, which led to <strong>severe depression and daily suicidal thoughts</strong>. I attended a church (Vine Church Atlanta — Pastor Napoleon), <strong>played keyboard</strong>, and <strong>converted; I remain Christian</strong>. I finished high school and returned to Brazil due to depression. At 19, a psychiatrist prescribed <strong>clonazepam and fluoxetine</strong>.</p>
+
+  </div>
+
+  <div class="photo-wrap">
+    <div class="small">15–20 years</div>
+    <div class="grid" data-grid="15-20">
+      <figure>
+        <img src="" alt="15–20 photo 1" class="zoomable">
+        <figcaption>Wearing Chick-fil-A's uniform</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- Overlay Container (reuse the same for all sections) -->
+<div id="imageOverlay">
+  <span id="overlayClose">&times;</span>
+  <img id="overlayImg" src="" alt="Zoomed Image">
+</div>
+
+
+<section id="y20" class="glass" data-tts-scope data-year="20-25">
+  <div class="head">
+    <h2>20–25 years (2008–2013)</h2>
+    <div class="meta">Rigid routine, social isolation, jobs, and engagement.</div>
+  </div>
+  <div class="content">
+  <p>Back in Brazil at 19, I had <strong>difficulty adapting</strong>; I <strong>stayed locked in my room</strong>, with my keyboard from the U.S., chats, and alcohol. Continued with psychiatrist (clonazepam and fluoxetine); helped a bit but I remained <strong>anxious, isolated, and exhausted</strong>.</p>
+<br>
+<p>I had 25 capsules of clonazepan and a bottle of vodka when a friend of mine died. By the time I thought that would be enough to kill me. Slept for 18/19h and woke up with nausea.</p>
+<br>  
+  <p> I used to go to a bar called ' metal bar ' where they played metal. Spent a few years going there. Never made a single friend. I was always the one aside everywhere. </p>
+  <br>    
+<p>I focused on <strong>studies (university, courses, MBA)</strong>, tried jobs; <strong>social demands were challenging</strong>. <strong>Routines had to be well-structured</strong>; I developed <strong>rigid, repetitive organization</strong> to manage anxiety. Worked as administrative assistant at Davilla Hospital (was fired) and Arts do Imaginário (was called <strong>“weird”</strong> — I <strong>took it literally</strong> and handled poorly).</p>
+<br>
+<p>I had a girlfriend and engagement for 5 years; at the end, she said she never loved me. She called me “Bob” (from daydream cartoon) and “crazy” weekly. She wanted many <strong>outings (malls, shows), where I felt extremely uncomfortable due to noise, crowds, and information overload</strong>. After the breakup, she commented on my <strong>tendency to overanalyze</strong>. I have a <strong>problem dressing up according to the weather</strong>.</p>
+
+  </div>
+
+<div class="photo-wrap">
+  <div class="small">
+  </div>
+  <div class="grid" data-grid="20-25">
+    <figure>
+      <img src="" alt="MBA and diplomas" class="zoomable">
+      <figcaption>working as a hotel nightshift supervisor.</figcaption>
+    </figure>
+    <figure>
+      <img src="" alt="Assistant admin diploma" class="zoomable">
+      <figcaption>It was 10c degrees. with an ex ex-girlfriend.</figcaption>
+    </figure>
+    <figure>
+      <img src="" alt="High school grades" class="zoomable">
+      <figcaption>High school diploma.</figcaption>
+    </figure>
+  </div>
+</div>
+</section>
+
+<!-- Reuse overlay container for all sections -->
+<div id="imageOverlay">
+  <span id="overlayClose">&times;</span>
+  <img id="overlayImg" src="" alt="Zoomed Image">
+</div>
+
+
+<section id="y25" class="glass" data-tts-scope data-year="25-30">
+  <div class="head">
+    <h2>25–30 years (2013–2018)</h2>
+    <div class="meta">Night hotel work, dismissal in 2015, trip to the United Kingdom.</div>
+  </div>
+  <div class="content">
+<p><strong>I stayed at home a lot.</strong> I worked at a hotel as a night auditor (documents, invoices, payments). I became a <strong>night supervisor; few arrivals/departures — bureaucratic profile</strong>. I was <strong>dismissed in 2015 after the hotel was sold and conflicts with the new management</strong>.</p>
+<br>
+
+<p>A car accident was caused by me <strong>trying to end my life</strong>. I was gonna run against a wall when another car invaded my line trying to park. I was so fast he haven't noticed me. so I crashed on him and the wall after.</p>
+<br>
+
+<p><strong>I always wanted to go to London. I decided to go (either that or end my life after so many losses).</strong> I came with my Portuguese brother-in-law (I have Portuguese citizenship since childhood; at the time the UK was in the EU). <strong>Adaptation was very difficult: alcohol, frustrations, feelings, suicidal thoughts.</strong></p>
+<br>
+
+<p><strong>I didn’t eat much, didn’t know the food, and found the diversity and the noise of the underground strange.</strong></p>
+<br>
+
+<p>In 2018, friends organized the 'Contradiction Party', a gathering where I was the theme of the celebration. I was no longer living in Brazil, as I had moved to the UK in 2016, and I only found out about it through a photo someone sent to me. I consider many variables at the same time and may change my opinion as new information emerges. <strong>This shows again how people view me as different everywhere I go.</strong> I know there is something wrong, just don't know what.</p>
+
+  </div>
+
+<div class="photo-wrap">
+  <div class="small">
+    Photos (25–30 years) – feeling depressed, solving cubes to cope with underground noise, solving cubes while coding.
+  </div>
+  <div class="grid" data-grid="25-30">
+    <figure>
+      <img src="" alt="Depressed period" class="zoomable">
+      <figcaption>Feeling depressed during this time.</figcaption>
+    </figure>
+    <figure>
+      <img src="" alt="Solving cubes" class="zoomable">
+      <figcaption>Struggling with depression.</figcaption>
+    </figure>
+    <figure>
+      <img src="" alt="Focused cube solving" class="zoomable">
+      <figcaption>Struggling with depression.</figcaption>
+    </figure>
+    <figure>
+      <img src="cu1.jpg" alt="Coding with cubes" class="zoomable">
+      <figcaption>Solving cubes while coding.</figcaption>
+    </figure>
+    <figure>
+      <img src="copo.jpg" alt="Coping strategies" class="zoomable">
+      <figcaption>a cup with my picture for a party called 'contradiction confraternization 2018' I received a picture months after the party.</figcaption>
+    </figure>
+    <figure>
+      <img src="" alt="Depression" class="zoomable">
+      <figcaption>Struggling with depression.</figcaption>
+    </figure>
+    <figure>
+      <img src="cu4.jpg" alt="Cube solving habit" class="zoomable">
+      <figcaption>Coping with underground noise through activities.I didn’t know I had ti save energy for work at that time and I always wear earphones.</figcaption>
+    </figure>
+  </div>
+</div>
+</section>
+
+<!-- Reuse overlay container for all sections -->
+<div id="imageOverlay">
+  <span id="overlayClose">&times;</span>
+  <img id="overlayImg" src="" alt="Zoomed Image">
+</div>
+
+
+<section id="y30" class="glass" data-tts-scope data-year="30-35">
+  <div class="head">
+    <h2>30–35 years (2018–2023+)</h2>
+    <div class="meta">Routine in London, work, software course, British citizenship.</div>
+  </div>
+  <div class="content">
+  <p>For years I <strong>only used the bus because it was quieter</strong>; I took the underground only 3 years after moving (<strong>noise, crowds, heat</strong>). <strong>Always with headphones.</strong> I bought a motorcycle for a few months, but sold it due to the chaos.</p>
+<br>
+
+<p><strong>Repetitive diet (usually one meal per day).</strong> <strong>I kept using headphones.</strong> I took a day trip to Brighton following a friend on a motorcycle (major achievement, me on a 125cc with an L plate).</p>
+<br>
+
+<p>I worked nights at a supermarket. <strong>Switching to day shifts was difficult.</strong> I opted for a £13,000 redundancy package and left.</p>
+<br>
+
+<p>Then, a hotel - using Opera. Before leaving the supermarket, the government funded a software development course (Tech Talent Academy, UK). Since then, my <strong>main focus has been programming and Rubik's cubes.</strong></p>
+<br>
+
+<p>The hotel provided lodging; I left in less than a year and returned to the supermarket at the end of 2024. I <strong>still struggle to adapt to daytime work, with lots of talking and small talk.</strong> I usually <strong>help guests with excellence and then pretend to do something else in order to make them go away.</strong> Some guests have good topics and the opposite happens. I get interested. <strong>Sometimes I ask to leave early.</strong> I have reorganized departments (sales increased ~6x), received awards and bonuses; I get emails from leadership, but <strong>didn’t take a position due to social demands and my direct communication style.</strong></p>
+<br>
+
+<p>I am creating my own company (coding and logistics) to work online. I own a flat in Lisbon; I made money in stocks. I became a British citizen in August 2025; the <strong>public ceremony caused strong anxiety (front row for hours).</strong></p>
+ </div>
+
+  <div class="photo-wrap">
+    <div class="small">Photos (30–35 years)</div>
+    <div class="grid" data-grid="30-35">
+      <figure><img src="" alt="Using the bus" class="zoomable"><figcaption>bus</figcaption></figure>
+      <figure><img src="meat.png" alt="Organizing stock" class="zoomable"><figcaption>planning next stock</figcaption></figure>
+   
+      <figure><img src="" alt="Interacting with guests" class="zoomable"><figcaption>Interacting with guests</figcaption></figure>
+      <figure><img src="bonus.jpg" alt="Receiving bonuses" class="zoomable"><figcaption>Receiving bonuses</figcaption></figure>
+      <figure><img src="Hotels.jpg" alt="Hotel environment" class="zoomable"><figcaption>reception homepage with links,docs,intranet,maps, hotel info - created by me. you could even check in guests and make key from it even from your phone as I did once as a test in case the hotel runs out of wifi. all computeres had that as homepage.</figcaption></figure>
+      <figure><img src="" alt="Practicing communication" class="zoomable"><figcaption>Practicing communication and recording myself</figcaption></figure>
+      <figure><img src="" alt="Social interactions at work" class="zoomable"><figcaption>Showing colleagues how to code a social media. on the 2nd picture I'm showing a colleague the game I created for my nephews.</figcaption></figure>
+      <figure><img src="game.jpg" alt="Game created for nephews" class="zoomable"><figcaption>Game created for nephews to encourage chores. there was a realtime podium and they had to upload pics doing home activities in exchange for money.</figcaption></figure>
+      <figure><img src="" alt="Hotel site suggestion" class="zoomable"><figcaption>hotel break time. Sitting always by myself.</figcaption></figure>
+      <figure><img src="" alt="Hotel site suggestion" class="zoomable"><figcaption>supermarket appreciation.</figcaption></figure>
+        <figure><img src="" alt="Planning next stock" class="zoomable"><figcaption>TM of the quarter</figcaption></figure>
+      <figure><img src="sale.jpg" alt="Good conversation example" class="zoomable"><figcaption>organizing shelves and products</figcaption></figure>
+      <figure><img src="sale.jpg" alt="Good conversation example" class="zoomable"><figcaption>organizing shelves and products</figcaption></figure>
+       <figure><img src="orga.jpg" alt="Hotel site suggestion" class="zoomable"><figcaption>organizing shelves and products.</figcaption></figure>
+       <figure><img src="saless.jpg" alt="sales" class="zoomable"><figcaption>sales comparison </figcaption></figure>
+       <figure><img src="daily.jpg" alt="Hotel site suggestion" class="zoomable"><figcaption>daily sales increase. I stopped buying meeat because the salary wasn't worthy. I told the manager that. Got all possible bonuses and stopped after.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- Overlay container (reuse for all sections) -->
+<div id="imageOverlay">
+  <span id="overlayClose">&times;</span>
+  <img id="overlayImg" src="" alt="Zoomed Image">
+</div>
+
+
+<section id="communication" class="glass" data-tts-scope>
+  <div class="head">
+    <h2>Communication</h2>
+    <div class="meta">Poor communication, I usually listen to people more and pretend that I understand even the joke.</div>
+  </div>
+  <div class="content">
+  <p><strong>My communication skills are poor.</strong> I believe it's due to the time kept by myself. <strong>I don't communicate well personally.</strong> In case of another consultation I'll try my best to go over all points shared on all topics.</p>
+<br>
+     <p>
+  <strong>I don't know how to socialize.</strong>
+  <strong>I don't know how to keep a girlfriend for longer than 3 months</strong> (that's the average relationship I have).
+  One day a lady fell from the stairs in front of me at work, and <strong>I had no reaction.</strong>
+  I simply walked away when I realized she would be fine within minutes, without even asking if she was ok.  
+  <strong>I don't get jokes, I'm too literal.</strong>
+  Even during phone calls, <strong>I can't understand and interact properly.</strong>  
+  <strong>If I ask a question and the other person explains without following the steps from my question, I get confused, anxious, and upset.</strong>  
+  So, I take a deep breath and try to relax in order to keep the conversation. <strong>This happens every day, many times during the day.</strong>  
+  At work <strong>I need to mask by entering the shop laughing and greeting, even if I don’t feel like it.</strong>  
+  <strong>Sometimes I think people are talking about me when they are actually saying something good about me.</strong>  
+  <strong>I had discussions with many colleagues in several jobs and with managers.</strong>  
+  Even with flatmates, <strong>I had 3 discussions only this year of 2025.</strong>  
+  I got a video from 2 days ago that I plan to show during the appointment if possible.
+</p>
+<br>
+     <p> This is a very important part of my life. I used to live on a residential area. After small talks I used to tell my colleagues that I had left my computer on in order to run away from the conversation. There is a whatsapp group with everyone still nowadays because we kind of grew up in the same area. They still joke about me having to turn of the computer. That situation of running away from talks lasted for about 10 years in total from 10y to 20y. </p>
+<br>
+     <p>I get in trouble a lot because of my traits. for example, the security guy from my workplace tapped my on my shoulder the other day and I told him I don't like touching. I heard him complaining to someone else that I was racist. it takes a huge amount of energy amd a huge effort to fix problems caused by my traits because , for example,  in this case I had to go person by person explaining that when someone touches me when I'm not expecting its really rude to me and I'm extremely sensitive, etc.. but still I don't think most people get it </p>
+<br>
+     <p><strong>Difficulty knowing when to speak.</strong> On clubhouse app, for example, <strong>I mostly listen; this hinders making friends.</strong> In <em>huddles</em> at work, <strong>I prefer to speak later in private with the manager.</strong> <strong>I avoid speaking with strangers, make little eye contact, and usually avoid going out on days off.</strong></p>
+<br>  
+  <p>
+  There was a bingo at work and I missed it because I did not say “bingo” — I didn’t understand that the word <em>“free”</em> in the middle could be marked at any time. I was waiting for the word to be called. After many names were called, someone else from the group asked about the word “free” and won the bingo.  
+  I actually won as well because I recorded the whole thing on my phone and could prove it.  
+  If people don’t explain things properly, I can’t do several things — even a simple bingo. I don’t ask questions in groups and I usually mess up. picture below</p>
+     <br>
+    <div class="photo-wrap">
+      Photos – been to these websites,  
+     <a href="https://embrace-autism.com/autism-tests/" target="_blank" style="font-weight: bold; color: #FFD700; text-decoration: underline;">embrace-autism.com</a> and  
+<a href="https://iq-institute.org/" target="_blank" style="font-weight: bold; color: #FFD700; text-decoration: underline;">iq-institute.org</a>
+
+      Score from an online test at iq-institute.org
+      <span style="color:red; font-weight:bold;">(not a formal assessment)</span>.  
+      Should I request a test face to face for IQ?  
+      Regarding the autism tests, I completed online autism self-assessments (Embrace-Autism, Aspie Quiz, etc.), which suggested traits consistent with Asperger’s.
+      <span style="color:red; font-weight:bold;">I understand these are not formal diagnostic tools.</span>
+    </div>
+   
+    <br>
+  <div class="grid" data-grid="30-35">
+  <figure>
+    <img src="au1.jpg" alt="photo 1" class="zoomable">
+    <figcaption>CAT-Q is the Camouflaging Autistic Traits Questionnaire.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="au2.jpg" alt="photo 2" class="zoomable">
+    <figcaption>Test Results</figcaption>
+  </figure>
+
+  <figure>
+    <img src="raad.jpg" alt="photo 3" class="zoomable">
+    <figcaption>RAAD-R Ritvo Autism Asperger Diagnostic Scale – Revised</figcaption>
+  </figure>
+
+  <figure>
+    <img src="aspie.jpg" alt="photo 4" class="zoomable">
+    <figcaption>Aspie Quiz</figcaption>
+  </figure>
+
+  <figure>
+    <img src="aspie1.jpg" alt="photo 5" class="zoomable">
+    <figcaption>Aspie Quiz</figcaption>
+  </figure>
+
+  <figure>
+    <img src="aq.jpg" alt="photo 6" class="zoomable">
+    <figcaption>Autism-Spectrum Quotient (AQ)</figcaption>
+  </figure>
+
+  <figure>
+    <img src="eq.jpg" alt="photo 7" class="zoomable">
+    <figcaption>The Empathy Quotient (EQ)</figcaption>
+  </figure>
+
+  <figure>
+    <img src="cbi.jpg" alt="photo 8" class="zoomable">
+    <figcaption>Cambridge Behaviour Scale (CBI)</figcaption>
+  </figure>
+
+  <figure>
+    <img src="rbq.jpg" alt="photo 9" class="zoomable">
+    <figcaption>Repetitive Behavior Questionnaire – 2 for Adults.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="" alt="photo 10" class="zoomable">
+    <figcaption>'IQ test'</figcaption>
+  </figure>
+
+  <figure>
+    <img src="" alt="photo 11" class="zoomable">
+    <figcaption>'IQ test'</figcaption>
+  </figure>
+
+  <figure>
+    <img src="" alt="photo 12" class="zoomable">
+    <figcaption>'IQ test'</figcaption>
+  </figure>
+       <figure>
+    <img src="bbi.jpg" alt="photo 8" class="zoomable">
+    <figcaption>bingo at work</figcaption>
+       </figure>
+</div>    
+</section>
+
+
+<!-- Shared Overlay (keep once in the body) -->
+<div id="imageOverlay">
+  <span id="overlayClose">&times;</span>
+  <img id="overlayImg" src="" alt="Zoomed Image">
+</div>
+
+<section id="interests" class="glass" data-tts-scope>
+  <div class="head">
+    <h2>Interests</h2>
+    <div class="meta">Programming, rubiks, splving puzzles, piano/keyboard. My main focus since 2023 is programming.</div>
+  </div>
+  <div class="content">
+   <p><strong>Difficulty knowing when to speak.</strong> On Clubhouse app , for example, I <strong>mostly listen; this hinders making friends.</strong> In <em>huddles</em> at work, <strong>I prefer to speak later in private with the manager.</strong> <strong>I avoid speaking with strangers, make little eye contact, and usually avoid going out on days off.</strong></p>
+<br>
+
+<p><strong>Coding for up to 12 hours or more, staying up all night</strong> if I have the next day off. <strong>Focused on JavaScript, Google Cloud, and React.js</strong> (I know other programming languages, including Python, Java, PHP, SQL, and C#, and I am familiar with their environments such as Node.js, Unity, and .NET. I also have knowledge of Linux and ethical hacking.). Since the course (April 2023), <strong>this has been my main topic; colleagues sometimes find it repetitive.</strong></p>
+<br>
+
+<p>Sometimes <strong>take photos of the backyard</strong> (flatmate’s garden) and <strong>pretend at work that I am engaged in other topics.</strong> <strong>I limit interaction with flatmates to a maximum of 5 minutes.</strong></p>
+<br>
+
+<p>I was asked a question during the appointment, and I answered that I <strong>used to tattoo myself</strong> and then pour some vodka over the tattoo while it was still fresh and bleeding, even though it was a practice from years ago. I'll post pictures of me tattooing myself here.</p>
+<br>
+
+<p> I am very good at solving problems, and managers often ask for my opinion on important tasks. My interests are always related to logic and problem solving. I'll give an example from today which is also on daily journal. 26/09/25 - My manager was unsure how to organize four shelves of wines by price and country. I suggested using inexpensive colored sticky notes: each color representing a country (e.g., red = Italy, blue = France, yellow = Spain), and marking the expensive items with a black dot. I described it as applying simple logic (“categorization and systematization”) and compared the final arrangement to “playing Tetris” until it fit properly. She found the idea excellent and shared it with other stores in the brand.</p>    
+<br>
+<p>Lived rent free - breakfast, lunch, dinner included at the hotel for 1 year where I worked and also developed an <strong>integrated ecosystem for the reception</strong> where they had all hotel, cricket, airlines, maps, reception documents integrated.</p>
+
+    <br>
+   <div class="grid" data-grid="30-35">
+  <figure>
+    <img src="hotelo.jpg" alt="photo 1" class="zoomable">
+    <figcaption>Living at the hotel I've worked at.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="" alt="photo 2" class="zoomable">
+    <figcaption>Coding is my focus since mid 2023. Can't stop talking and overthing of it.</figcaption>
+  </figure>
+   
+      <figure>
+    <img src="puz1.jpg" alt="photo 1" class="zoomable">
+    <figcaption>solving puzzles.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="" alt="photo 3" class="zoomable">
+    <figcaption>Receiving my british naturalization certificate from the Mayor of Camden, Eddie Hanson.</figcaption>
+  </figure>
+
+      <figure>
+    <img src="" alt="photo 4" class="zoomable">
+    <figcaption>Passports</figcaption>
+  </figure>
+
+  <figure>
+    <img src="garden.jpg" alt="photo 4" class="zoomable">
+    <figcaption>My flatmate's sunflowers used by me at work as if I was doing something else other than coding.</figcaption>
+  </figure>
+
+
+  <figure>
+    <img src="" alt="photo 6" class="zoomable">
+    <figcaption>picture of me and some of my rubiks.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="" alt="photo 7" class="zoomable">
+    <figcaption>Picture of me in front of John Lennon's last piano.</figcaption>
+  </figure>
+
+  <figure>
+    <img src="" alt="photo 8" class="zoomable">
+    <figcaption>Pictures of me tattooing myself. I used to and still enjoy the pain caused my the needle and the sensation of the maching shaking it through my skin.</figcaption>
+  </figure>
+</div>
+</section>
+
+<!-- Shared Overlay (keep once in the body if not already present) -->
+<div id="imageOverlay">
+  <span id="overlayClose">&times;</span>
+  <img id="overlayImg" src="" alt="Zoomed Image">
+</div>
+
+   <section id="sensory" class="glass" data-tts-scope>
+  <div class="head">
+    <h2>Sensory sensitivities</h2>
+    <div class="meta">Sounds, light, touch, startle, linguistic distractions.</div>
+  </div>
+  <div class="content">
+  <p><strong>Sensitive to many sounds/stimuli:</strong> morning magpie, white light, underground, sirens, loud Italian neighbors, birds, and distant conversations. <strong>Dislike of physical touch (e.g., shoulder taps).</strong> Shower and toilet noises can feel hypnotic; sometimes I just sit and watch/listen. I notice details (e.g., rats) that others don’t.</p>
+<br>
+<p> cigarette smell triggers me a lot. I hate cigarrete smell . it irritates me. If I'm quiet and suddenly there is a cigarrete smell I might start feeling some traits and get irritated. lights get brigther and noises.  I think it might deregulate my brain somehow.</p>
+     <br>
+     <p><strong>I have noticed that when I move back and forth while sitting down, I feel a pulsing sensation that starts in my back and travels up to my head.</strong> I find that this motion helps me regulate my emotions and provides a sense of balance and calm. It’s a personal sensory experience that seems to help me cope with stress or overwhelming situations.</p>
+<br>  
+<p>When I was around 8 years old, I was playing hide and seek with my cousin. During the game, her tooth somehow hit and got stuck in my head. When I stood up quickly, it cut me, and a lot of blood came out. <strong>I did not feel any pain at all</strong>; I was only scared because everyone else was frightened by the sight of my face and hands covered in blood. There is still a scar in my head. picture below in this section</p>
+<br>
+<p><strong>My good hearing both helps and distracts:</strong> if I hear a familiar language nearby, I can daydream and need to breathe and refocus. I speak Portuguese, Spanish, and English; I understand a bit of French and Italian. <strong>I get startled frequently</strong>; on flights (Lisbon roughly every 2 months), I nap and still get startled. Today I was startled by a fly returning from Tesco (headphones in pocket). My room faces the backyard and noises coming from there wake me up during the night. In order to avoid waking up I leave the cooling fan on, ambient music and the socket yellow light on at all times. It stays like that even during the daytime. I don't have a keyboard at the moment. That one was a small gift from my mother and I kept it of course.</p>
+<br>
+    <p> Colleagues often  make fun of me sometimes for wearing anything instead of going up for shopping. The problem is to have to go far and buy the clothes. I usually wear clothes I buy online or near my place on a cheap place. I don't mind as long as it's confortable. Nothing is branded.</p>
+<br>
+     <p> I have a problem with relationships. I  don't think much of having a romantic relationship and I don't know how to socialize. I have zero patience for it </p>
+     <br>
+     <p>When I was about 10 years old, I <strong>punched the wall very hard several times just to feel the pain</strong>. I also <strong>put a wire into both sides of an electrical socket to feel an electric shock</strong>. My father worked as an electrician. The socket exploded, the apartment lost power, and the wire melted in my fingers. I started laughing at it and didn’t really understand how dangerous it was.</p>
+<br>  
+     <p> I'm frequently tapping my toes inside my shoes. This happens everyday. I also tap my legs with both hands when I get nervous often. I move my left hand but I'm using an anxiety ring on it trying to stop </p>
+     <br>
+<br>  
+     <p> I can have headaches for days. I've been to a hospital when I was a kid because of headache. On the 5th day I was taken to a hospital for exams. Right now I'm with headache and it's been 2  days.</p>
+     <br>
+     <p><strong>Sometimes I see small flashes, like tiny particles in the air.</strong> I was told they might be “dead cells.” I have always noticed them and thought it was interesting. I mention this because it may be related to how I perceive sensory details. I also feel chest pain; sometimes the small pain goes a bit to the left arm — it happened many times during my life. I first thought it was caused by asthma, then gases, but it keeps showing up. I think it's due to anxiety and that it may cause a real heart attack at some point in the future. <strong>Sometimes I feel I would rather die.</strong></p>
+ <br>
+     <p>
+  Around 8 am, I can hear loudly the airplanes over NW10 because Heathrow is busy with morning arrivals.
+  Some planes come from the Chesham stack, flying southeast over Harrow and Edgware before turning toward the airport,
+  and others come from the Lambourne stack in Essex, crossing northwest London.
+  Large planes like the A380 and Boeing 777 are especially loud.
+  The cool morning air allows noise to travel farther, so the planes are easier to hear at this time.I usually wake up by this time in case I had a good sleep and I'm off work.
+</p>
+<br>
+     <p> for example there is a chicago flight united airlines landing at heathrow now at 13:10h Boeing 767-300. It's not as loud as A380 which comes in the morning from africa, middle east and asia. and these go to stack Chesham , rotate , and then  go round the city and around my area NW10 and wake me up in the morning. </p>
+     <br>
+     <p>27/09/25 This morning I woke up to the sound of planes and ended up recording videos comparing the noise of an A319, A320, and A321. Because of the easterly winds, departures were heading towards London, passing over NW10 at about 4,000 feet. I even managed to capture a Boeing 777 bound for Dallas, so I could compare the sound of smaller Airbus aircraft with the heavier 777. Usually, the long-haul flights to the US depart in a group, and today there were two 777s and a JetBlue A321, all initially heading east towards London before turning 180 degrees to cross the Atlantic. I'm working at 1pm . I woke up several times during the night because of noises at the backyard , front door, cars. I'll try to sleep fora while before going to work
+
+At the same time, the morning birddsong was clear and loud. Around 8 am in NW10, I could hear the robin, blackbird, great tit, and woodpigeon — all singing as the aircraft roared overhead.
+
+Usually, the long-haul flights to the US depart in a group, and today there were two 777s and a JetBlue A321, all initially heading east towards London before turning 180 degrees to cross the Atlantic.</p>
+<br>
+     <p><strong>I spoke with my parents after getting guidance from Dr. James, a psychiatrist who called me after I visited my GP and told her that I hear voices.</strong> He said he wanted to understand what type of voices they were and whether I had psychosis. <strong>The voices I hear are actually memories—so vivid that I can literally hear them—as well as some of my own thoughts.</p>
+ <br>
+<p>A therapist (after a GP appointment) told me something similar: “Be yourself, stop masking, relax, and don’t expect everyone to understand.” That advice helped me a lot.</p>
+
+<p><strong>Additional sensory/behavioural notes I want recorded:</strong> I like cold floors. As a child I sometimes ate leaves and rocks. I used to put a coin in my mouth to taste it. A teacher called vivian(portuguese teacher) complained with me when I was at 1st grade because I had a coin in my mouth. I often <strong>sit in unusual positions</strong> (I "sit weird"). I also sometimes <strong>enjoy staying with my head upside down a bit</strong> — these are calming or regulating behaviours for me.</p>
+ <br>
+<p><strong>I have a collection of Rubik’s cubes here in the UK and another collection in Portugal.</strong> I keep solving them a lot. <strong>Solving Rubik’s cubes regulates my emotions, like a form of therapy.</strong> <strong>Sometimes, when I wake up during the night, I solve the cube a few times.</strong></p>
+
+ <br>
+<p><strong>I also have a ring for anxious people that I keep rotating.</strong> Others at work noticed me spinning supermarket baskets sometimes. <strong>I basically spin most objects I come in contact with.</strong> This repetitive motion helps me manage anxiety and self-regulate during stressful situations.</p>
+
+</div>
+ <br>
+  <div class="photo-wrap">
+    I take pictures of the sky and the sun every time. I can’t sit with others in the break room due to the smell of food. My rooms are dark, lit only by small socket lights. I use different gloves and don’t eat the free fruit (I can’t eat mango, pear, kiwi, grapes, etc.). I captured swallows arriving in the UK from the Sahara in Africa (you might need to zoom in if you’re on a phone, or download and view on a laptop). I am food intolerant (lactose, oats, gluten, etc.). This cheap temu keyboard was a gift, which I kept more as a memory; feeling the weather. I keep telling my colleagues to enjoy the weather.
+  </div>
+<div class="grid" data-grid="30-35">
+   <figure>
+    <img src="fly.jpg" alt="approachfly paths" class="zoomable">
+    <figcaption>approach fly paths. I memorizedthe brazilian ones in my city a while ago.</figcaption>
+  </figure>
+  <figure>
+    <img src="room.png" alt="Break Room" class="zoomable">
+    <figcaption>Break room at work.</figcaption>
+  </figure>
+  <figure>
+    <img src="y.jpg" alt="Everyday food" class="zoomable">
+    <figcaption>Everyday food I eat.</figcaption>
+  </figure>
+  <figure>
+    <img src="qua.jpg" alt="Socket light" class="zoomable">
+    <figcaption>Socket light – still looks bright when I'm tired after work.</figcaption>
+  </figure>
+  <figure>
+    <img src="room2.jpg" alt="Sitting alone" class="zoomable">
+    <figcaption>Sitting by myself outside the break room to cope.</figcaption>
+  </figure>
+  <figure>
+    <img src="fruit.jpg" alt="Free fruits" class="zoomable">
+    <figcaption>Free fruits I can't eat due to texture sensitivity.</figcaption>
+  </figure>
+  <figure>
+    <img src="gloves.jpg" alt="Wearing gloves" class="zoomable">
+    <figcaption>Wearing different gloves because of texture sensitivity.</figcaption>
+  </figure>
+  <figure>
+    <img src="down.jpg" alt="Best moments" class="zoomable">
+    <figcaption>Best moments of the day.</figcaption>
+  </figure>
+  <figure>
+    <img src="su2.jpg.jpg" alt="Best moments" class="zoomable">
+    <figcaption>Best moments of the day.</figcaption>
+  </figure>
+  <figure>
+    <img src="su3.jpg.jpg" alt="Best moments" class="zoomable">
+    <figcaption>Best moments of the day.</figcaption>
+  </figure>
+  <figure>
+    <img src="key.jpg" alt="Keyboard and Rubiks" class="zoomable">
+    <figcaption>Cheap keyboard, Rubiks, and books.</figcaption>
+  </figure>
+  <figure>
+    <img src="" alt="Feeling the weather" class="zoomable">
+    <figcaption>Feeling the weather outside.</figcaption>
+  </figure>
+  <figure>
+    <img src="" alt="Funfair with niece" class="zoomable">
+    <figcaption>With my niece at a funfair in Lisbon, 2 weeks ago.</figcaption>
+  </figure>
+  <figure>
+    <img src="mig.jpg" alt="Swallows arriving" class="zoomable">
+    <figcaption>Swallows arriving in the UK from Africa.</figcaption>
+  </figure>
+  <figure>
+    <img src="Shoe.jpg" alt="Same shoes" class="zoomable">
+    <figcaption>Always buying 3–4 of the same items: shirts, shorts, shoes, trousers. Colleagues make fun of me sometimes for wearing anything instead of going up for shopping.</figcaption>
+  </figure>
+  <figure>
+    <img src="" alt="Childhood scar" class="zoomable">
+    <figcaption>Scar from childhood incident with my cousin.</figcaption>
+  </figure>
+     <figure>
+    <img src="" alt="Childhood scar" class="zoomable">
+    <figcaption>Scar from childhood incident with my cousin.</figcaption>
+  </figure>
+</div>
+</section>
+
+<!-- Shared Overlay (keep once in the body if not already present) -->
+<div id="imageOverlay">
+  <span id="overlayClose">&times;</span>
+  <img id="overlayImg" src="" alt="Zoomed Image">
+</div>
+
+
+<section id="routine" class="glass" data-tts-scope>
+  <div class="head">
+    <h2>Routine and changes</h2>
+    <div class="meta">Need for planning; incident in Acton.</div>
+  </div>
+  <div class="content">
+    <p>Unexpected changes generate intense anxiety. At my last appointment, I cried because I had only 30 minutes to reach a clinic in Acton (new location). I held it together in the waiting room but cried with the doctor, affecting the report. Dr. Mornica suggested rescheduling, but I needed to complete it that day; I don’t leave things for later. I was exhausted after listening to a friend at Costa before the appointment. Dr. Mornica gave me a paper with the help line in case I need it while waiting for the next steps. I haven't called yet. I don't like papers. I took it as I was grateful for the appointment. She kindly received me there on that day as I told her I was off and could go.</p>
+ <br>    
+    <p>My everyday routine is simple – work, eating the same meal as always, code and sleep. When I'm not coding I tend to study or plan something. I don't really have friends. Rarely receive messages from working colleagues asking if I am ok and I answer yes. I never ask anyone about their lives ( apart from my parents - they live in my apartment in lisbon and we are always in contact ). </p>
+ <br>    
+    <p>While coding I listen to people talking on social media apps. I never speak to anyone. I usually enter rooms talking about physics, nature, startups, coding.</p>
+  </div>
+
+  <div class="photo-wrap">
+    Photos (Routine) work, eat, code and sleep everyday. building an e-commerce platform focused on rare items—for example, football jerseys from South American clubs. I’ll be integrating Stripe as the payment gateway and including features such as promotions, user registration, tax calculation, and a toggle button to switch languages (Spanish, English, Portuguese, etc.). This is a simple short version without the 6 APIS for credit card payment and google cloud firebase as database . The updated version is on my computer only and it will be updated with promos, real credit card form, vouchers, language integrations, etc... after the company is opened and registered. It will be something like www.shopname.com in the future. <a href="https://vendaseuropa.netlify.app" target="_blank" style="font-weight: bold; color: #FFD700; text-decoration: underline;">vendaseuropa.netlify.app</a>
+
+<div class="grid" data-grid="routine">
+  <figure>
+    <img src="rnet.jpg" alt="Routine photo 1" class="zoomable">
+    <figcaption>Website under construction.</figcaption>
+  </figure>
+  <figure>
+    <img src="gnet.jpg" alt="Routine photo 2" class="zoomable">
+    <figcaption>Website under construction.</figcaption>
+  </figure>
+  <figure>
+    <img src="roty.jpg" alt="Routine photo 3" class="zoomable">
+    <figcaption>Website under construction.</figcaption>
+  </figure>
+  <figure>
+    <img src="Rott.jpg" alt="Routine photo 4" class="zoomable">
+    <figcaption>Website under construction.</figcaption>
+  </figure>
+</div>
+</section>
+
+<!-- Shared Overlay (keep once in the body if not already present) -->
+<div id="imageOverlay">
+  <span id="overlayClose">&times;</span>
+  <img id="overlayImg" src="" alt="Zoomed Image">
+</div>
+
+
+<section id="vacation" class="glass" data-tts-scope>
+  <div class="head">
+    <h2>Holidays and flights</h2>
+    <div class="meta">Travel routines, EasyJet Luton–Lisbon, A319/A320.</div>
+  </div>
+  <div class="content">
+
+     <p>In 2024, during my holidays in Lisbon, my sister organized a BBQ for my birthday and invited everyone from the church as well as her personal friends. I wasn’t expecting this, as I had told them I just wanted my family there. I spent about 30 minutes at the party before leaving, using the excuse of taking an elderly neighbor, my Portuguese neighbor who was also there, home. Everyone got upset, but it wasn’t my fault—I hadn’t invited anyone. The situation was overwhelming for me, and I simply needed to step away. I never liked surprises as stated here    <a href="#y5" style="font-weight: bold; color: #FFD700; text-decoration: underline;">5–10 years</a>
+.</p>
+ <br>
+      <p>When I travel, I usually fly EasyJet from Luton to Lisbon. I know the aircraft types (A319/A320), recognize crews, and even choose specific seats to sleep in. I have taken around 150 flights on this route.
+
+I notice patterns that others don’t. For example, I can tell when different pilots approach Lisbon differently: some make the correct turn over Costa da Caparica and land smoothly, while others turn too far left and only correct just before landing, which feels rough. I also notice differences on other routes, such as whether the approach goes over the Seine River delta in Normandy. I actually memorized the whole flight back and forth and the details.
+
+I am very sensitive to descent. Because of sinus issues, I can usually tell the plane is descending before the pilot announces it, both from the sound and from the direction of turns (e.g. crossing the Channel).
+
+I also notice crew routines. On the last flight of the day, they usually sit and eat at the back seats, which are free; I often choose those seats because it helps me sleep.
+
+I tend to repeat the same pattern of flying (same airline, same route, same time) rather than exploring other places, even though I have flown so many times. </p>
+   
+   
+  <div class="photo-wrap">
+  <div class="small">
+    Flight – spooky person. Sometimes waking up scared several times during a flight and people notice. I run a lot in my Portuguese room during the holidays to get exhausted and avoid bothering anyone. Bought it with profit from stock market.
+  </div>
+  <div class="grid" data-grid="30-35">
+    <figure>
+      <img src="flight.jpg" alt="Flight photo 1" class="zoomable">
+      <figcaption>A320 flight – I know by the tray height; it's high enough to sleep on without having to cover the gap with a bag. The tray on A319 is too low. Wider cabin with more seats and rows than an A319.</figcaption>
+    </figure>
+    <figure>
+      <img src="" alt="Running photo 2" class="zoomable">
+      <figcaption>Running in my Portuguese room to relax and get exhausted during the holidays.</figcaption>
+    </figure>
+  </div>
+</div>
+</section>
+
+<!-- Shared Overlay (only include once in the body) -->
+<div id="imageOverlay">
+  <span id="overlayClose">&times;</span>
+  <img id="overlayImg" src="" alt="Zoomed Image">
+</div>
+
+
+<section id="daily" class="glass" data-tts-scope data-year="20-25">
+  <div class="head">
+    <h2>Daily Journal</h2>
+    <div class="meta">I'll post daily events here.</div>
+  </div>
+  <div class="content">
+<ul>
+  This website will become private after the assessment . IQ, RAADS-R, CAT-Q, AQ, EQ, RBQ-2A and the Aspie Quiz – click <a href="#communication" style="font-weight: bold; color: #FFD700; text-decoration: underline;">Communication</a>, and the results are
+   
+
+  </div>  </div>
+ 
+   
+</section>
+
+
+
+<br><br>
+<!-- Scroll to Top Button -->
+<center><button id="scrollTopBtn" title="Go to top">↑</button></center>
+<script>
+ 
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const lightbox = document.getElementById('lightbox');
+        if (lightbox) {
+          lightbox.style.display = 'none';
+          const lightboxImg = document.getElementById('lightboxImg');
+          if (lightboxImg) lightboxImg.src = '';
+        }
+      }
+    });
+// Select overlay elements
+const overlay = document.getElementById('imageOverlay');
+const overlayImg = document.getElementById('overlayImg');
+const overlayClose = document.getElementById('overlayClose');
+
+// Click on any zoomable image
+document.querySelectorAll('.zoomable').forEach(img => {
+  img.addEventListener('click', () => {
+    overlayImg.src = img.src;
+    overlay.style.display = 'flex';
+  });
+});
+
+// Close overlay when clicking the X
+overlayClose.addEventListener('click', () => {
+  overlay.style.display = 'none';
+  overlayImg.src = '';
+});
+
+// Close overlay when clicking outside the image
+overlay.addEventListener('click', e => {
+  if (e.target === overlay) {
+    overlay.style.display = 'none';
+    overlayImg.src = '';
+  }
+});
+
+// Close overlay on Escape key
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && overlay.style.display === 'flex') {
+    overlay.style.display = 'none';
+    overlayImg.src = '';
+  }
+});
+
+
+    // Smooth Anchor Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el) {
+e.preventDefault();
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    window.onscroll = function() {
+  let btn = document.getElementById("scrollTopBtn");
+  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+    btn.style.display = "block";
+  } else {
+    btn.style.display = "none";
+  }
+};
+
+// Scroll to top when clicked
+document.getElementById("scrollTopBtn").onclick = function() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+           
+</script>
 </body>
 </html>
