@@ -1083,7 +1083,11 @@ My backyard a few days ago, a place I return to often, especially on clear sprin
         I also track the moon. The fig tree itself is coming alive again, its branches filling with new spring growth and activity. Today there were small insects everywhere — tiny flies, bugs, and other signs of returning warmth moving among the fresh flowers and leaves. Birds were active throughout the garden, their calls constant as nesting season strengthens. The magpie should soon return to his favourite branch, where he has nested before; he must be around four years old now. This tree supports an entire small ecosystem, with at least four bird species nesting among its branches, making it not only a place for observing the heavens, but also a living centre of spring’s return below. 
         For me this is a self-regulation mechanism. I can see it moving accordingly and I sort of know what is going on.  I’ve been looking into the <a href="https://www.westlondon.nhs.uk/our-services/adult/ealing-community-partners/referral-hub/ealing-autism-hub" target="_blank" rel="noopener noreferrer">Ealing Autism Hub referral hub</a> and tomorrow I’ll call them regarding my diagnosis to get more information and discuss the next steps. The link provided for my online results has now expired. I have requested a new access link via email yesterday. Haven't received a letter containing my results.
 
-<img src="stars.jpg" alt="Drawing" style="max-width:100%; height:auto; display:block; margin-top:10px;">
+
+<img id="swapImage"
+     src="stars.jpg"
+     alt="Drawing"
+     style="max-width:100%; height:auto; display:block; margin-top:10px; cursor:pointer;">
 </p>
 <br>
 <br>
@@ -1199,7 +1203,15 @@ document.addEventListener('keydown', e => {
   }
 });
 
+// PLACE 
 
+const images = ["stars.jpg", "tree.jpg", "tree1.jpg"];
+let currentIndex = 0;
+
+document.getElementById("swapImage").addEventListener("click", function () {
+    currentIndex = (currentIndex + 1) % images.length;
+    this.src = images[currentIndex];
+});
     // Smooth Anchor Scroll
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', (e) => {
